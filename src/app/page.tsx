@@ -6,6 +6,7 @@ import { SizeFinder } from "@/components/home/SizeFinder";
 import { FeatureHotspots } from "@/components/home/FeatureHotspots";
 import { ModularDiagram } from "@/components/home/ModularDiagram";
 import { ProductCard } from "@/components/ProductCard";
+import { TentIllustration } from "@/components/TentIllustration";
 import { Rail, Reveal } from "@/components/primitives";
 import { TalkToUs } from "@/components/layout";
 import { SignupForm } from "@/components/SignupForm";
@@ -89,8 +90,11 @@ export default async function Home() {
               Read the canvas guide
             </ButtonLink>
           </div>
-          {/* Photo slot: canvas macro (CR-22, needed from client). Flat placeholder, no texture. */}
-          <div aria-hidden className="aspect-square bg-gunmetal" />
+          {/* Canvas weave drawing with a water bead. Stands in until the macro photograph is supplied (REDESIGN_IMAGES.md). */}
+          <div aria-hidden className="relative aspect-square overflow-hidden rounded-md bg-canvas">
+            <div className="absolute inset-0 [background-image:repeating-linear-gradient(0deg,rgba(90,70,40,.25)_0_2px,transparent_2px_7px),repeating-linear-gradient(90deg,rgba(90,70,40,.2)_0_3px,transparent_3px_7px)]" />
+            <div className="absolute bottom-[30%] left-[45%] size-8 rounded-full bg-[radial-gradient(circle_at_35%_35%,white,rgba(160,195,215,.9)_40%,rgba(120,160,190,.6))]" />
+          </div>
         </div>
       </Section>
 
@@ -158,8 +162,8 @@ export default async function Home() {
       {/* 10 Glamping for business */}
       <Section tone="olive" labelledBy="h-b2b">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          {/* Photo slot: glamping tent on a deck (CR-22, needed from client). Flat placeholder. */}
-          <div aria-hidden className="aspect-[4/3] bg-ink" />
+          {/* Drawing stands in until the deck photograph is supplied (REDESIGN_IMAGES.md) */}
+          <TentIllustration kind="glamp" className="w-full rounded-md bg-canvas p-6" label="Davis glamping tent on a deck with fly and awning" />
           <div>
             <p className="eyebrow mb-3 text-(--surface-eyebrow)">Glamping for business</p>
             <h2 id="h-b2b">One or a dozen tents, for your property</h2>

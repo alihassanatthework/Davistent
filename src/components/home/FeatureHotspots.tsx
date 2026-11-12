@@ -1,17 +1,20 @@
 import { standardFeatures } from "@/content/features";
+import { TentIllustration } from "../TentIllustration";
 
 /**
  * Standard features (homepage section 6, tent pages). CR-05: a static numbered
  * list of the seven features with their specifications beside one photograph.
  * No hotspots and no animation; every name, spec and detail is always visible.
  *
- * Photo slot: one wall-tent photograph (CR-22, needed from the client). Until it
- * is supplied the slot is a flat Charcoal placeholder.
+ * The wall-tent drawing stands in until the photograph is supplied
+ * (REDESIGN_IMAGES.md). It is static: no hotspots on it.
  */
 export function FeatureHotspots({ dark }: { dark?: boolean }) {
   return (
     <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-      <div aria-hidden className={`aspect-[4/3] lg:col-span-5 ${dark ? "bg-gunmetal" : "bg-ink"}`} />
+      <div className={`rounded-md lg:col-span-5 ${dark ? "bg-gunmetal" : "bg-canvas"}`}>
+        <TentIllustration kind="wall" tone={dark ? "dark" : "light"} className="w-full p-4" />
+      </div>
       <ol className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:col-span-7">
         {standardFeatures.map((f, i) => (
           <li key={f.id} className={`flex gap-4 border-t pt-4 ${dark ? "border-steel" : "border-line"}`}>

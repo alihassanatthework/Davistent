@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { Icon } from "../ui";
+import { TentIllustration } from "../TentIllustration";
+import type { Illustration } from "@/content/catalog";
 
 /**
  * Photo per tile (CR-04). None supplied yet: REDESIGN_IMAGES.md lists what is
  * needed (hunt camp, glamping tent at dusk, packing gear on canvas, stove
- * close-up). Until then each tile is a flat Charcoal ground.
+ * close-up). Until then each tile shows its line drawing on a Charcoal ground.
  */
-const camps: { title: string; line: string; href: string; photo?: { src: string; alt: string } }[] = [
-  { title: "Hunt", line: "Wall tents and hot-tent packages", href: "/hunting/" },
-  { title: "Glamp", line: "Luxury glamping tents", href: "/glamping/" },
-  { title: "Outfit", line: "Packing gear, sleep systems, accessories", href: "/gear/" },
-  { title: "Stoves", line: "Wood-burning stoves sized to your tent", href: "/stoves/" },
+const camps: { title: string; line: string; href: string; art: Illustration; photo?: { src: string; alt: string } }[] = [
+  { title: "Hunt", line: "Wall tents and hot-tent packages", href: "/hunting/", art: "package" },
+  { title: "Glamp", line: "Luxury glamping tents", href: "/glamping/", art: "glamp" },
+  { title: "Outfit", line: "Packing gear, sleep systems, accessories", href: "/gear/", art: "gear" },
+  { title: "Stoves", line: "Wood-burning stoves sized to your tent", href: "/stoves/", art: "stove" },
 ];
 
 /**
@@ -29,6 +31,13 @@ export function CampCards() {
             data-surface="dark"
             className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-md bg-ink text-bone md:aspect-[3/4] lg:aspect-[4/5]"
           >
+            {!c.photo && (
+              <TentIllustration
+                kind={c.art}
+                tone="dark"
+                className="absolute inset-x-0 top-0 h-[68%] w-full p-4 transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.04]"
+              />
+            )}
             {c.photo && (
               <>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
