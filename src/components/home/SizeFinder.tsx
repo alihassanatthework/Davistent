@@ -56,7 +56,7 @@ export function SizeFinder() {
               max={10}
               value={party}
               onChange={(e) => setParty(Number(e.target.value))}
-              className="hidden flex-1 accent-[#6B4F3A] sm:block"
+              className="hidden flex-1 accent-ink sm:block"
               aria-valuetext={`${party} people`}
             />
             <output htmlFor={`${id}-party`} className="data min-w-20 text-center text-[28px] font-semibold" aria-live="polite">
