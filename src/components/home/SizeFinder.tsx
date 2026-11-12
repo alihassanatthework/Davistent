@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
-import { stoveFor } from "@/content/catalog";
+import { priceLabel, products, stoveFor } from "@/content/catalog";
 
 /** Size and sleeps pairs as listed on the current site (to be reconciled to one figure per size). */
 export const sizes = [
@@ -17,8 +17,10 @@ export const sizes = [
 /**
  * "What size tent do I need?" (homepage section 4, /guides/size/).
  * Server-renders the default state; all six sizes are listed in HTML.
- * Slider for party size (stepper buttons below 480 px), toggles for stove and
- * eating area; the floor plan updates with cots and stove.
+ * CR-05: a plain table of size, sleeps and price comes first; the selector below
+ * swaps the recommendation instantly (no animation). Slider for party size
+ * (stepper buttons below 480 px), toggles for stove and eating area; the floor
+ * plan updates with cots and stove.
  */
 export function SizeFinder() {
   const [party, setParty] = useState(4);
@@ -33,6 +35,8 @@ export function SizeFinder() {
   const stoveModel = stoveFor(match.w * match.l);
 
   return (
+    <div className="space-y-6">
+      <SizeTable current={tooBig ? undefined : match.id} />
     <div className="grid gap-8 rounded-md border border-line bg-snow p-4 md:p-8 lg:grid-cols-2">
       <div>
         <fieldset>
@@ -115,23 +119,48 @@ export function SizeFinder() {
 
       <div>
         <FloorPlan w={match.w} l={match.l} cots={Math.min(party, match.max + 2)} stove={stove} eating={eating} />
-        <ul className="mt-4 grid grid-cols-3 gap-2 text-center text-[13px]" aria-label="All wall tent sizes">
-          {sizes.map((s) => (
-            <li key={s.id}>
-              <Link
-                href={s.href}
-                aria-current={s.id === match.id ? "true" : undefined}
-                className="block rounded-sm border border-line px-2 py-2 aria-[current=true]:border-pine aria-[current=true]:bg-pine aria-[current=true]:text-bone"
-              >
-                <span className="data block text-[14px] font-semibold">
-                  {s.w}×{s.l}
-                </span>
-                sleeps {s.sleeps}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
+    </div>
+    </div>
+  );
+}
+
+/** Static size table (CR-05): size, sleeps as listed, wall tent price. The current recommendation is marked in text. */
+function SizeTable({ current }: { current?: string }) {
+  return (
+    <div role="region" aria-label="All wall tent sizes" tabIndex={0} className="overflow-x-auto rounded-md border border-line bg-snow">
+      <table className="w-full text-left text-[15px]">
+        <caption className="sr-only">Wall tent sizes, sleeping capacity and price</caption>
+        <thead className="bg-ink text-bone">
+          <tr>
+            <th scope="col" className="px-4 py-3 font-semibold">Size</th>
+            <th scope="col" className="px-4 py-3 font-semibold">Sleeps (as listed)</th>
+            <th scope="col" className="px-4 py-3 font-semibold">Wall tent</th>
+            <th scope="col" className="px-4 py-3"><span className="sr-only">Link</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {sizes.map((s) => {
+            const tent = products.find((p) => p.id === `wall-${s.id}`);
+            const on = s.id === current;
+            return (
+              <tr key={s.id} className={`border-t border-line ${on ? "bg-canvas" : ""}`}>
+                <th scope="row" className="data px-4 py-3 font-semibold">
+                  {s.w}' × {s.l}'
+                  {on && <span className="eyebrow ml-2 text-slate">Recommended</span>}
+                </th>
+                <td className="data px-4 py-3">{s.sleeps}</td>
+                <td className="data px-4 py-3">{tent ? priceLabel(tent) : "—"}</td>
+                <td className="px-4 py-3 text-right">
+                  <Link href={s.href} className="font-semibold underline underline-offset-4">
+                    View<span className="sr-only"> {s.w} by {s.l} wall tent</span>
+                  </Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
