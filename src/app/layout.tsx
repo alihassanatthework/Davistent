@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Barlow_Condensed, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -10,8 +10,9 @@ import { site } from "@/content/site";
 import { accountUrl, checkoutUrl } from "@/lib/commerce";
 
 /* Self-hosted at build, subset to Latin, font-display: swap, size-adjusted fallbacks */
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap", axes: ["opsz"] });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+// CR-02: bold condensed display face; only the heading weights are preloaded.
+const barlow = Barlow_Condensed({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-barlow", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap", preload: false });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap", preload: false });
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export const viewport: Viewport = { themeColor: "#141615", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${mono.variable} no-js antialiased`}>
+    <html lang="en" className={`${barlow.variable} ${inter.variable} ${mono.variable} no-js antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.remove('no-js')" }} />
       </head>

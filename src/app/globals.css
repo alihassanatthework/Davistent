@@ -93,7 +93,7 @@
   --color-warning: var(--color-warning);
   --color-error: var(--color-error);
 
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-barlow), "Arial Narrow", sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
@@ -124,29 +124,46 @@ body {
   color: var(--color-charcoal);
   font-family: var(--font-sans);
   font-size: clamp(16px, 0.95rem + 0.15vw, 17px);
-  line-height: 1.6;
+  line-height: 1.55;
   font-feature-settings: "tnum" 0;
 }
 
+/* Type scale (CR-02, plan §5). Capitals come from CSS only; source text keeps its case. */
 h1,
 h2,
 .font-display {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
+/* Headings that opt into the body face (filters, accordions) stay in sentence case */
+:is(h1, h2).font-sans {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Page H1: 32/34 mobile to 48/50 desktop */
 h1 {
-  font-size: clamp(36px, 1.6rem + 2.6vw, 56px);
-  line-height: 1.1;
+  font-size: clamp(32px, 26.1px + 1.524vw, 48px);
+  line-height: 1.04;
 }
+/* Hero H1: 38/40 mobile to 64/64 desktop */
+h1.hero-title {
+  font-size: clamp(38px, 28.3px + 2.476vw, 64px);
+  line-height: 1;
+}
+/* H2: 26/30 mobile to 36/40 desktop */
 h2 {
-  font-size: clamp(26px, 1.2rem + 1.3vw, 36px);
-  line-height: 1.17;
+  font-size: clamp(26px, 22.3px + 0.952vw, 36px);
+  line-height: 1.12;
 }
+/* H3: sentence case, body face, 19/24 to 22/28 */
 h3 {
-  font-size: clamp(19px, 1rem + 0.4vw, 22px);
-  line-height: 1.25;
+  font-size: clamp(19px, 17.9px + 0.286vw, 22px);
+  line-height: 1.27;
   font-weight: 600;
 }
 
@@ -211,10 +228,10 @@ h3 {
 
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 16px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
