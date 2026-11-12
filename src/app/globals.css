@@ -25,9 +25,7 @@
   --color-border-dark: #3d4447; /* borders on dark */
   --color-success: #1f3a2e;
   --color-warning: #b7791f;
-  --color-warning-tint: #f5ecdc;
   --color-error: #b3261e;
-  --color-error-tint: #f6e4e2;
 
   /* Roles kept under their existing names so components do not churn (§13 token mapping) */
   --color-pine: var(--color-ink); /* brand role: Charcoal leads, Forest kept as --color-forest */
@@ -88,8 +86,6 @@
   --color-blaze: var(--color-blaze);
   --color-blaze-deep: var(--color-blaze-deep);
   --color-line-dark: var(--color-border-dark);
-  --color-warning-tint: var(--color-warning-tint);
-  --color-error-tint: var(--color-error-tint);
 
   --color-pine: var(--color-pine);
   --color-charcoal: var(--color-charcoal);

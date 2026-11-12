@@ -232,14 +232,14 @@ export function Notice({
   role?: "alert" | "status";
 }) {
   const tones = {
-    info: "border-pine/40 bg-snow",
-    warn: "border-warning bg-warning-tint",
-    block: "border-error bg-error-tint",
-    pending: "border-dashed border-stone bg-surface-alt/60",
+    info: "border-l-ink bg-snow",
+    warn: "border-l-warning bg-snow",
+    block: "border-l-error bg-snow",
+    pending: "border-dashed border-l-slate bg-surface-alt",
   };
   const icon = tone === "info" ? "info" : tone === "pending" ? "info" : "alert";
   return (
-    <div role={role} className={`flex gap-3 rounded-md border-l-4 p-4 text-[15px] leading-6 text-charcoal ${tones[tone]}`}>
+    <div role={role} className={`flex gap-3 rounded-md border border-l-4 border-line p-4 text-[15px] leading-6 text-charcoal ${tones[tone]}`}>
       <Icon name={icon} className="mt-0.5 size-5 shrink-0" />
       <div>
         {title && <p className="font-semibold">{title}</p>}

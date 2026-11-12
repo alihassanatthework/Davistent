@@ -88,17 +88,18 @@ export function TentBuilder() {
       <div className="lg:col-span-7">
         {/* progress */}
         <nav aria-label="Builder steps" className="mb-6">
-          <ol className="scrollbar-none flex gap-2 overflow-x-auto">
+          {/* Step indicator (CR-17): numbered capitals over a 2 px progress rule */}
+          <ol className="scrollbar-none flex gap-1 overflow-x-auto border-b-2 border-line">
             {steps.map((s, i) => (
               <li key={s} className="shrink-0">
                 <button
                   onClick={() => go(i)}
                   aria-current={i === step ? "step" : undefined}
-                  className={`flex min-h-11 items-center gap-2 rounded-sm border px-3 text-[14px] font-semibold ${
-                    i === step ? "border-pine bg-pine text-bone" : i < step ? "border-pine text-pine" : "border-line text-stone-deep"
+                  className={`nav-label -mb-0.5 flex min-h-11 items-center gap-2 border-b-2 px-3 ${
+                    i === step ? "border-ink text-ink" : i < step ? "border-ink text-slate" : "border-transparent text-slate"
                   }`}
                 >
-                  <span className="data grid size-6 place-items-center rounded-sm border border-current text-[12px]">{i < step ? "✓" : i + 1}</span>
+                  <span className="data text-[13px]">{i < step ? "✓" : String(i + 1).padStart(2, "0")}</span>
                   {s}
                 </button>
               </li>
@@ -263,9 +264,9 @@ export function TentBuilder() {
           <div className="rounded-md border border-line bg-snow p-4">
             <BuildDrawing b={b} />
           </div>
-          <div className="rounded-md border border-line bg-snow p-4" aria-live="polite">
-            <p className="eyebrow text-stone-deep">Your build</p>
-            <p className="data mt-1 text-[28px] font-semibold">{formatPrice(price.total)}</p>
+          <div data-surface="dark" className="rounded-md bg-ink p-4 text-bone" aria-live="polite">
+            <p className="eyebrow text-tan">Your build</p>
+            <p className="data mt-1 text-[28px] leading-8 font-bold">{formatPrice(price.total)}</p>
             <ul className="mt-3 space-y-1 text-[14px]">
               {price.lines.map((l) => (
                 <li key={l.label} className="flex justify-between gap-3">
@@ -278,7 +279,7 @@ export function TentBuilder() {
               ))}
             </ul>
             {price.hasEstimates && (
-              <p className="mt-3 text-[12px] text-stone">* Placeholder price. Final add-on prices come from the Davis Tent store before launch.</p>
+              <p className="mt-3 text-[12px] text-ash">* Placeholder price. Final add-on prices come from the Davis Tent store before launch.</p>
             )}
           </div>
           {rules.map((r) => (
