@@ -303,7 +303,7 @@ export function RaisingCamp({ manifest }: { manifest: Manifest | null }) {
                 layers.current[sc.id] = n;
               }}
               className={`absolute inset-0 z-10 flex transition-none ${
-                sc.id === 8 ? "items-end pb-10" : "items-end pb-28 md:items-center md:pb-0"
+                sc.id === 8 ? "items-center" : sc.id === 7 ? "items-start pt-[calc(var(--header-h)+4vh)]" : "items-end pb-28 md:items-center md:pb-0"
               } ${sc.id > 1 ? "invisible opacity-0" : ""}`}
             >
               <div
@@ -332,11 +332,12 @@ export function RaisingCamp({ manifest }: { manifest: Manifest | null }) {
           {/* Scene 4 on mobile: caption carousel replaces hotspots */}
 
           {/* Scene 7: DOM cut-outs (lighter than 32 frames) */}
-          <div ref={packLayer} aria-hidden className="pointer-events-none absolute inset-0 z-[5] grid place-items-center">
-            <div className="grid w-[min(92vw,820px)] grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+          <div ref={packLayer} aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-[52%] z-[5] flex items-start justify-center pt-2 md:top-[50%]">
+            {/* Scene 7 grid sits below the heading block so the two never overlap */}
+            <div className="grid w-[min(92vw,760px)] grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
               {packItems.slice(0, mobile ? 4 : 6).map((name, n) => (
                 <div data-pack key={name} className="rounded-md border border-line bg-snow/90 p-3 opacity-0">
-                  <TentIllustration kind={n === 3 ? "cot" : n === 5 || n === 2 ? "bag" : "gear"} className="h-20 w-full md:h-28" />
+                  <TentIllustration kind={n === 3 ? "cot" : n === 5 || n === 2 ? "bag" : "gear"} className="h-14 w-full md:h-20" />
                   <p className="mt-1 text-center text-[13px] font-semibold text-charcoal">{name}</p>
                 </div>
               ))}

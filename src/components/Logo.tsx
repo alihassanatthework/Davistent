@@ -4,13 +4,13 @@
  */
 export function Logo({ className = "h-9" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 168 40" className={className} role="img" aria-label="Davis Tent">
+    <svg viewBox="0 0 196 40" className={className} role="img" aria-label="Davis Tent">
       <path d="M4 32 L20 8 L36 32 Z" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
       <path d="M17 32 L20 22 L23 32" fill="none" stroke="#D9601A" strokeWidth="2.5" strokeLinejoin="round" />
       <text x="44" y="27" fill="currentColor" fontFamily="var(--font-fraunces), Georgia, serif" fontWeight="600" fontSize="21" letterSpacing="1.5">
         DAVIS TENT
       </text>
-      <text x="160" y="14" fill="currentColor" fontSize="8" fontFamily="sans-serif">
+      <text x="188" y="14" fill="currentColor" fontSize="8" fontFamily="sans-serif">
         ®
       </text>
     </svg>
