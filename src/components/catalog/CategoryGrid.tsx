@@ -96,6 +96,16 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
 
   const activeCount = filters.reduce((n, k) => n + (k === "stove" || k === "compat" ? (params.get(k) ? 1 : 0) : selected(k).length), 0);
 
+  /* Active filters as rectangular tags with a remove control (CR-14). Same toggles, same URL parameters. */
+  const activeTags: { key: string; label: string; remove: () => void }[] = [
+    ...selected("use").map((id) => ({ key: `use-${id}`, label: useLabels[id] ?? id, remove: () => toggle("use", id) })),
+    ...selected("sleeps").map((id) => ({ key: `sleeps-${id}`, label: `Sleeps ${sleepBands.find((b) => b.id === id)?.label ?? id}`, remove: () => toggle("sleeps", id) })),
+    ...selected("size").map((id) => ({ key: `size-${id}`, label: id, remove: () => toggle("size", id) })),
+    ...(params.get("stove") === "yes" ? [{ key: "stove", label: "Stove included", remove: () => setParam("stove", "") }] : []),
+    ...(params.get("compat") ? [{ key: "compat", label: `Fits ${params.get("compat")!.replace("x", "' × ")}'`, remove: () => setParam("compat", "") }] : []),
+    ...selected("price").map((id) => ({ key: `price-${id}`, label: priceBands.find((b) => b.id === id)?.label ?? id, remove: () => toggle("price", id) })),
+  ].filter((t) => filters.includes(t.key.split("-")[0] as FilterKey));
+
   useEffect(() => {
     const d = sheetRef.current;
     if (d) sheet ? !d.open && d.showModal() : d.open && d.close();
@@ -141,7 +151,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
         <Group legend="Fits my tent">
           <label className="block">
             <span className="sr-only">Tent size</span>
-            <select value={params.get("compat") ?? ""} onChange={(e) => setParam("compat", e.target.value)} className="h-12 w-full rounded-md border border-line bg-snow px-3">
+            <select value={params.get("compat") ?? ""} onChange={(e) => setParam("compat", e.target.value)} className="h-12 w-full rounded-md border border-slate bg-snow px-3">
               <option value="">Any tent size</option>
               {compatSizes.map((s) => (
                 <option key={s} value={s}>
@@ -160,7 +170,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
         </Group>
       )}
       {activeCount > 0 && (
-        <button className="text-[15px] font-semibold text-pine underline" onClick={() => router.replace(pathname, { scroll: false })}>
+        <button className="text-[15px] font-semibold text-ink underline underline-offset-4" onClick={() => router.replace(pathname, { scroll: false })}>
           Clear all filters
         </button>
       )}
@@ -172,22 +182,22 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
   return (
     <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
       <aside className="hidden lg:block" aria-label="Filters">
-        <h2 className="mb-4 font-sans text-[17px] font-semibold">Filter</h2>
+        <h2 className="nav-label mb-4 font-sans">Filter</h2>
         {panel}
       </aside>
 
       <div>
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-          <p aria-live="polite" className="text-[15px] text-stone-deep">
+          <p aria-live="polite" className="nav-label text-slate">
             {results.length} {results.length === 1 ? "product" : "products"}
           </p>
           <div className="flex items-center gap-2">
-            <button onClick={() => setSheet(true)} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-line bg-snow px-4 font-semibold lg:hidden">
+            <button onClick={() => setSheet(true)} className="nav-label inline-flex min-h-11 items-center gap-2 rounded-md border border-slate bg-snow px-4 lg:hidden">
               Filter{activeCount ? ` (${activeCount})` : ""}
             </button>
             <label className="flex items-center gap-2 text-[15px]">
-              <span className="max-sm:sr-only">Sort</span>
-              <select value={sort} onChange={(e) => setParam("sort", e.target.value === "recommended" ? "" : e.target.value)} className="h-11 rounded-md border border-line bg-snow px-3">
+              <span className="nav-label max-sm:sr-only">Sort</span>
+              <select value={sort} onChange={(e) => setParam("sort", e.target.value === "recommended" ? "" : e.target.value)} className="h-11 rounded-md border border-slate bg-snow px-3">
                 {sorts.map((s) => (
                   <option key={s.id} value={s.id}>
                     {s.label}
@@ -198,10 +208,24 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
           </div>
         </div>
 
+        {activeTags.length > 0 && (
+          <ul aria-label="Active filters" className="mb-6 flex flex-wrap gap-2">
+            {activeTags.map((t) => (
+              <li key={t.key}>
+                <button onClick={t.remove} className="inline-flex min-h-9 items-center gap-2 rounded-sm border border-ink px-3 text-[13px] font-semibold hover:bg-ink hover:text-bone">
+                  {t.label}
+                  <Icon name="close" className="size-3.5" />
+                  <span className="sr-only">Remove filter</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+
         {results.length === 0 ? (
           <div className="rounded-md border border-line bg-snow p-8 text-center">
             <p className="font-semibold">No products match those filters.</p>
-            <button className="mt-3 font-semibold text-pine underline" onClick={() => router.replace(pathname, { scroll: false })}>
+            <button className="mt-3 font-semibold text-ink underline" onClick={() => router.replace(pathname, { scroll: false })}>
               Reset filters
             </button>
             <p className="mt-4 text-[15px] text-stone">
@@ -210,7 +234,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
             </p>
           </div>
         ) : (
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {results.map((p) => (
               <li key={p.id}>
                 <ProductCard
@@ -231,7 +255,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
                       ) : (
                         <span />
                       )}
-                      <button className="min-h-10 text-[14px] font-semibold text-pine underline-offset-4 hover:underline" onClick={() => setQuick(p)}>
+                      <button className="min-h-10 text-[14px] font-semibold text-ink underline-offset-4 hover:underline" onClick={() => setQuick(p)}>
                         Quick view<span className="sr-only"> of {p.name}</span>
                       </button>
                     </div>
@@ -245,7 +269,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
 
       {/* compare tray */}
       {compare.length > 0 && (
-        <div className="fixed inset-x-0 bottom-16 z-40 border-t border-line bg-snow shadow-2 md:bottom-0">
+        <div data-surface="dark" className="fixed inset-x-0 bottom-16 z-40 border-t border-steel bg-ink text-bone md:bottom-0">
           <div className="container-site flex items-center justify-between gap-4 py-3">
             <p className="text-[15px]">
               <strong>{compare.length}</strong> of 3 selected to compare
@@ -376,7 +400,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
 function Group({ legend, children }: { legend: string; children: React.ReactNode }) {
   return (
     <fieldset>
-      <legend className="eyebrow mb-2 text-stone-deep">{legend}</legend>
+      <legend className="eyebrow mb-2 w-full border-b border-line pb-2 text-slate">{legend}</legend>
       <div className="space-y-1">{children}</div>
     </fieldset>
   );
@@ -385,7 +409,7 @@ function Group({ legend, children }: { legend: string; children: React.ReactNode
 function Check({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
   return (
     <label className="flex min-h-10 cursor-pointer items-center gap-3 text-[15px]">
-      <input type="checkbox" checked={checked} onChange={onChange} className="size-5 accent-ink" />
+      <input type="checkbox" checked={checked} onChange={onChange} className="size-[18px] rounded-none accent-ink" />
       {label}
     </label>
   );
