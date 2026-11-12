@@ -22,7 +22,7 @@ import {
 import { formatPrice, stoveFor } from "@/content/catalog";
 import { site } from "@/content/site";
 import { useCart } from "../Cart";
-import { Button, Icon, Notice } from "../ui";
+import { Button, Icon, Notice, Marker } from "../ui";
 
 const steps = ["Size", "Treatment", "Openings", "Frame or poles", "Floor and fly", "Review"] as const;
 
@@ -217,7 +217,7 @@ export function TentBuilder() {
               <ul className="space-y-1">
                 {summary.map((s) => (
                   <li key={s} className="flex gap-2">
-                    <Icon name="check" className="mt-0.5 size-5 shrink-0 text-success" /> {s}
+                    <Marker /> {s}
                   </li>
                 ))}
               </ul>

@@ -57,7 +57,7 @@ export function Button({
   );
 }
 
-/* ---------- Icons: 1.5 px stroke on a 24 px grid ---------- */
+/* ---------- Icons (CR-27): 1.75 px stroke, square caps, 24 px grid. Used for actions, not decoration. ---------- */
 const paths: Record<string, ReactNode> = {
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   phone: <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />,
@@ -135,9 +135,9 @@ export function Icon({ name, className = "size-5", title }: { name: keyof typeof
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth={1.75}
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       aria-hidden={title ? undefined : true}
       role={title ? "img" : undefined}
@@ -207,16 +207,28 @@ export function SectionHead({
   );
 }
 
-/* ---------- Badge and tag: text, never colour alone ---------- */
+/* ---------- Badge and tag (CR-27): 2 px rectangle, 11 px capitals, Charcoal outline or Olive fill ---------- */
 export function Badge({ tone = "duck", children }: { tone?: "duck" | "ember" | "pine" | "gold" | "stone"; children: ReactNode }) {
   const tones = {
-    duck: "bg-duck/40 text-charcoal",
-    ember: "bg-blaze-deep text-white",
-    pine: "bg-pine text-bone",
-    gold: "bg-olive text-bone",
-    stone: "bg-surface-alt text-stone-deep",
+    duck: "border border-ink bg-snow text-ink",
+    /* sale flag: the one tag allowed to be orange */
+    ember: "border border-blaze-deep bg-blaze-deep text-white",
+    pine: "border border-olive bg-olive text-bone",
+    gold: "border border-olive bg-olive text-bone",
+    /* stock and lead-time tags: text plus a small square marker */
+    stone: "border border-ink bg-snow text-ink",
   };
-  return <span className={`inline-flex items-center gap-1 rounded-sm px-2 py-0.5 text-[12px] font-semibold ${tones[tone]}`}>{children}</span>;
+  return (
+    <span className={`inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[11px] font-semibold uppercase leading-4 tracking-[0.06em] ${tones[tone]}`}>
+      {tone === "stone" && <Marker className="!mt-0" />}
+      {children}
+    </span>
+  );
+}
+
+/** Small square list marker. Replaces decorative icons beside list items (CR-27). */
+export function Marker({ className = "" }: { className?: string }) {
+  return <span aria-hidden className={`mt-[9px] size-1.5 shrink-0 bg-current ${className}`} />;
 }
 
 /* ---------- Notice: confirmation-needed and rule messages ---------- */
@@ -286,7 +298,7 @@ export function Checklist({ items, columns = 2 }: { items: readonly string[]; co
     <ul className={`grid gap-x-8 gap-y-2 ${cols[columns]}`}>
       {items.map((i) => (
         <li key={i} className="flex gap-2 text-[15px] leading-6">
-          <Icon name="check" className="mt-0.5 size-5 shrink-0 text-success" />
+          <Marker />
           <span>{i}</span>
         </li>
       ))}

@@ -6,7 +6,7 @@ import { type Product, formatPrice } from "@/content/catalog";
 import { destinations, fireStates } from "@/content/builder";
 import { site } from "@/content/site";
 import { useCart } from "../Cart";
-import { Button, buttonClass, Icon, Notice } from "../ui";
+import { Button, buttonClass, Icon, Notice, Marker } from "../ui";
 
 type Choice = { id: string; label: string; price: number; note?: string };
 
@@ -123,11 +123,11 @@ export function BuyBox({ product: p }: { product: Product }) {
       <ul className="space-y-2 border-t border-line pt-4 text-[14px]">
         {isTent && (
           <li className="flex gap-2">
-            <Icon name="info" className="size-4 shrink-0" /> Some custom tents may require 4 weeks production lead time.
+            <Marker /> Some custom tents may require 4 weeks production lead time.
           </li>
         )}
         <li className="flex gap-2">
-          <Icon name="info" className="size-4 shrink-0" />
+          <Marker />
           <span>
             Returns within 30 days, authorized by Davis Tent; custom orders are not returnable.{" "}
             <Link href="/support/returns/" className="underline">

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EnquiryForm } from "@/components/forms";
 import { PageHeader, TalkToUs } from "@/components/layout";
-import { Icon, Section, SectionHead } from "@/components/ui";
+import { Section, SectionHead, Marker } from "@/components/ui";
 import { fact } from "@/content/facts";
 import { type Segment, businessSegments, caseStudies } from "@/content/support";
 import { meta } from "@/lib/meta";
@@ -52,7 +52,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
         <ul className="grid gap-4 md:grid-cols-3">
           {s.proof.map((p) => (
             <li key={p} className="flex gap-3 rounded-md border border-line p-5">
-              <Icon name="check" className="mt-0.5 size-5 shrink-0 text-success" />
+              <Marker />
               {p}
             </li>
           ))}

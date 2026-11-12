@@ -9,7 +9,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Rail, Reveal } from "@/components/primitives";
 import { TalkToUs } from "@/components/layout";
 import { SignupForm } from "@/components/SignupForm";
-import { ButtonLink, Icon, Section, SectionHead } from "@/components/ui";
+import { ButtonLink, Icon, Section, SectionHead, Marker } from "@/components/ui";
 import { byCategory, bySlug, formatPrice, stoveFits } from "@/content/catalog";
 import { fact } from "@/content/facts";
 import { caseStudies, conservationPartners, journalPosts, videoCategories } from "@/content/support";
@@ -165,15 +165,15 @@ export default async function Home() {
             <h2 id="h-b2b">One or a dozen tents, for your property</h2>
             <ul className="mt-6 space-y-3">
               <li className="flex gap-3">
-                <Icon name="check" className="mt-1 size-5 shrink-0 text-tan" />
+                <Marker />
                 Three standard sizes: 14' × 15', 16' × 20' and 16' × 25', or custom.
               </li>
               <li className="flex gap-3">
-                <Icon name="check" className="mt-1 size-5 shrink-0 text-tan" />
+                <Marker />
                 Properties including {caseStudies.map((c) => c.name).join(", ")}.
               </li>
               <li className="flex gap-3">
-                <Icon name="check" className="mt-1 size-5 shrink-0 text-tan" />
+                <Marker />
                 Logistics work for national brands including Samsung, Coachella and Land Rover.
               </li>
             </ul>
