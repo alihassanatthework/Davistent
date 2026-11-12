@@ -42,7 +42,7 @@ export function BuyBox({ product: p }: { product: Product }) {
   return (
     <div className="space-y-6">
       <div>
-        <p className="data text-[28px] font-semibold" aria-live="polite">
+        <p className="data text-[28px] leading-8 font-bold" aria-live="polite">
           {priced ? formatPrice(total) : "Price in store"}
         </p>
         {p.compareMin && (
