@@ -23,3 +23,16 @@ The script drives headless Chrome over the DevTools protocol and needs no npm pa
 - The homepage at 390 px was captured on the first visit, so the hero was in motion mode: a 400vh pinned scroll, cut off at the 16,000 px cap.
 - Later visits in the same session show the collapsed hero with "Replay the intro". That is why the 768 and 1440 home captures and `home.txt` show that state.
 - `home.txt` includes the hidden "About the Raising Camp introduction" scene summary. CR-07 removes it along with the hero.
+
+## Folders and scripts added during the work
+
+| Path | What it holds |
+|---|---|
+| `before/` | The baseline described above |
+| `after/` | The same capture from a local production build of the finished branch |
+| `compare/index.html` | Twelve screens side by side, before and after (final state) |
+| `compare-p1/index.html` | The same comparison as it stood after the P1 change requests |
+| `capture.mjs` | Full-page screenshots, rendered text, SEO tags, routes, product hash |
+| `viewports.mjs` | One-screen JPEG shots used by the comparison pages |
+| `checks.mjs` | Layout and motion checks on 12 pages at 320, 390, 768, 1024, 1280 and 1440 px, plus reduced motion |
+| `a11y.mjs` | axe-core WCAG 2.2 AA scan (install `axe-core` with `npm install --no-save axe-core` first) |

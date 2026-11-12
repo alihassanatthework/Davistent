@@ -21,11 +21,11 @@ Every slot that needs a photograph now shows a flat Charcoal or Gunmetal placeho
 | Made in Denver (home 11) | `app/page.tsx`, section `h-denver` | No image | No image | **Needed** | Shop floor: hands, machines, canvas rolls (people working, not posing) |
 | Category headers (tents, specialty, hunting, packages, accessories, frames, flys and awnings, gear, gear subpages, stoves, build, glamping and three glamping subpages, deals, gift certificates, support and contact) | `components/layout.tsx PageHeader` (`image` prop) | Decorative drawing on a coloured ground | Flat Charcoal band | **Needed**, one per category | Category-specific: hunt camp; tent interior; frames and poles; fly over a tent; packing gear on canvas; stove close-up; glamping exterior |
 
-## Shop-by-camp tiles (CR-04, P2)
+## Shop-by-camp tiles (CR-04)
 
 | Slot | Where | Now | Decision |
 |---|---|---|---|
-| Hunt / Glamp / Outfit / Stoves tiles | `components/home/CampCards.tsx` | Drawings (to be replaced in CR-04) | **Needed**: hunt camp; glamping tent at dusk; packing gear on canvas; stove close-up |
+| Hunt / Glamp / Outfit / Stoves tiles | `components/home/CampCards.tsx` (`photo` field per tile) | Flat Charcoal tiles with the capital label; drawings removed | **Needed**: hunt camp; glamping tent at dusk; packing gear on canvas; stove close-up |
 
 ## Kept as they are
 
