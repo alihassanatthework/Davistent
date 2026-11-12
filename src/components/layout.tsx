@@ -41,13 +41,13 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
 /**
  * Category header variants. CR-10: every category header is a flat Charcoal
  * band until its photograph is supplied (no illustration). The accent names are
- * kept so callers do not change; glamping gets its lighter variant in CR-25.
+ * kept so callers do not change; glamping routes get the lighter Olive variant (CR-25).
  */
 const accents = {
   hunt: "bg-ink",
   specialty: "bg-ink",
   builder: "bg-ink",
-  glamp: "bg-ink",
+  glamp: "bg-olive", // CR-25: glamping routes use Olive and Bone in place of Charcoal
   packing: "bg-ink",
   sleep: "bg-ink",
   accessories: "bg-ink",
@@ -100,7 +100,7 @@ export function PageHeader({
       <div className={`container-site relative flex flex-col justify-center ${compact ? "py-8" : "min-h-[220px] py-8 lg:min-h-[320px]"}`}>
         <div className="max-w-3xl">
           <Breadcrumbs items={crumbs} />
-          {eyebrow && <p className="eyebrow mt-5 text-tan">{eyebrow}</p>}
+          {eyebrow && <p className="eyebrow mt-5 text-(--surface-eyebrow)">{eyebrow}</p>}
           <h1 className={eyebrow ? "mt-2" : "mt-5"}>{title}</h1>
           {intro && <div className="mt-3 max-w-2xl text-[17px] leading-[26px] opacity-90">{intro}</div>}
           {children && <div className="mt-5">{children}</div>}

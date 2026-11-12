@@ -213,6 +213,10 @@ html {
   --surface-link: var(--color-blaze);
   color: var(--surface-text);
 }
+/* Tan is too close to Olive for 12 px text, so eyebrows on Olive bands use Bone */
+.bg-olive {
+  --surface-eyebrow: var(--color-bone);
+}
 [data-surface="accent"] {
   --surface-ground: var(--color-blaze);
   --surface-eyebrow: var(--color-ink);
