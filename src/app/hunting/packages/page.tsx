@@ -26,7 +26,6 @@ export default async function PackagesPage() {
           { label: "Packages with stove", href: "/hunting/packages/" },
         ]}
         accent="hunt"
-        scene="package"
       />
       <CategoryChips links={tentChips} current="/hunting/packages/" />
       <Section tone="snow" labelledBy="h-cmp">

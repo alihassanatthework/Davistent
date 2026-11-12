@@ -24,7 +24,6 @@ export default async function TentsPage() {
         intro={`${fact("cottonOnly")} Every tent is Sunforger®-treated cotton army duck with 5' walls, a stove jack and a sod cloth as standard. ${fact("modular")}`}
         crumbs={[{ label: "Tents", href: "/tents/" }]}
         accent="hunt"
-        scene="wall"
       />
       <CategoryChips links={tentChips} current="/tents/" />
       <Section>

@@ -2,8 +2,6 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { buttonClass, Icon, JsonLd } from "./ui";
-import { TentIllustration } from "./TentIllustration";
-import type { Illustration } from "@/content/catalog";
 
 export type Crumb = { label: string; href: string };
 
@@ -40,32 +38,43 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   );
 }
 
+/**
+ * Category header variants. CR-10: every category header is a flat Charcoal
+ * band until its photograph is supplied (no illustration). The accent names are
+ * kept so callers do not change; glamping gets its lighter variant in CR-25.
+ */
 const accents = {
-  hunt: "bg-pine text-bone on-dark",
-  specialty: "bg-surface-alt text-charcoal",
-  builder: "bg-charcoal text-bone on-dark",
-  glamp: "bg-canvas text-charcoal",
-  packing: "bg-saddle text-bone on-dark",
-  sleep: "bg-charcoal text-bone on-dark",
-  accessories: "bg-pine text-bone on-dark",
-  frames: "bg-stone-deep text-bone on-dark",
-  flys: "bg-surface-alt text-charcoal",
-  stoves: "bg-charcoal text-bone on-dark",
-  deals: "bg-ink text-bone on-dark",
-  plain: "bg-surface-alt text-charcoal",
+  hunt: "bg-ink",
+  specialty: "bg-ink",
+  builder: "bg-ink",
+  glamp: "bg-ink",
+  packing: "bg-ink",
+  sleep: "bg-ink",
+  accessories: "bg-ink",
+  frames: "bg-ink",
+  flys: "bg-ink",
+  stoves: "bg-ink",
+  deals: "bg-ink",
+  plain: "bg-ink",
 } as const;
 export type Accent = keyof typeof accents;
 
+/** Photo for a category header (CR-10). None supplied yet; see REDESIGN_AUDIT.md §7. */
+export type HeaderImage = { src: string; alt: string };
+
 /**
- * Category header (ch. 13): H1 and one sentence over the category art. Static:
- * no scroll-linked behaviour anywhere (CR-08).
+ * Category header (CR-10): breadcrumb, capital H1 in Bone and the existing
+ * one-sentence introduction. 220 px tall on mobile, 320 px on desktop, so the
+ * first products are visible on load. Static: no scroll-linked behaviour (CR-08).
+ * With a photograph it gets a left scrim and one 400 ms reveal; without one it
+ * is a flat Charcoal band.
  */
 export function PageHeader({
   title,
   intro,
   crumbs,
   accent = "plain",
-  scene,
+  image,
   eyebrow,
   children,
   compact,
@@ -74,27 +83,28 @@ export function PageHeader({
   intro?: ReactNode;
   crumbs: Crumb[];
   accent?: Accent;
-  scene?: Illustration;
+  image?: HeaderImage;
   eyebrow?: string;
   children?: ReactNode;
   compact?: boolean;
 }) {
-  const dark = accents[accent].includes("on-dark");
   return (
-    <header className={`${accents[accent]} relative overflow-hidden pt-[var(--header-h)]`}>
-      <div className={`container-site grid items-center gap-8 ${compact ? "py-10" : "min-h-[52vh] py-12 md:min-h-[60vh]"} lg:grid-cols-12`}>
-        <div className="lg:col-span-7">
+    <header data-surface="dark" className={`${accents[accent]} relative overflow-hidden pt-[var(--header-h)] text-bone`}>
+      {image && (
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image.src} alt={image.alt} className="reveal-image absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
+          <div aria-hidden className="absolute inset-0 bg-linear-to-r from-ink/75 to-transparent" />
+        </>
+      )}
+      <div className={`container-site relative flex flex-col justify-center ${compact ? "py-8" : "min-h-[220px] py-8 lg:min-h-[320px]"}`}>
+        <div className="max-w-3xl">
           <Breadcrumbs items={crumbs} />
-          {eyebrow && <p className="eyebrow mt-6 opacity-85">{eyebrow}</p>}
-          <h1 className={eyebrow ? "mt-2" : "mt-6"}>{title}</h1>
-          {intro && <div className="mt-4 max-w-2xl text-[17px] leading-[27px] opacity-90">{intro}</div>}
-          {children && <div className="mt-6">{children}</div>}
+          {eyebrow && <p className="eyebrow mt-5 text-tan">{eyebrow}</p>}
+          <h1 className={eyebrow ? "mt-2" : "mt-5"}>{title}</h1>
+          {intro && <div className="mt-3 max-w-2xl text-[17px] leading-[26px] opacity-90">{intro}</div>}
+          {children && <div className="mt-5">{children}</div>}
         </div>
-        {scene && (
-          <div className="hidden lg:col-span-5 lg:block" aria-hidden>
-            <TentIllustration kind={scene} tone={dark ? "dark" : "light"} className="category-scene mx-auto w-full max-w-md" />
-          </div>
-        )}
       </div>
     </header>
   );

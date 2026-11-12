@@ -203,10 +203,13 @@ html {
  * so components never set per-element colours for dark grounds.
  */
 :root {
+  --surface-text: var(--color-ink);
+  --surface-ground: var(--color-bone);
   --surface-eyebrow: var(--color-slate);
 }
 [data-surface="dark"],
 .on-dark {
+  --surface-ground: var(--color-ink);
   --surface-eyebrow: var(--color-tan);
   --surface-text: var(--color-bone);
   --surface-muted: var(--color-ash);
@@ -215,6 +218,7 @@ html {
   color: var(--surface-text);
 }
 [data-surface="accent"] {
+  --surface-ground: var(--color-blaze);
   --surface-eyebrow: var(--color-ink);
   --surface-text: var(--color-ink);
   --surface-link: var(--color-ink);
@@ -222,6 +226,7 @@ html {
   color: var(--surface-text);
 }
 [data-surface="light"] {
+  --surface-ground: var(--color-bone);
   --surface-eyebrow: var(--color-slate);
   --surface-text: var(--color-ink);
   --surface-muted: var(--color-slate);
@@ -347,6 +352,21 @@ html {
 }
 .hero__actions {
   animation: hero-rise 240ms var(--ease-out) 280ms both;
+}
+
+/* Cinematic image reveal (plan §9): category header and band photographs, 400 ms, once on load. */
+@keyframes image-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.reveal-image {
+  animation: image-reveal var(--motion-reveal) var(--ease-out) both;
 }
 
 /* Swipe rails: CSS scroll-snap, no carousel library */

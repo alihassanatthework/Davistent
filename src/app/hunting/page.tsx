@@ -27,7 +27,6 @@ export default async function HuntingPage() {
         intro={<>Canvas wall tents known internationally for their great design and durability. {fact("hunters")}</>}
         crumbs={[{ label: "Hunt", href: "/hunting/" }]}
         accent="hunt"
-        scene="package"
       >
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/hunting/packages/">Packages with stove</ButtonLink>

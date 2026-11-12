@@ -8,8 +8,8 @@ const base =
 const variants: Record<Variant, string> = {
   /* Blaze fill, Charcoal label; hover Blaze Deep with a white label. One per viewport. */
   primary: "bg-blaze text-ink hover:bg-blaze-deep hover:text-white",
-  /* 1.5 px Charcoal outline on light */
-  secondary: "border-[1.5px] border-ink text-ink hover:bg-ink hover:text-bone",
+  /* 1.5 px outline in the surface text colour: Charcoal on light, Bone on dark */
+  secondary: "border-[1.5px] border-(--surface-text) text-(--surface-text) hover:bg-(--surface-text) hover:text-(--surface-ground)",
   /* Capital text with an arrow */
   tertiary: "px-0 min-h-11 text-current underline-offset-4 hover:underline",
   /* 1.5 px Bone outline on dark */

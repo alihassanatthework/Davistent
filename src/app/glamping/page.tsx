@@ -26,7 +26,6 @@ export default async function GlampingPage() {
         intro="Canvas safari tents with a UV-rated fly and a 7' covered patio, sized for your own land or a whole property."
         crumbs={[{ label: "Glamp", href: "/glamping/" }]}
         accent="glamp"
-        scene="glamp"
       >
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="#models">See the three models</ButtonLink>

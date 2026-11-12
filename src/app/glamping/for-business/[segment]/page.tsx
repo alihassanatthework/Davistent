@@ -33,7 +33,6 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
           { label: "For business", href: `/glamping/for-business/${key}/` },
         ]}
         accent="glamp"
-        scene="glamp"
       >
         <nav aria-label="Business segments" className="flex flex-wrap gap-2">
           {(Object.keys(businessSegments) as Segment[]).map((k) => (
@@ -41,7 +40,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
               key={k}
               href={`/glamping/for-business/${k}/`}
               aria-current={k === key ? "page" : undefined}
-              className="inline-flex min-h-10 items-center rounded-sm border border-line bg-snow px-4 text-[14px] font-semibold aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
+              className="inline-flex min-h-10 items-center rounded-sm border border-edge px-4 text-[14px] font-semibold text-bone hover:border-bone aria-[current=page]:border-bone aria-[current=page]:bg-bone aria-[current=page]:text-ink"
             >
               {segLabel[k]}s
             </Link>

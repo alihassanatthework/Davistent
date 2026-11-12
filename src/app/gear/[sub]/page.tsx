@@ -49,7 +49,6 @@ export default async function GearSub({ params }: { params: Promise<{ sub: strin
           { label: s.title, href: `/gear/${key}/` },
         ]}
         accent={s.accent}
-        scene={key === "sleep" ? "cot" : key === "carry" ? "bag" : "gear"}
       />
       <CategoryChips links={outfitChips} current={`/gear/${key}/`} />
       <Section>

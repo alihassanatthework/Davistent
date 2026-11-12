@@ -24,7 +24,6 @@ export default async function AccessoriesPage() {
           { label: "Accessories", href: "/accessories/" },
         ]}
         accent="accessories"
-        scene="wall"
       />
       <CategoryChips links={outfitChips} current="/accessories/" />
       <Section>

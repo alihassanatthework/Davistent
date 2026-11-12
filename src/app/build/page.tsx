@@ -22,7 +22,6 @@ export default function BuildPage() {
           { label: "Custom tent builder", href: "/build/" },
         ]}
         accent="builder"
-        scene="frame"
         compact
       />
       <section className="section-y bg-canvas">

@@ -21,7 +21,6 @@ export default function CustomGlamping() {
           { label: "Custom", href: "/glamping/custom/" },
         ]}
         accent="glamp"
-        scene="glamp"
         compact
       />
       <Section tone="snow" labelledBy="h-steps">
