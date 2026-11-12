@@ -61,7 +61,7 @@ export function SizeFinder() {
               max={10}
               value={party}
               onChange={(e) => setParty(Number(e.target.value))}
-              className="hidden flex-1 accent-ink sm:block"
+              className="hidden h-6 flex-1 accent-ink sm:block"
               aria-valuetext={`${party} people`}
             />
             <output htmlFor={`${id}-party`} className="data min-w-20 text-center text-[28px] font-semibold" aria-live="polite">
@@ -129,7 +129,7 @@ export function SizeFinder() {
 /** Static size table (CR-05): size, sleeps as listed, wall tent price. The current recommendation is marked in text. */
 function SizeTable({ current }: { current?: string }) {
   return (
-    <div role="region" aria-label="All wall tent sizes" tabIndex={0} className="overflow-x-auto rounded-md border border-line bg-snow">
+    <div role="region" aria-label="All wall tent sizes" tabIndex={0} className="relative overflow-x-auto rounded-md border border-line bg-snow">
       <table className="w-full text-left text-[15px]">
         <caption className="sr-only">Wall tent sizes, sleeping capacity and price</caption>
         <thead>

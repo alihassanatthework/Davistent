@@ -248,7 +248,7 @@ export default async function Home() {
 
       {/* 14 Learn + 15 Deals */}
       <Section labelledBy="h-learn">
-        <div className="grid gap-12 lg:grid-cols-3">
+        <div className="grid gap-12 lg:grid-cols-3 [&>*]:min-w-0">
           <div className="lg:col-span-2">
             <SectionHead id="h-learn" eyebrow="Learn before you buy" title="Guides from the people who sew the tents" />
             <ul className="grid gap-4 sm:grid-cols-3">

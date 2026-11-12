@@ -48,7 +48,7 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
         <div className="container-site py-6">
           <Breadcrumbs items={crumbs} />
         </div>
-        <div className="container-site grid gap-10 pb-12 lg:grid-cols-12">
+        <div className="container-site grid gap-10 pb-12 lg:grid-cols-12 [&>*]:min-w-0">
           {/* gallery */}
           <div className="lg:col-span-7">
             <div className="rail !grid-cols-none !auto-cols-[100%] rounded-md" role="region" aria-label="Product images" tabIndex={0}>

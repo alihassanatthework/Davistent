@@ -84,7 +84,7 @@ export function TentBuilder() {
   const customArea = custom.w * custom.l;
 
   return (
-    <div className="grid gap-8 lg:grid-cols-12">
+    <div className="grid gap-8 lg:grid-cols-12 [&>*]:min-w-0">
       <div className="lg:col-span-7">
         {/* progress */}
         <nav aria-label="Builder steps" className="mb-6">
