@@ -94,11 +94,11 @@ export function TentBuilder() {
                 <button
                   onClick={() => go(i)}
                   aria-current={i === step ? "step" : undefined}
-                  className={`flex min-h-11 items-center gap-2 rounded-full border px-3 text-[14px] font-semibold ${
+                  className={`flex min-h-11 items-center gap-2 rounded-sm border px-3 text-[14px] font-semibold ${
                     i === step ? "border-pine bg-pine text-bone" : i < step ? "border-pine text-pine" : "border-line text-stone-deep"
                   }`}
                 >
-                  <span className="data grid size-6 place-items-center rounded-full border border-current text-[12px]">{i < step ? "✓" : i + 1}</span>
+                  <span className="data grid size-6 place-items-center rounded-sm border border-current text-[12px]">{i < step ? "✓" : i + 1}</span>
                   {s}
                 </button>
               </li>

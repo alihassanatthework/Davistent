@@ -18,7 +18,7 @@ export function ProductCard({
 }) {
   const points = [p.sizeLabel, p.sleeps ? `sleeps ${p.sleeps}` : undefined].filter(Boolean) as string[];
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-snow transition-shadow duration-300 hover:shadow-2 focus-within:shadow-2">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-snow transition-colors duration-150 hover:border-ink focus-within:border-ink">
       <div className="relative aspect-[4/3] overflow-hidden bg-canvas">
         <TentIllustration
           kind={p.illustration}

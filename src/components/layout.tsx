@@ -111,7 +111,7 @@ export function CategoryChips({ links, current }: { links: Crumb[]; current: str
             <Link
               href={l.href}
               aria-current={l.href === current ? "page" : undefined}
-              className="inline-flex min-h-10 items-center rounded-full border border-line bg-snow px-4 text-[14px] font-semibold hover:border-pine aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
+              className="inline-flex min-h-10 items-center rounded-sm border border-line bg-snow px-4 text-[14px] font-semibold hover:border-pine aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
             >
               {l.label}
             </Link>

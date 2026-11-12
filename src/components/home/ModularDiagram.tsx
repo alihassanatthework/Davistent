@@ -43,7 +43,7 @@ export function ModularDiagram() {
             {modules.map((m) => (
               <label
                 key={m.id}
-                className={`inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${
+                className={`inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-sm border px-4 font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${
                   on.has(m.id) ? "border-pine bg-pine text-bone" : "border-line bg-snow"
                 }`}
               >

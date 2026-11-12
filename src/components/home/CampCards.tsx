@@ -20,7 +20,7 @@ export function CampCards({ compact }: { compact?: boolean }) {
           <li key={c.title}>
             <Link
               href={c.href}
-              className={`group flex h-full flex-col overflow-hidden rounded-md ${c.tone} ${dark ? "on-dark" : ""} border border-line/40 transition-shadow hover:shadow-2`}
+              className={`group flex h-full flex-col overflow-hidden rounded-md ${c.tone} ${dark ? "on-dark" : ""} border border-line/40 transition-colors hover:border-ink`}
             >
               <div className={`overflow-hidden ${compact ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
                 <TentIllustration kind={c.art} tone={dark ? "dark" : "light"} className="h-full w-full p-4 transition-transform duration-300 ease-out group-hover:scale-[1.03]" />

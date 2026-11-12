@@ -25,7 +25,7 @@ export default function BuildPage() {
         scene="frame"
         compact
       />
-      <section className="section-y canvas-weave">
+      <section className="section-y bg-canvas">
         <div className="container-site">
           <Suspense fallback={<p>Loading the builder…</p>}>
             <TentBuilder />

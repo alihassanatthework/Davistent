@@ -151,7 +151,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                         {item.featured && (
                           <Link
                             href={item.featured.href}
-                            className="col-span-3 col-start-10 rounded-md border border-line bg-snow p-4 hover:shadow-1"
+                            className="col-span-3 col-start-10 rounded-md border border-line bg-snow p-4 hover:border-ink"
                           >
                             <p className="eyebrow mb-2 text-stone-deep">Featured</p>
                             <p className="font-semibold">{item.featured.label}</p>

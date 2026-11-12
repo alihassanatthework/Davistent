@@ -164,7 +164,7 @@ export function CartButton() {
       <Icon name="cart" />
       <span className="sr-only">Cart, {count} items</span>
       {count > 0 && (
-        <span aria-hidden className="absolute right-1 top-1 grid min-w-5 place-items-center rounded-full bg-tan px-1 text-[11px] font-bold text-ink">
+        <span aria-hidden className="absolute right-1 top-1 grid min-w-5 place-items-center rounded-sm bg-tan px-1 text-[11px] font-bold text-ink">
           {count}
         </span>
       )}

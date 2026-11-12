@@ -99,11 +99,8 @@ export default async function Home() {
               Read the canvas guide
             </ButtonLink>
           </div>
-          <div aria-hidden className="relative aspect-square overflow-hidden rounded-md bg-canvas">
-            {/* macro weave stand-in until the macro photography is shot */}
-            <div className="absolute inset-0 [background-image:repeating-linear-gradient(0deg,rgba(90,70,40,.25)_0_2px,transparent_2px_7px),repeating-linear-gradient(90deg,rgba(90,70,40,.2)_0_3px,transparent_3px_7px)]" />
-            <div className="absolute bottom-[30%] left-[45%] size-8 rounded-full bg-[radial-gradient(circle_at_35%_35%,#fff,rgba(160,195,215,.9)_40%,rgba(120,160,190,.6))] shadow-[0_6px_10px_rgba(0,0,0,.2)]" />
-          </div>
+          {/* Photo slot: canvas macro (CR-22, needed from client). Flat placeholder, no texture. */}
+          <div aria-hidden className="aspect-square bg-gunmetal" />
         </div>
       </Section>
 

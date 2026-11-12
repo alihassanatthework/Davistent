@@ -148,7 +148,7 @@ export function Section({
   labelledBy?: string;
 }) {
   const tones = {
-    canvas: "canvas-weave text-charcoal",
+    canvas: "bg-canvas text-charcoal",
     pine: "bg-pine text-bone on-dark",
     charcoal: "bg-charcoal text-bone on-dark",
     snow: "bg-snow text-charcoal",

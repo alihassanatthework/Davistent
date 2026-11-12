@@ -41,7 +41,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
               key={k}
               href={`/glamping/for-business/${k}/`}
               aria-current={k === key ? "page" : undefined}
-              className="inline-flex min-h-10 items-center rounded-full border border-line bg-snow px-4 text-[14px] font-semibold aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
+              className="inline-flex min-h-10 items-center rounded-sm border border-line bg-snow px-4 text-[14px] font-semibold aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
             >
               {segLabel[k]}s
             </Link>
