@@ -24,7 +24,7 @@ export function GiftForm() {
         <legend className="mb-2 font-semibold">Amount</legend>
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
           {amounts.map((a) => (
-            <label key={a} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-md border font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${amount === a ? "border-pine bg-pine text-snow" : "border-line"}`}>
+            <label key={a} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-md border font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${amount === a ? "border-pine bg-pine text-bone" : "border-line"}`}>
               <input type="radio" name="amount" className="sr-only" checked={amount === a} onChange={() => setAmount(a)} />
               <span className="data">{formatPrice(a)}</span>
             </label>
@@ -34,10 +34,10 @@ export function GiftForm() {
       <fieldset>
         <legend className="mb-2 font-semibold">Delivery</legend>
         <label className="flex min-h-11 items-center gap-3">
-          <input type="radio" name="when" checked={when === "now"} onChange={() => setWhen("now")} className="size-5 accent-[#1F3A2E]" /> Deliver now
+          <input type="radio" name="when" checked={when === "now"} onChange={() => setWhen("now")} className="size-5 accent-ink" /> Deliver now
         </label>
         <label className="flex min-h-11 items-center gap-3">
-          <input type="radio" name="when" checked={when === "date"} onChange={() => setWhen("date")} className="size-5 accent-[#1F3A2E]" /> On a chosen date
+          <input type="radio" name="when" checked={when === "date"} onChange={() => setWhen("date")} className="size-5 accent-ink" /> On a chosen date
         </label>
         {when === "date" && (
           <label className="mt-2 block">

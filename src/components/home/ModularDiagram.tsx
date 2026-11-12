@@ -22,8 +22,8 @@ export function ModularDiagram() {
           {/* main tent */}
           <path d="M150 240 V150 L255 90 L360 150 V240 Z" />
           <path d="M225 240 V185 Q255 172 285 185 V240" fill="none" />
-          {on.has("fly") && <path d="M135 150 L255 76 L375 150" fill="none" stroke="#D9601A" strokeWidth="4" />}
-          {on.has("awning") && <path d="M150 150 L95 190 M360 150 L415 190 M95 190 H415" fill="none" stroke="#C8922B" strokeWidth="3" />}
+          {on.has("fly") && <path d="M135 150 L255 76 L375 150" fill="none" stroke="#6B4F3A" strokeWidth="4" />}
+          {on.has("awning") && <path d="M150 150 L95 190 M360 150 L415 190 M95 190 H415" fill="none" stroke="#5A5F3A" strokeWidth="3" />}
           {on.has("cook-shack") && (
             <g>
               <path d="M360 240 V175 L410 145 L460 175 V240 Z" />
@@ -44,7 +44,7 @@ export function ModularDiagram() {
               <label
                 key={m.id}
                 className={`inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${
-                  on.has(m.id) ? "border-pine bg-pine text-snow" : "border-line bg-snow"
+                  on.has(m.id) ? "border-pine bg-pine text-bone" : "border-line bg-snow"
                 }`}
               >
                 <input type="checkbox" className="sr-only" checked={on.has(m.id)} onChange={() => toggle(m.id)} />

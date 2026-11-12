@@ -7,7 +7,7 @@ import { SignupForm } from "./SignupForm";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="on-dark bg-pine pb-24 text-snow md:pb-0">
+    <footer className="on-dark bg-pine pb-24 text-bone md:pb-0">
       <div className="container-site grid gap-10 py-14 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Logo className="h-10" />
@@ -49,7 +49,7 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className="border-t border-snow/15">
+      <div className="border-t border-bone/15">
         <div className="container-site grid gap-6 py-8 md:grid-cols-2 md:items-center">
           <div>
             <p className="font-semibold">Deals and new products</p>
@@ -67,7 +67,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-snow/15">
+      <div className="border-t border-bone/15">
         <div className="container-site flex flex-col gap-3 py-6 text-[13px] opacity-80 md:flex-row md:justify-between">
           <p>
             © {year} {site.legalName}. Handcrafted in Denver, Colorado since 1955.

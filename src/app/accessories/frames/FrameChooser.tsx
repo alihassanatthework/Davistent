@@ -22,7 +22,7 @@ export function FrameChooser() {
           ] as const
         ).map(([id, label]) => (
           <label key={id} className="mt-2 flex min-h-11 items-center gap-3">
-            <input type="radio" name="trip" checked={trip === id} onChange={() => setTrip(id)} className="size-5 accent-[#1F3A2E]" />
+            <input type="radio" name="trip" checked={trip === id} onChange={() => setTrip(id)} className="size-5 accent-ink" />
             {label}
           </label>
         ))}

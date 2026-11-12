@@ -89,7 +89,7 @@ export default async function Home() {
                 { t: fact("sunforgerUs"), d: fact("sunforgerButler") },
                 { t: fact("resistance"), d: fact("lifetime") },
               ].map((f, i) => (
-                <Reveal as="li" key={f.t} index={i} className="border-l-2 border-ember pl-4">
+                <Reveal as="li" key={f.t} index={i} className="border-l-2 border-tan pl-4">
                   <p className="font-display text-[22px] font-semibold leading-7">{f.t}</p>
                   <p className="mt-1 text-[15px] leading-6 opacity-85">{f.d}</p>
                 </Reveal>
@@ -99,7 +99,7 @@ export default async function Home() {
               Read the canvas guide
             </ButtonLink>
           </div>
-          <div aria-hidden className="relative aspect-square overflow-hidden rounded-md bg-[#efe6d2]">
+          <div aria-hidden className="relative aspect-square overflow-hidden rounded-md bg-canvas">
             {/* macro weave stand-in until the macro photography is shot */}
             <div className="absolute inset-0 [background-image:repeating-linear-gradient(0deg,rgba(90,70,40,.25)_0_2px,transparent_2px_7px),repeating-linear-gradient(90deg,rgba(90,70,40,.2)_0_3px,transparent_3px_7px)]" />
             <div className="absolute bottom-[30%] left-[45%] size-8 rounded-full bg-[radial-gradient(circle_at_35%_35%,#fff,rgba(160,195,215,.9)_40%,rgba(120,160,190,.6))] shadow-[0_6px_10px_rgba(0,0,0,.2)]" />
@@ -133,7 +133,7 @@ export default async function Home() {
         />
         <ul className="grid gap-4 md:grid-cols-3">
           {stoveFits.map((s, i) => (
-            <Reveal as="li" key={s.name} index={i} className="rounded-md border border-snow/20 bg-snow/5 p-5">
+            <Reveal as="li" key={s.name} index={i} className="rounded-md border border-bone/20 bg-bone/5 p-5">
               <TentIllustration kind="stove" tone="dark" className="h-32 w-full" />
               <h3 className="mt-3 font-display text-[26px]">{s.name}</h3>
               <p className="data mt-1 opacity-90">Fits {s.fits}</p>
@@ -172,7 +172,7 @@ export default async function Home() {
       {/* 10 Glamping for business */}
       <Section tone="alt" labelledBy="h-b2b">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <TentIllustration kind="glamp" className="w-full rounded-md bg-[#efe2c2] p-6" label="Davis glamping tent on a deck with fly and awning" />
+          <TentIllustration kind="glamp" className="w-full rounded-md bg-canvas p-6" label="Davis glamping tent on a deck with fly and awning" />
           <div>
             <p className="eyebrow mb-3 text-stone-deep">Glamping for business</p>
             <h2 id="h-b2b">One or a dozen tents, for your property</h2>
@@ -231,7 +231,7 @@ export default async function Home() {
           <div>
             <p className="eyebrow mb-3 text-stone-deep">Reviews</p>
             <h2 id="h-reviews">Rated {site.googleRating.value} on Google</h2>
-            <p className="mt-3 flex items-center gap-1 text-gold" aria-hidden>
+            <p className="mt-3 flex items-center gap-1 text-olive" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Icon key={i} name="star" className="size-6 fill-current" />
               ))}
@@ -281,7 +281,7 @@ export default async function Home() {
             <ul className="mt-6 divide-y divide-line border-y border-line">
               {journalPosts.map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/journal/${p.slug}/`} className="flex items-baseline justify-between gap-4 py-3 hover:text-ember-deep">
+                  <Link href={`/journal/${p.slug}/`} className="flex items-baseline justify-between gap-4 py-3 hover:underline">
                     <span className="font-semibold">{p.title}</span>
                     <span className="eyebrow shrink-0 text-stone">{p.category}</span>
                   </Link>
@@ -289,7 +289,7 @@ export default async function Home() {
               ))}
             </ul>
           </div>
-          <div className="rounded-md bg-pine p-6 text-snow on-dark">
+          <div className="rounded-md bg-pine p-6 text-bone on-dark">
             <p className="eyebrow mb-3 opacity-80">Deals and signup</p>
             <h2 className="text-[28px]">Monthly specials</h2>
             <p className="mb-4 mt-2 text-[15px] opacity-90">Sign up for our monthly specials and deals on accessories and new products.</p>

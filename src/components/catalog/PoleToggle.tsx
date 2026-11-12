@@ -27,7 +27,7 @@ export function PoleToggle() {
           <legend className="eyebrow mb-2 text-stone-deep">Size</legend>
           <div className="flex gap-2">
             {(Object.keys(data) as (keyof typeof data)[]).map((s) => (
-              <label key={s} className={`inline-flex min-h-11 cursor-pointer items-center rounded-md border px-4 font-semibold ${size === s ? "border-pine bg-pine text-snow" : "border-line"}`}>
+              <label key={s} className={`inline-flex min-h-11 cursor-pointer items-center rounded-md border px-4 font-semibold ${size === s ? "border-pine bg-pine text-bone" : "border-line"}`}>
                 <input type="radio" className="sr-only" checked={size === s} onChange={() => setSize(s)} name="gt-size" />
                 {s.replace("x", "' × ")}'
               </label>
@@ -38,7 +38,7 @@ export function PoleToggle() {
           <legend className="eyebrow mb-2 text-stone-deep">Pole system</legend>
           <div className="flex gap-2">
             {(["traditional", "internal"] as const).map((s) => (
-              <label key={s} className={`inline-flex min-h-11 cursor-pointer items-center rounded-md border px-4 font-semibold capitalize ${sys === s ? "border-pine bg-pine text-snow" : "border-line"}`}>
+              <label key={s} className={`inline-flex min-h-11 cursor-pointer items-center rounded-md border px-4 font-semibold capitalize ${sys === s ? "border-pine bg-pine text-bone" : "border-line"}`}>
                 <input type="radio" className="sr-only" checked={sys === s} onChange={() => setSys(s)} name="gt-sys" />
                 {s === "internal" ? "Internal frame" : "Traditional poles"}
               </label>

@@ -44,7 +44,7 @@ export default function GlampGuide() {
             {anatomy.map(([t, d], i) => (
               <div key={t} className="rounded-md border border-line p-4">
                 <dt className="font-semibold">
-                  <span className="data mr-2 text-ember-deep">{i + 1}</span>
+                  <span className="data mr-2 text-olive">{i + 1}</span>
                   {t}
                 </dt>
                 <dd className="mt-1 text-[15px]">{d}</dd>

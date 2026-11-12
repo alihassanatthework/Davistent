@@ -82,13 +82,13 @@ export function Header({ accountUrl }: { accountUrl: string }) {
 
   return (
     <>
-      <a href="#main" className="sr-only-focusable fixed left-4 top-2 z-[90] rounded-md bg-pine px-4 py-3 font-semibold text-snow">
+      <a href="#main" className="sr-only-focusable fixed left-4 top-2 z-[90] rounded-md bg-pine px-4 py-3 font-semibold text-bone">
         Skip to content
       </a>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,height] duration-300 ease-out ${
           hidden ? "-translate-y-full" : ""
-        } ${transparent ? "bg-transparent text-snow on-dark" : "border-b border-line bg-canvas/95 text-charcoal backdrop-blur"}`}
+        } ${transparent ? "bg-transparent text-bone on-dark" : "border-b border-line bg-canvas/95 text-charcoal backdrop-blur"}`}
       >
         <div className={`container-site flex items-center gap-4 ${h} transition-[height] duration-300`}>
           <Link href="/" className="shrink-0" aria-label="Davis Tent home">
@@ -111,7 +111,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                         setOpenIdx(open ? null : i);
                       }}
                       className={`flex h-11 items-center gap-1 rounded-md px-3 text-[15px] font-semibold hover:bg-black/5 ${
-                        current ? "underline decoration-ember decoration-2 underline-offset-8" : ""
+                        current ? "underline decoration-current decoration-2 underline-offset-8" : ""
                       } ${item.primary ? "" : "font-medium"}`}
                     >
                       {item.label}
@@ -139,7 +139,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                                   <Link
                                     href={l.href}
                                     aria-current={path === l.href ? "page" : undefined}
-                                    className="block py-1 text-[15px] hover:text-ember-deep hover:underline aria-[current=page]:font-semibold"
+                                    className="block py-1 text-[15px] hover:underline aria-[current=page]:font-semibold"
                                   >
                                     {l.label}
                                   </Link>
@@ -153,7 +153,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                             href={item.featured.href}
                             className="col-span-3 col-start-10 rounded-md border border-line bg-snow p-4 hover:shadow-1"
                           >
-                            <p className="eyebrow mb-2 text-ember-deep">Featured</p>
+                            <p className="eyebrow mb-2 text-stone-deep">Featured</p>
                             <p className="font-semibold">{item.featured.label}</p>
                             <p className="data mt-1 text-stone">{item.featured.meta}</p>
                           </Link>
@@ -262,7 +262,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
             </ul>
           </nav>
           <div className="grid grid-cols-2 gap-2 border-t border-line p-4">
-            <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-ember-deep font-semibold text-snow">
+            <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-blaze text-ink font-semibold">
               <Icon name="phone" className="size-4" /> Call
             </a>
             <a href={`mailto:${site.email}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-pine font-semibold text-pine">

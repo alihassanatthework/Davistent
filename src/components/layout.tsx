@@ -41,17 +41,17 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
 }
 
 const accents = {
-  hunt: "bg-pine text-snow on-dark",
+  hunt: "bg-pine text-bone on-dark",
   specialty: "bg-surface-alt text-charcoal",
-  builder: "bg-charcoal text-snow on-dark",
+  builder: "bg-charcoal text-bone on-dark",
   glamp: "bg-canvas text-charcoal",
-  packing: "bg-[#3a2a1c] text-snow on-dark",
-  sleep: "bg-charcoal text-snow on-dark",
-  accessories: "bg-pine text-snow on-dark",
-  frames: "bg-stone-deep text-snow on-dark",
+  packing: "bg-saddle text-bone on-dark",
+  sleep: "bg-charcoal text-bone on-dark",
+  accessories: "bg-pine text-bone on-dark",
+  frames: "bg-stone-deep text-bone on-dark",
   flys: "bg-surface-alt text-charcoal",
-  stoves: "bg-charcoal text-snow on-dark",
-  deals: "bg-ember-deep text-snow on-dark",
+  stoves: "bg-charcoal text-bone on-dark",
+  deals: "bg-ink text-bone on-dark",
   plain: "bg-surface-alt text-charcoal",
 } as const;
 export type Accent = keyof typeof accents;
@@ -111,7 +111,7 @@ export function CategoryChips({ links, current }: { links: Crumb[]; current: str
             <Link
               href={l.href}
               aria-current={l.href === current ? "page" : undefined}
-              className="inline-flex min-h-10 items-center rounded-full border border-line bg-snow px-4 text-[14px] font-semibold hover:border-pine aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-snow"
+              className="inline-flex min-h-10 items-center rounded-full border border-line bg-snow px-4 text-[14px] font-semibold hover:border-pine aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
             >
               {l.label}
             </Link>
@@ -125,7 +125,7 @@ export function CategoryChips({ links, current }: { links: Crumb[]; current: str
 /** Talk to us band (homepage section 16 and the end of most templates). */
 export function TalkToUs({ title = "Talk to the people who sew your tent", line }: { title?: string; line?: string }) {
   return (
-    <section aria-labelledby="talk" className="on-dark bg-ember-deep text-snow">
+    <section aria-labelledby="talk" data-surface="accent" className="bg-blaze text-ink">
       <div className="container-site flex flex-col gap-6 py-14 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
           <h2 id="talk">{title}</h2>
@@ -140,10 +140,10 @@ export function TalkToUs({ title = "Talk to the people who sew your tent", line 
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href={`tel:${site.phone.tel}`} className="inline-flex min-h-12 items-center gap-2 rounded-md bg-snow px-5 font-semibold text-ember-deep hover:bg-canvas">
+          <a href={`tel:${site.phone.tel}`} className="inline-flex min-h-12 items-center gap-2 rounded-md bg-ink px-5 font-semibold text-bone hover:bg-gunmetal">
             <Icon name="phone" className="size-4" /> Call <span className="data text-[15px]">{site.phone.display}</span>
           </a>
-          <Link href="/tents/" className="inline-flex min-h-12 items-center gap-2 rounded-md border-2 border-snow px-5 font-semibold hover:bg-snow hover:text-ember-deep">
+          <Link href="/tents/" className="inline-flex min-h-12 items-center gap-2 rounded-md border-2 border-ink px-5 font-semibold hover:bg-ink hover:text-bone">
             Shop all tents <Icon name="arrow" className="size-4" />
           </Link>
         </div>
@@ -159,7 +159,7 @@ export function MobileActionBar() {
       <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-pine font-semibold text-pine">
         <Icon name="phone" className="size-4" /> Call
       </a>
-      <Link href="/tents/" className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-ember-deep font-semibold text-snow">
+      <Link href="/tents/" className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-blaze text-ink font-semibold">
         Shop tents
       </Link>
     </div>

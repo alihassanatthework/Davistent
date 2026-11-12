@@ -27,7 +27,7 @@ export function SignupForm({ tone = "light" }: { tone?: "light" | "dark" }) {
         <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
         <button
           disabled={pending}
-          className={`h-12 shrink-0 rounded-md px-5 font-semibold ${tone === "dark" ? "bg-snow text-pine hover:bg-canvas" : "bg-ember-deep text-snow hover:bg-[#a9470c]"}`}
+          className={`h-12 shrink-0 rounded-md px-5 font-semibold ${tone === "dark" ? "bg-snow text-pine hover:bg-canvas" : "bg-blaze text-ink hover:bg-blaze-deep hover:text-white"}`}
         >
           {pending ? "Signing up…" : "Sign up"}
         </button>

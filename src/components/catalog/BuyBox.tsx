@@ -71,7 +71,7 @@ export function BuyBox({ product: p }: { product: Product }) {
                     selected ? "border-pine bg-pine/5 ring-1 ring-pine" : "border-line bg-snow"
                   }`}
                 >
-                  <input type="radio" name={`${id}-${g.id}`} className="mt-1 size-4 accent-[#1F3A2E]" checked={selected} onChange={() => setPicks((s) => ({ ...s, [g.id]: c.id }))} />
+                  <input type="radio" name={`${id}-${g.id}`} className="mt-1 size-4 accent-ink" checked={selected} onChange={() => setPicks((s) => ({ ...s, [g.id]: c.id }))} />
                   <span className="flex-1">
                     <span className="block text-[15px] font-semibold">{c.label}</span>
                     {c.note && <span className="block text-[13px] text-stone">{c.note}</span>}
@@ -114,7 +114,7 @@ export function BuyBox({ product: p }: { product: Product }) {
             Add to cart
           </Button>
         ) : (
-          <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center rounded-md bg-ember-deep font-semibold text-snow">
+          <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center rounded-md bg-blaze text-ink font-semibold">
             Call for price
           </a>
         )}
@@ -151,7 +151,7 @@ export function BuyBox({ product: p }: { product: Product }) {
             Add to cart
           </Button>
         ) : (
-          <a href={`tel:${site.phone.tel}`} className="inline-flex min-h-12 items-center rounded-md bg-ember-deep px-5 font-semibold text-snow">
+          <a href={`tel:${site.phone.tel}`} className="inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold">
             Call
           </a>
         )}

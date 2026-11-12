@@ -25,7 +25,7 @@ export function FeatureHotspots({ dark }: { dark?: boolean }) {
               onClick={() => setActive(active === f.id ? null : f.id)}
               style={{ left: `${f.hotspot.x}%`, top: `${f.hotspot.y}%` }}
               className={`absolute grid size-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 text-[14px] font-bold transition-transform duration-150 hover:scale-110 ${
-                active === f.id ? "border-snow bg-ember-deep text-snow" : "border-ember-deep bg-snow text-ember-deep"
+                active === f.id ? "border-bone bg-ember-deep text-snow" : "border-ember-deep bg-snow text-ember-deep"
               }`}
             >
               {i + 1}
@@ -36,7 +36,7 @@ export function FeatureHotspots({ dark }: { dark?: boolean }) {
       </div>
       <div className="lg:col-span-5">
         {current && (
-          <div id="feature-card" aria-live="polite" className={`mb-6 rounded-md p-5 max-md:hidden ${dark ? "bg-snow/10" : "bg-snow"} border border-line/50`}>
+          <div id="feature-card" aria-live="polite" className={`mb-6 rounded-md p-5 max-md:hidden ${dark ? "bg-bone/10" : "bg-snow"} border border-line/50`}>
             <p className="eyebrow opacity-80">Feature {standardFeatures.indexOf(current) + 1} of 7</p>
             <h3 className="mt-1">{current.name}</h3>
             <p className="data mt-2">{current.spec}</p>

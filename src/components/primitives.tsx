@@ -124,8 +124,8 @@ export function LiteYouTube({ id, title }: { id: string; title: string }) {
           allowFullScreen
         />
       ) : (
-        <button onClick={() => setOn(true)} className="group absolute inset-0 grid place-items-center text-snow">
-          <span className="grid size-16 place-items-center rounded-full bg-ember-deep transition-transform group-hover:scale-105">
+        <button onClick={() => setOn(true)} className="group absolute inset-0 grid place-items-center text-bone">
+          <span className="grid size-16 place-items-center rounded-full border border-bone bg-ink transition-transform group-hover:scale-105">
             <Icon name="play" className="size-7 translate-x-0.5" />
           </span>
           <span className="absolute inset-x-0 bottom-0 p-4 text-left font-semibold">

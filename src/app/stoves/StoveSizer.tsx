@@ -15,7 +15,7 @@ export function StoveSizer() {
         <legend className="mb-2 font-semibold">My tent is</legend>
         <div className="grid grid-cols-3 gap-2">
           {sizes.map((x) => (
-            <label key={x.id} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-md border font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${size === x.id ? "border-pine bg-pine text-snow" : "border-line bg-snow"}`}>
+            <label key={x.id} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-md border font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-pine ${size === x.id ? "border-pine bg-pine text-bone" : "border-line bg-snow"}`}>
               <input type="radio" name="tent" className="sr-only" checked={size === x.id} onChange={() => setSize(x.id)} />
               <span className="data">
                 {x.w}×{x.l}
@@ -24,14 +24,14 @@ export function StoveSizer() {
           ))}
         </div>
       </fieldset>
-      <div aria-live="polite" className="rounded-md bg-charcoal p-6 text-snow on-dark">
+      <div aria-live="polite" className="rounded-md bg-charcoal p-6 text-bone on-dark">
         <p className="eyebrow opacity-80">Your stove</p>
         <p className="mt-1 font-display text-[36px]">{stove.name}</p>
         <p className="data mt-2">Fits {stove.fits}</p>
         <p className="data opacity-80">
           {stove.weight} · {stove.dims}
         </p>
-        <Link href="/stoves/wood-burning-camp-stove/" className="mt-4 inline-flex min-h-12 items-center rounded-md bg-ember-deep px-5 font-semibold">
+        <Link href="/stoves/wood-burning-camp-stove/" className="mt-4 inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold">
           Shop the {stove.name}
         </Link>
       </div>

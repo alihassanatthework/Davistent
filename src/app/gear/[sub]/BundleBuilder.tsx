@@ -20,7 +20,7 @@ export function BundleBuilder() {
         <legend className="sr-only">Items</legend>
         <div className="flex flex-wrap gap-2">
           {items.map((i) => (
-            <label key={i.id} className={`inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 font-semibold ${on.has(i.id) ? "border-pine bg-pine text-snow" : "border-line"}`}>
+            <label key={i.id} className={`inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 font-semibold ${on.has(i.id) ? "border-pine bg-pine text-bone" : "border-line"}`}>
               <input
                 type="checkbox"
                 className="sr-only"

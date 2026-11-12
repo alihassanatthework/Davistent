@@ -6,10 +6,10 @@ type Variant = "primary" | "secondary" | "tertiary" | "inverse";
 const base =
   "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-150 ease-out min-h-11 md:min-h-12 px-5 text-[15px] leading-none disabled:opacity-50 disabled:cursor-not-allowed";
 const variants: Record<Variant, string> = {
-  primary: "bg-ember-deep text-snow hover:bg-[#a9470c]",
-  secondary: "border-2 border-pine text-pine hover:bg-pine hover:text-snow",
+  primary: "bg-blaze text-ink hover:bg-blaze-deep hover:text-white",
+  secondary: "border-2 border-pine text-pine hover:bg-pine hover:text-bone",
   tertiary: "px-0 min-h-0 text-pine underline-offset-4 hover:underline",
-  inverse: "border-2 border-snow text-snow hover:bg-snow hover:text-pine",
+  inverse: "border-2 border-bone text-bone hover:bg-snow hover:text-pine",
 };
 
 export function ButtonLink({
@@ -149,14 +149,14 @@ export function Section({
 }) {
   const tones = {
     canvas: "canvas-weave text-charcoal",
-    pine: "bg-pine text-snow on-dark",
-    charcoal: "bg-charcoal text-snow on-dark",
+    pine: "bg-pine text-bone on-dark",
+    charcoal: "bg-charcoal text-bone on-dark",
     snow: "bg-snow text-charcoal",
     alt: "bg-surface-alt text-charcoal",
-    ember: "bg-ember-deep text-snow on-dark",
+    ember: "bg-blaze text-ink",
   };
   return (
-    <section id={id} aria-labelledby={labelledBy} className={`section-y ${tones[tone]} ${className}`}>
+    <section id={id} aria-labelledby={labelledBy} data-surface={tone === "ember" ? "accent" : tones[tone].includes("on-dark") ? "dark" : "light"} className={`section-y ${tones[tone]} ${className}`}>
       <div className="container-site">{children}</div>
     </section>
   );
@@ -193,9 +193,9 @@ export function SectionHead({
 export function Badge({ tone = "duck", children }: { tone?: "duck" | "ember" | "pine" | "gold" | "stone"; children: ReactNode }) {
   const tones = {
     duck: "bg-duck/40 text-charcoal",
-    ember: "bg-ember-deep text-snow",
-    pine: "bg-pine text-snow",
-    gold: "bg-gold/25 text-charcoal",
+    ember: "bg-blaze-deep text-white",
+    pine: "bg-pine text-bone",
+    gold: "bg-olive text-bone",
     stone: "bg-surface-alt text-stone-deep",
   };
   return <span className={`inline-flex items-center gap-1 rounded-sm px-2 py-0.5 text-[12px] font-semibold ${tones[tone]}`}>{children}</span>;
@@ -215,8 +215,8 @@ export function Notice({
 }) {
   const tones = {
     info: "border-pine/40 bg-snow",
-    warn: "border-warning bg-[#fbf3e4]",
-    block: "border-error bg-[#fbecea]",
+    warn: "border-warning bg-warning-tint",
+    block: "border-error bg-error-tint",
     pending: "border-dashed border-stone bg-surface-alt/60",
   };
   const icon = tone === "info" ? "info" : tone === "pending" ? "info" : "alert";

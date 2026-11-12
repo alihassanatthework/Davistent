@@ -221,7 +221,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
                         <label className="flex min-h-10 items-center gap-2 text-[14px]">
                           <input
                             type="checkbox"
-                            className="size-5 accent-[#1F3A2E]"
+                            className="size-5 accent-ink"
                             checked={compare.includes(p.id)}
                             disabled={!compare.includes(p.id) && compare.length >= 3}
                             onChange={() => setCompare((c) => (c.includes(p.id) ? c.filter((x) => x !== p.id) : [...c, p.id]))}
@@ -362,7 +362,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
                   ))}
                 </dl>
               )}
-              <Link href={quick.href} className="mt-6 inline-flex min-h-12 items-center rounded-md bg-ember-deep px-5 font-semibold text-snow">
+              <Link href={quick.href} className="mt-6 inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold">
                 {quick.priceMax && quick.priceMax !== quick.priceMin ? "Configure" : "View product"}
               </Link>
             </div>
@@ -385,7 +385,7 @@ function Group({ legend, children }: { legend: string; children: React.ReactNode
 function Check({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
   return (
     <label className="flex min-h-10 cursor-pointer items-center gap-3 text-[15px]">
-      <input type="checkbox" checked={checked} onChange={onChange} className="size-5 accent-[#1F3A2E]" />
+      <input type="checkbox" checked={checked} onChange={onChange} className="size-5 accent-ink" />
       {label}
     </label>
   );

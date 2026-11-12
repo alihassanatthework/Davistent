@@ -29,7 +29,7 @@ export default function CustomGlamping() {
         <ol className="grid gap-4 md:grid-cols-4">
           {["Send us the size and use", "We confirm canvas, treatment and options", "Approve the quote and drawing", "We build it in Denver"].map((t, i) => (
             <li key={t} className="rounded-md border border-line p-5">
-              <p className="data text-ember-deep">0{i + 1}</p>
+              <p className="data text-olive">0{i + 1}</p>
               <p className="mt-1 font-semibold">{t}</p>
             </li>
           ))}

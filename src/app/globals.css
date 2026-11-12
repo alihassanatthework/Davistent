@@ -5,23 +5,41 @@
  * Every colour, space, radius, shadow and motion value lives here once.
  */
 :root {
-  /* Colour */
-  --color-pine: #1f3a2e;
-  --color-charcoal: #1c1f1e;
-  --color-canvas: #f4eee2;
-  --color-army-duck: #c9b48a;
-  --color-ember: #d9601a;
-  --color-ember-deep: #c4530f;
-  --color-autumn-gold: #c8922b;
-  --color-stone: #6b6f6a;
-  --color-stone-deep: #5f635e;
-  --color-snow: #ffffff;
-  --color-surface-alt: #e3dccb;
-  --color-border: #cfc6b2;
-  --color-leather: #6b4423;
-  --color-success: #2e6b4a;
+  /* Colour: masculine palette (Refinement Plan §4, CR-01). The only place hex values live. */
+  --color-ink: #141615; /* Charcoal Black: dark grounds, text on light */
+  --color-gunmetal: #2a2f31; /* raised surfaces on dark */
+  --color-steel: #3d4447; /* decorative dividers on dark */
+  --color-edge: #6f7773; /* control borders on dark (3:1) */
+  --color-forest: #1f3a2e; /* brand band, badges, success */
+  --color-olive: #5a5f3a; /* secondary surface, tags, glamping bands */
+  --color-saddle: #6b4f3a; /* gear and leather sections */
+  --color-tan: #c9b48a; /* eyebrows and rules on dark */
+  --color-bone: #ece7dc; /* light page surface, text on dark */
+  --color-white: #ffffff; /* cards, forms, tables on light */
+  --color-ash: #a9ada6; /* secondary text on dark */
+  --color-slate: #555a55; /* secondary text on light */
+  --color-blaze: #d9601a; /* primary action, links on dark */
+  --color-blaze-deep: #c4530f; /* primary hover, sale flag */
+  --color-surface-alt: #ddd8cc;
+  --color-border: #cfcac0; /* borders on light */
+  --color-border-dark: #3d4447; /* borders on dark */
+  --color-success: #1f3a2e;
   --color-warning: #b7791f;
+  --color-warning-tint: #f5ecdc;
   --color-error: #b3261e;
+  --color-error-tint: #f6e4e2;
+
+  /* Roles kept under their existing names so components do not churn (§13 token mapping) */
+  --color-pine: var(--color-ink); /* brand role: Charcoal leads, Forest kept as --color-forest */
+  --color-charcoal: var(--color-ink);
+  --color-canvas: var(--color-bone);
+  --color-army-duck: var(--color-tan);
+  --color-ember: var(--color-blaze);
+  --color-ember-deep: var(--color-blaze-deep);
+  --color-stone: var(--color-slate);
+  --color-stone-deep: var(--color-slate);
+  --color-snow: var(--color-white);
+  --color-leather: var(--color-saddle);
 
   /* Motion */
   --duration-fast: 150ms;
@@ -42,13 +60,29 @@
 }
 
 @theme inline {
+  --color-ink: var(--color-ink);
+  --color-gunmetal: var(--color-gunmetal);
+  --color-steel: var(--color-steel);
+  --color-edge: var(--color-edge);
+  --color-forest: var(--color-forest);
+  --color-olive: var(--color-olive);
+  --color-saddle: var(--color-saddle);
+  --color-tan: var(--color-tan);
+  --color-bone: var(--color-bone);
+  --color-ash: var(--color-ash);
+  --color-slate: var(--color-slate);
+  --color-blaze: var(--color-blaze);
+  --color-blaze-deep: var(--color-blaze-deep);
+  --color-line-dark: var(--color-border-dark);
+  --color-warning-tint: var(--color-warning-tint);
+  --color-error-tint: var(--color-error-tint);
+
   --color-pine: var(--color-pine);
   --color-charcoal: var(--color-charcoal);
   --color-canvas: var(--color-canvas);
   --color-duck: var(--color-army-duck);
   --color-ember: var(--color-ember);
   --color-ember-deep: var(--color-ember-deep);
-  --color-gold: var(--color-autumn-gold);
   --color-stone: var(--color-stone);
   --color-stone-deep: var(--color-stone-deep);
   --color-snow: var(--color-snow);
@@ -116,19 +150,45 @@ h3 {
   font-weight: 600;
 }
 
-/* Visible 2 px focus ring with 2 px offset, never hidden by sticky UI */
+/* Visible 2 px Blaze focus ring with 2 px offset on dark and light, never hidden by sticky UI */
 :focus-visible {
-  outline: 2px solid var(--color-pine);
+  outline: 2px solid var(--focus-ring, var(--color-blaze));
   outline-offset: 2px;
-}
-.on-dark :focus-visible,
-.on-dark:focus-visible {
-  outline-color: var(--color-snow);
 }
 
 ::selection {
-  background: var(--color-army-duck);
-  color: var(--color-charcoal);
+  background: var(--color-tan);
+  color: var(--color-ink);
+}
+
+/*
+ * Surfaces (CR-01). A section marks itself dark with data-surface="dark" (or the
+ * legacy .on-dark class); text, muted text, borders and inline links switch here,
+ * so components never set per-element colours for dark grounds.
+ */
+[data-surface="dark"],
+.on-dark {
+  --surface-text: var(--color-bone);
+  --surface-muted: var(--color-ash);
+  --surface-border: var(--color-border-dark);
+  --surface-link: var(--color-blaze);
+  color: var(--surface-text);
+}
+[data-surface="accent"] {
+  --surface-text: var(--color-ink);
+  --surface-link: var(--color-ink);
+  --focus-ring: var(--color-ink);
+  color: var(--surface-text);
+}
+[data-surface="light"] {
+  --surface-text: var(--color-ink);
+  --surface-muted: var(--color-slate);
+  --surface-border: var(--color-border);
+  --surface-link: var(--color-ink);
+  color: var(--surface-text);
+}
+:is([data-surface="dark"], .on-dark) :is(p, li, dd) > a:not([class]) {
+  color: var(--surface-link);
 }
 
 /* ---------- Utilities ---------- */

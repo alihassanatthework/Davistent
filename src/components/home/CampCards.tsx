@@ -4,10 +4,10 @@ import { Icon } from "../ui";
 import type { Illustration } from "@/content/catalog";
 
 const camps: { title: string; line: string; href: string; art: Illustration; tone: string }[] = [
-  { title: "Hunt", line: "Wall tents and hot-tent packages", href: "/hunting/", art: "package", tone: "bg-pine text-snow" },
-  { title: "Glamp", line: "Luxury glamping tents", href: "/glamping/", art: "glamp", tone: "bg-[#efe2c2] text-charcoal" },
+  { title: "Hunt", line: "Wall tents and hot-tent packages", href: "/hunting/", art: "package", tone: "bg-pine text-bone" },
+  { title: "Glamp", line: "Luxury glamping tents", href: "/glamping/", art: "glamp", tone: "bg-canvas text-charcoal" },
   { title: "Outfit", line: "Packing gear, sleep systems, accessories", href: "/gear/", art: "gear", tone: "bg-surface-alt text-charcoal" },
-  { title: "Stoves", line: "Wood-burning stoves sized to your tent", href: "/stoves/", art: "stove", tone: "bg-charcoal text-snow" },
+  { title: "Stoves", line: "Wood-burning stoves sized to your tent", href: "/stoves/", art: "stove", tone: "bg-charcoal text-bone" },
 ];
 
 /** Homepage section 2 and hero scene 8: four large cards, image scales 1.03 on hover. */
@@ -15,7 +15,7 @@ export function CampCards({ compact }: { compact?: boolean }) {
   return (
     <ul className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-4">
       {camps.map((c) => {
-        const dark = c.tone.includes("text-snow");
+        const dark = c.tone.includes("text-bone");
         return (
           <li key={c.title}>
             <Link

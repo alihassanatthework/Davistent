@@ -41,7 +41,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
               key={k}
               href={`/glamping/for-business/${k}/`}
               aria-current={k === key ? "page" : undefined}
-              className="inline-flex min-h-10 items-center rounded-full border border-line bg-snow px-4 text-[14px] font-semibold aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-snow"
+              className="inline-flex min-h-10 items-center rounded-full border border-line bg-snow px-4 text-[14px] font-semibold aria-[current=page]:border-pine aria-[current=page]:bg-pine aria-[current=page]:text-bone"
             >
               {segLabel[k]}s
             </Link>
@@ -65,7 +65,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
         <ol className="grid gap-4 md:grid-cols-4">
           {["Tell us about the property", "We recommend sizes and treatments", "Deck plans with our deck-builder partner", "Tents built in Denver and shipped"].map((t, i) => (
             <li key={t} className="rounded-md border border-line bg-snow p-5">
-              <p className="data text-ember-deep">0{i + 1}</p>
+              <p className="data text-olive">0{i + 1}</p>
               <p className="mt-1 font-semibold">{t}</p>
             </li>
           ))}

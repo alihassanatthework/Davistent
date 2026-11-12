@@ -56,7 +56,7 @@ export function SizeFinder() {
               max={10}
               value={party}
               onChange={(e) => setParty(Number(e.target.value))}
-              className="hidden flex-1 accent-[#C4530F] sm:block"
+              className="hidden flex-1 accent-[#6B4F3A] sm:block"
               aria-valuetext={`${party} people`}
             />
             <output htmlFor={`${id}-party`} className="data min-w-20 text-center text-[28px] font-semibold" aria-live="polite">
@@ -76,11 +76,11 @@ export function SizeFinder() {
         <fieldset className="mt-6 space-y-3">
           <legend className="font-semibold">Room for</legend>
           <label className="flex min-h-11 items-center gap-3">
-            <input type="checkbox" checked={stove} onChange={(e) => setStove(e.target.checked)} className="size-5 accent-[#1F3A2E]" />
+            <input type="checkbox" checked={stove} onChange={(e) => setStove(e.target.checked)} className="size-5 accent-ink" />
             A wood stove
           </label>
           <label className="flex min-h-11 items-center gap-3">
-            <input type="checkbox" checked={eating} onChange={(e) => setEating(e.target.checked)} className="size-5 accent-[#1F3A2E]" />
+            <input type="checkbox" checked={eating} onChange={(e) => setEating(e.target.checked)} className="size-5 accent-ink" />
             An eating and gear area
           </label>
         </fieldset>
@@ -100,10 +100,10 @@ export function SizeFinder() {
                 sleeps {match.sleeps} (as listed) · {match.w * match.l} sq ft · {stoveModel.name} stove
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link href={match.href} className="inline-flex min-h-12 items-center rounded-md bg-ember-deep px-5 font-semibold text-snow hover:bg-[#a9470c]">
+                <Link href={match.href} className="inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold hover:bg-blaze-deep hover:text-white">
                   See this size
                 </Link>
-                <Link href="/hunting/packages/" className="inline-flex min-h-12 items-center rounded-md border-2 border-pine px-5 font-semibold text-pine hover:bg-pine hover:text-snow">
+                <Link href="/hunting/packages/" className="inline-flex min-h-12 items-center rounded-md border-2 border-pine px-5 font-semibold text-pine hover:bg-pine hover:text-bone">
                   {match.pkg} package with stove
                 </Link>
               </div>
@@ -121,7 +121,7 @@ export function SizeFinder() {
               <Link
                 href={s.href}
                 aria-current={s.id === match.id ? "true" : undefined}
-                className="block rounded-sm border border-line px-2 py-2 aria-[current=true]:border-pine aria-[current=true]:bg-pine aria-[current=true]:text-snow"
+                className="block rounded-sm border border-line px-2 py-2 aria-[current=true]:border-pine aria-[current=true]:bg-pine aria-[current=true]:text-bone"
               >
                 <span className="data block text-[14px] font-semibold">
                   {s.w}×{s.l}
@@ -153,22 +153,22 @@ export function FloorPlan({ w, l, cots, stove, eating }: { w: number; l: number;
   return (
     <figure>
       <svg viewBox={`-20 -20 ${W + 40} ${H + 60}`} className="w-full" role="img" aria-label={`Floor plan of a ${w} by ${l} foot tent with ${placed.length} cots${stove ? " and a stove" : ""}`}>
-        <rect x="0" y="0" width={W} height={H} fill="#F4EEE2" stroke="#1F3A2E" strokeWidth="2" />
+        <rect x="0" y="0" width={W} height={H} fill="#ECE7DC" stroke="#1F3A2E" strokeWidth="2" />
         {/* door on the front (left) wall */}
-        <line x1="0" y1={H / 2 - S * 1.5} x2="0" y2={H / 2 + S * 1.5} stroke="#F4EEE2" strokeWidth="4" />
-        <text x="-12" y={H / 2 + 4} fontSize="11" textAnchor="end" fill="#5F635E">door</text>
+        <line x1="0" y1={H / 2 - S * 1.5} x2="0" y2={H / 2 + S * 1.5} stroke="#ECE7DC" strokeWidth="4" />
+        <text x="-12" y={H / 2 + 4} fontSize="11" textAnchor="end" fill="#555A55">door</text>
         {placed.map(([x, y], i) => (
-          <rect key={i} x={x} y={y} width={cotW} height={cotH} rx="3" fill="#FFFFFF" stroke="#6B6F6A" />
+          <rect key={i} x={x} y={y} width={cotW} height={cotH} rx="3" fill="#FFFFFF" stroke="#555A55" />
         ))}
         {stove && (
           <g>
             {/* stove jack standard location: inside left as you enter */}
-            <rect x={S * 1.5} y={S * 0.6} width={S * 2} height={S * 1.2} fill="#1C1F1E" />
-            <circle cx={S * 2.5} cy={S * 1.2} r="3" fill="#D9601A" />
+            <rect x={S * 1.5} y={S * 0.6} width={S * 2} height={S * 1.2} fill="#141615" />
+            <circle cx={S * 2.5} cy={S * 1.2} r="3" fill="#6B4F3A" />
           </g>
         )}
-        {eating && <rect x={S * 2} y={H / 2 - S * 1.5} width={S * 3} height={S * 3} rx="2" fill="none" stroke="#C8922B" strokeDasharray="4 3" />}
-        <text x={W / 2} y={H + 30} fontSize="13" textAnchor="middle" fill="#1C1F1E" fontFamily="var(--font-jetbrains)">
+        {eating && <rect x={S * 2} y={H / 2 - S * 1.5} width={S * 3} height={S * 3} rx="2" fill="none" stroke="#5A5F3A" strokeDasharray="4 3" />}
+        <text x={W / 2} y={H + 30} fontSize="13" textAnchor="middle" fill="#141615" fontFamily="var(--font-jetbrains)">
           {l}' long × {w}' wide
         </text>
       </svg>

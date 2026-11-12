@@ -95,7 +95,7 @@ export function TentBuilder() {
                   onClick={() => go(i)}
                   aria-current={i === step ? "step" : undefined}
                   className={`flex min-h-11 items-center gap-2 rounded-full border px-3 text-[14px] font-semibold ${
-                    i === step ? "border-pine bg-pine text-snow" : i < step ? "border-pine text-pine" : "border-line text-stone-deep"
+                    i === step ? "border-pine bg-pine text-bone" : i < step ? "border-pine text-pine" : "border-line text-stone-deep"
                   }`}
                 >
                   <span className="data grid size-6 place-items-center rounded-full border border-current text-[12px]">{i < step ? "✓" : i + 1}</span>
@@ -180,7 +180,7 @@ export function TentBuilder() {
                   <label key={o.id} className={`flex min-h-12 cursor-pointer items-start gap-3 rounded-md border p-3 ${b.extras.includes(o.id) ? "border-pine ring-1 ring-pine" : "border-line"}`}>
                     <input
                       type="checkbox"
-                      className="mt-1 size-4 accent-[#1F3A2E]"
+                      className="mt-1 size-4 accent-ink"
                       checked={b.extras.includes(o.id)}
                       onChange={() => set({ extras: b.extras.includes(o.id) ? b.extras.filter((x) => x !== o.id) : [...b.extras, o.id] })}
                     />
@@ -309,7 +309,7 @@ function Chips({ name, value, onChange, options, absolute }: { name: string; val
               sel ? "border-pine bg-pine/5 ring-1 ring-pine" : "border-line bg-snow hover:border-pine/50"
             }`}
           >
-            <input type="radio" name={name} checked={sel} onChange={() => onChange(o.id)} className="mt-1 size-4 accent-[#1F3A2E]" />
+            <input type="radio" name={name} checked={sel} onChange={() => onChange(o.id)} className="mt-1 size-4 accent-ink" />
             <span className="flex-1">
               <span className="block font-semibold">{o.label}</span>
               {o.note && <span className="block text-[13px] leading-5 text-stone">{o.note}</span>}
@@ -339,38 +339,38 @@ function BuildDrawing({ b }: { b: Build }) {
       <g transform={`translate(200 230) scale(${k}) translate(-200 -230)`} stroke="#1F3A2E" strokeWidth="2" strokeLinejoin="round" fill={cloth}>
         {b.floor !== "floor-none" && <path d="M95 232 L265 232 L335 212 L180 212 Z" fill="#C9B48A" stroke="none" opacity={b.floor === "floor-34" ? 0.6 : 0.9} />}
         {b.frame !== "frame-none" && (
-          <g stroke="#6B6F6A" strokeDasharray={b.frame === "angles-only" ? "4 4" : undefined} fill="none">
+          <g stroke="#555A55" strokeDasharray={b.frame === "angles-only" ? "4 4" : undefined} fill="none">
             <path d="M100 230 V150 L180 100 L260 150 V230 M260 150 L330 130 V212 M180 100 L250 80 L330 130" />
           </g>
         )}
         <path d="M100 230 V150 L180 100 L260 150 V230 Z" />
-        <path d="M260 150 L330 130 V212 L260 230 Z" fill={gold ? "#DDB774" : "#F4EEE2"} />
+        <path d="M260 150 L330 130 V212 L260 230 Z" fill={gold ? "#DDB774" : "#ECE7DC"} />
         <path d="M180 100 L250 80 L330 130 L260 150 Z" fill={gold ? "#E2BF7C" : "#F7F3EA"} />
         {/* door, zippered */}
         <path d="M160 230 V178 Q180 170 200 178 V230" fill="none" />
         <line x1="180" y1="174" x2="180" y2="230" strokeDasharray="3 3" />
-        {b.extras.includes("colorado-door") && <path d="M150 230 V170 L180 160 L210 170 V230" fill="none" stroke="#C8922B" strokeWidth="2.5" />}
-        {b.extras.includes("screen-door") && <rect x="163" y="182" width="34" height="46" fill="none" stroke="#6B6F6A" strokeDasharray="1 3" />}
+        {b.extras.includes("colorado-door") && <path d="M150 230 V170 L180 160 L210 170 V230" fill="none" stroke="#5A5F3A" strokeWidth="2.5" />}
+        {b.extras.includes("screen-door") && <rect x="163" y="182" width="34" height="46" fill="none" stroke="#555A55" strokeDasharray="1 3" />}
         {/* windows */}
-        <rect x="275" y="165" width="34" height="24" rx="1" fill="#F4EEE2" />
+        <rect x="275" y="165" width="34" height="24" rx="1" fill="#ECE7DC" />
         {b.windows === "win-2" && (
           <>
-            <rect x="112" y="170" width="26" height="22" rx="1" fill="#F4EEE2" />
-            <rect x="222" y="170" width="26" height="22" rx="1" fill="#F4EEE2" />
+            <rect x="112" y="170" width="26" height="22" rx="1" fill="#ECE7DC" />
+            <rect x="222" y="170" width="26" height="22" rx="1" fill="#ECE7DC" />
           </>
         )}
         {/* stove jack, inside left as you enter → right roof plane from this view */}
         {b.stoveJack !== "jack-none" && (
           <g>
-            <circle cx="292" cy="110" r={b.stoveJack === "jack-6" ? 9 : b.stoveJack === "jack-4" ? 6 : 7.5} fill="#1C1F1E" />
-            <path d="M292 110 V70" stroke="#1C1F1E" strokeWidth="5" />
+            <circle cx="292" cy="110" r={b.stoveJack === "jack-6" ? 9 : b.stoveJack === "jack-4" ? 6 : 7.5} fill="#141615" />
+            <path d="M292 110 V70" stroke="#141615" strokeWidth="5" />
           </g>
         )}
         {b.fly !== "fly-none" && (
-          <path d="M88 152 L180 90 L254 70 L342 126" fill="none" stroke={b.fly === "fly-canvas" ? "#C9B48A" : "#D9601A"} strokeWidth="5" />
+          <path d="M88 152 L180 90 L254 70 L342 126" fill="none" stroke={b.fly === "fly-canvas" ? "#C9B48A" : "#6B4F3A"} strokeWidth="5" />
         )}
       </g>
-      <text x="200" y="252" textAnchor="middle" fontSize="13" fill="#1C1F1E" fontFamily="var(--font-jetbrains)">
+      <text x="200" y="252" textAnchor="middle" fontSize="13" fill="#141615" fontFamily="var(--font-jetbrains)">
         {s.w}' × {s.l}' · {s.w * s.l} sq ft
       </text>
     </svg>

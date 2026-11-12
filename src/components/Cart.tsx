@@ -151,7 +151,7 @@ export function CartProvider({ children, checkoutUrl }: { children: React.ReactN
         </div>
       </dialog>
       <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-20 z-[80] flex justify-center px-4 md:bottom-6">
-        {toast && <p className="pointer-events-auto rounded-md bg-charcoal px-4 py-3 text-[15px] text-snow shadow-2">{toast}</p>}
+        {toast && <p className="pointer-events-auto rounded-md bg-charcoal px-4 py-3 text-[15px] text-bone shadow-2">{toast}</p>}
       </div>
     </CartCtx.Provider>
   );
@@ -164,7 +164,7 @@ export function CartButton() {
       <Icon name="cart" />
       <span className="sr-only">Cart, {count} items</span>
       {count > 0 && (
-        <span aria-hidden className="absolute right-1 top-1 grid min-w-5 place-items-center rounded-full bg-ember-deep px-1 text-[11px] font-bold text-snow">
+        <span aria-hidden className="absolute right-1 top-1 grid min-w-5 place-items-center rounded-full bg-tan px-1 text-[11px] font-bold text-ink">
           {count}
         </span>
       )}
