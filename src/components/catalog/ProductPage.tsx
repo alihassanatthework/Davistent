@@ -170,7 +170,7 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
                     <th key={n.id} scope="col" className="p-3">
                       {n.id === p.id ? (
                         <span>
-                          {n.sizeLabel} <span className="text-stone">(this tent)</span>
+                          {n.sizeLabel} <span className="text-ash">(this tent)</span>
                         </span>
                       ) : (
                         <Link href={n.href} className="text-pine underline">
