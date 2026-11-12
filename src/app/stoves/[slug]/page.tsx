@@ -9,12 +9,14 @@ export const dynamicParams = false;
 export const generateStaticParams = () => stoveItems.map((p) => ({ slug: p.slug }));
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const p = stoveItems.find((x) => x.slug === (await params).slug);
+  const { slug } = await params;
+  const p = stoveItems.find((x) => x.slug === slug);
   return p ? meta(p.name, p.summary, p.href) : {};
 }
 
 export default async function StovePage({ params }: { params: Promise<{ slug: string }> }) {
-  const p = stoveItems.find((x) => x.slug === (await params).slug);
+  const { slug } = await params;
+  const p = stoveItems.find((x) => x.slug === slug);
   if (!p) notFound();
   return (
     <>

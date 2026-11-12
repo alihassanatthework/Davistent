@@ -18,7 +18,7 @@ export default async function StovesPage() {
     <>
       <PageHeader
         title="Wood-Burning Camp Stoves"
-        intro="10-gauge steel top and door, 12-gauge cold-rolled steel body. Every stove needs a 5.5\" or larger stove jack."
+        intro={"10-gauge steel top and door, 12-gauge cold-rolled steel body. Every stove needs a 5.5\" or larger stove jack."}
         crumbs={[{ label: "Stoves", href: "/stoves/" }]}
         accent="stoves"
         scene="stove"

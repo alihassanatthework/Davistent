@@ -8,12 +8,14 @@ export const dynamicParams = false;
 export const generateStaticParams = () => caseStudies.map((c) => ({ slug: c.slug }));
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const c = caseStudies.find((x) => x.slug === (await params).slug);
+  const { slug } = await params;
+  const c = caseStudies.find((x) => x.slug === slug);
   return c ? meta(`${c.name} Glamping Project`, c.summary, `/glamping/projects/${c.slug}/`) : {};
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const c = caseStudies.find((x) => x.slug === (await params).slug);
+  const { slug } = await params;
+  const c = caseStudies.find((x) => x.slug === slug);
   if (!c) notFound();
   return (
     <>
