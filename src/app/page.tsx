@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/home/Hero";
+import { TrustStrip } from "@/components/home/TrustStrip";
 import { CampCards } from "@/components/home/CampCards";
 import { SizeFinder } from "@/components/home/SizeFinder";
 import { FeatureHotspots } from "@/components/home/FeatureHotspots";
@@ -29,6 +30,7 @@ export default async function Home() {
     <>
       {/* 1 Hero: one photograph, one statement, one action (CR-07) */}
       <Hero />
+      <TrustStrip />
 
       {/* 2 Shop by camp */}
       <Section id="shop-by-camp" labelledBy="h-camp">
