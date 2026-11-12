@@ -369,6 +369,21 @@ html {
   animation: image-reveal var(--motion-reveal) var(--ease-out) both;
 }
 
+/* Mega menu open (CR-13): opacity and a 4 px drop in 180 ms; closing is immediate. No per-item stagger. */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.menu-enter {
+  animation: menu-in var(--motion-menu) var(--ease-out) both;
+}
+
 /* Swipe rails: CSS scroll-snap, no carousel library */
 .rail {
   display: grid;

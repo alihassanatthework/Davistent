@@ -115,26 +115,26 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                     <div
                       id={`mega-${i}`}
                       hidden={!open}
-                      className="absolute inset-x-0 top-full border-b border-line bg-canvas text-charcoal shadow-2"
+                      className="menu-enter absolute inset-x-0 top-full border-y border-steel bg-gunmetal text-bone"
                     >
                       <div className="container-site grid grid-cols-12 gap-6 py-8">
                         <div className="col-span-3">
-                          <p className="eyebrow mb-2 text-stone-deep">{item.label}</p>
+                          <p className="eyebrow mb-2 text-tan">{item.label}</p>
                           <p className="mb-4 font-display text-[22px] leading-7">{item.blurb}</p>
-                          <Link href={item.href} className="inline-flex items-center gap-1 font-semibold text-pine hover:underline">
+                          <Link href={item.href} className="inline-flex items-center gap-1 font-semibold text-blaze hover:underline">
                             {item.label === "Guides" ? "All guides" : `Shop ${item.label.toLowerCase()}`} <Icon name="arrow" className="size-4" />
                           </Link>
                         </div>
                         {item.groups.map((g) => (
                           <div key={g.heading} className="col-span-2">
-                            <p className="eyebrow mb-3 text-stone-deep">{g.heading}</p>
+                            <p className="eyebrow mb-3 text-tan">{g.heading}</p>
                             <ul className="space-y-1">
                               {g.links.map((l) => (
                                 <li key={l.href}>
                                   <Link
                                     href={l.href}
                                     aria-current={path === l.href ? "page" : undefined}
-                                    className="block py-1 text-[15px] hover:underline aria-[current=page]:font-semibold"
+                                    className="block py-1 text-[16px] hover:underline aria-[current=page]:font-semibold"
                                   >
                                     {l.label}
                                   </Link>
@@ -146,11 +146,11 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                         {item.featured && (
                           <Link
                             href={item.featured.href}
-                            className="col-span-3 col-start-10 rounded-md border border-line bg-snow p-4 hover:border-ink"
+                            className="col-span-3 col-start-10 rounded-md border border-steel bg-ink p-4 transition-colors hover:border-bone"
                           >
-                            <p className="eyebrow mb-2 text-stone-deep">Featured</p>
+                            <p className="eyebrow mb-2 text-tan">Featured</p>
                             <p className="font-semibold">{item.featured.label}</p>
-                            <p className="data mt-1 text-stone">{item.featured.meta}</p>
+                            <p className="data mt-1 text-ash">{item.featured.meta}</p>
                           </Link>
                         )}
                       </div>
@@ -195,7 +195,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
           </div>
         </div>
         {searchOpen && (
-          <div id="site-search" className="border-t border-line bg-canvas text-charcoal">
+          <div id="site-search" data-surface="light" className="border-t border-steel bg-canvas text-charcoal">
             <div className="container-site py-4">
               <Search autoFocus onNavigate={() => setSearchOpen(false)} />
             </div>
@@ -208,27 +208,28 @@ export function Header({ accountUrl }: { accountUrl: string }) {
         ref={sheetRef}
         aria-label="Menu"
         onClose={() => setSheet(false)}
-        className="m-0 h-dvh max-h-dvh w-full max-w-full bg-canvas p-0 text-charcoal backdrop:bg-charcoal/40"
+        data-surface="dark"
+        className="m-0 h-dvh max-h-dvh w-full max-w-full bg-ink p-0 text-bone backdrop:bg-ink/60"
       >
         <div className="flex h-full flex-col">
-          <div className="flex h-14 items-center justify-between border-b border-line px-4">
+          <div className="flex h-14 items-center justify-between border-b border-steel px-4">
             <Logo className="h-7" />
-            <button onClick={() => setSheet(false)} className="grid size-11 place-items-center rounded-md">
+            <button onClick={() => setSheet(false)} className="grid size-11 place-items-center rounded-md hover:bg-gunmetal">
               <Icon name="close" />
               <span className="sr-only">Close menu</span>
             </button>
           </div>
           <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-4">
             {nav.map((item) => (
-              <details key={item.label} className="group border-b border-line">
-                <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between text-[19px] font-semibold">
+              <details key={item.label} className="group border-b border-steel">
+                <summary className="nav-label flex min-h-14 cursor-pointer list-none items-center justify-between text-[16px]">
                   {item.label}
                   <Icon name="chevron" className="size-5 transition-transform group-open:rotate-180" />
                 </summary>
                 <div className="pb-4">
                   {item.groups.map((g) => (
                     <div key={g.heading} className="mb-3">
-                      <p className="eyebrow mb-1 text-stone-deep">{g.heading}</p>
+                      <p className="eyebrow mb-1 text-tan">{g.heading}</p>
                       <ul>
                         {g.links.map((l) => (
                           <li key={l.href}>
@@ -256,11 +257,11 @@ export function Header({ accountUrl }: { accountUrl: string }) {
               </li>
             </ul>
           </nav>
-          <div className="grid grid-cols-2 gap-2 border-t border-line p-4">
+          <div className="grid grid-cols-2 gap-2 border-t border-steel p-4">
             <a href={`tel:${site.phone.tel}`} className={buttonClass()}>
               <Icon name="phone" className="size-4" /> Call
             </a>
-            <a href={`mailto:${site.email}`} className={buttonClass("secondary")}>
+            <a href={`mailto:${site.email}`} className={buttonClass("inverse")}>
               <Icon name="mail" className="size-4" /> Email
             </a>
           </div>
