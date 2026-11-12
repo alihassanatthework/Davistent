@@ -6,7 +6,7 @@ import { type Product, formatPrice } from "@/content/catalog";
 import { destinations, fireStates } from "@/content/builder";
 import { site } from "@/content/site";
 import { useCart } from "../Cart";
-import { Button, Icon, Notice } from "../ui";
+import { Button, buttonClass, Icon, Notice } from "../ui";
 
 type Choice = { id: string; label: string; price: number; note?: string };
 
@@ -110,11 +110,11 @@ export function BuyBox({ product: p }: { product: Product }) {
 
       <div className="hidden md:block">
         {priced ? (
-          <Button className="w-full" onClick={addToCart} disabled={blocked}>
+          <Button size="buy" onClick={addToCart} disabled={blocked}>
             Add to cart
           </Button>
         ) : (
-          <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center rounded-md bg-blaze text-ink font-semibold">
+          <a href={`tel:${site.phone.tel}`} className={buttonClass("primary", "buy")}>
             Call for price
           </a>
         )}
@@ -151,7 +151,7 @@ export function BuyBox({ product: p }: { product: Product }) {
             Add to cart
           </Button>
         ) : (
-          <a href={`tel:${site.phone.tel}`} className="inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold">
+          <a href={`tel:${site.phone.tel}`} className={buttonClass()}>
             Call
           </a>
         )}

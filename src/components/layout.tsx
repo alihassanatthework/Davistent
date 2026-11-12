@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
-import { Icon, JsonLd } from "./ui";
+import { buttonClass, Icon, JsonLd } from "./ui";
 import { TentIllustration } from "./TentIllustration";
 import type { Illustration } from "@/content/catalog";
 
@@ -138,10 +138,10 @@ export function TalkToUs({ title = "Talk to the people who sew your tent", line 
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href={`tel:${site.phone.tel}`} className="inline-flex min-h-12 items-center gap-2 rounded-md bg-ink px-5 font-semibold text-bone hover:bg-gunmetal">
+          <a href={`tel:${site.phone.tel}`} className={buttonClass("secondary")}>
             <Icon name="phone" className="size-4" /> Call <span className="data text-[15px]">{site.phone.display}</span>
           </a>
-          <Link href="/tents/" className="inline-flex min-h-12 items-center gap-2 rounded-md border-2 border-ink px-5 font-semibold hover:bg-ink hover:text-bone">
+          <Link href="/tents/" className={buttonClass("secondary")}>
             Shop all tents <Icon name="arrow" className="size-4" />
           </Link>
         </div>
@@ -153,11 +153,11 @@ export function TalkToUs({ title = "Talk to the people who sew your tent", line 
 /** Sticky mobile action bar with Call and Shop (ch. 7, 17). */
 export function MobileActionBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-canvas/95 p-2 backdrop-blur md:hidden no-print">
-      <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-pine font-semibold text-pine">
+    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-canvas p-2 md:hidden no-print">
+      <a href={`tel:${site.phone.tel}`} className={buttonClass("secondary")}>
         <Icon name="phone" className="size-4" /> Call
       </a>
-      <Link href="/tents/" className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-blaze text-ink font-semibold">
+      <Link href="/tents/" className={buttonClass("secondary")}>
         Shop tents
       </Link>
     </div>

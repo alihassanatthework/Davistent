@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { type Product, formatPrice, priceLabel } from "@/content/catalog";
 import { ProductCard } from "../ProductCard";
 import { TentIllustration } from "../TentIllustration";
-import { Button, Icon } from "../ui";
+import { Button, buttonClass, Icon } from "../ui";
 
 export type FilterKey = "use" | "sleeps" | "size" | "stove" | "price" | "compat";
 const useLabels: Record<string, string> = {
@@ -362,7 +362,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
                   ))}
                 </dl>
               )}
-              <Link href={quick.href} className="mt-6 inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold">
+              <Link href={quick.href} className={`mt-6 ${buttonClass()}`}>
                 {quick.priceMax && quick.priceMax !== quick.priceMin ? "Configure" : "View product"}
               </Link>
             </div>

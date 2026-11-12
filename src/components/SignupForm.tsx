@@ -2,6 +2,7 @@
 
 import { useActionState, useId } from "react";
 import { subscribe } from "@/lib/actions";
+import { buttonClass } from "./ui";
 
 export function SignupForm({ tone = "light" }: { tone?: "light" | "dark" }) {
   const [state, action, pending] = useActionState(subscribe, null);
@@ -27,7 +28,7 @@ export function SignupForm({ tone = "light" }: { tone?: "light" | "dark" }) {
         <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
         <button
           disabled={pending}
-          className={`h-12 shrink-0 rounded-md px-5 font-semibold ${tone === "dark" ? "bg-snow text-pine hover:bg-canvas" : "bg-blaze text-ink hover:bg-blaze-deep hover:text-white"}`}
+          className={`shrink-0 ${buttonClass(tone === "dark" ? "inverse" : "primary")}`}
         >
           {pending ? "Signing up…" : "Sign up"}
         </button>

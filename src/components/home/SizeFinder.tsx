@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 import { priceLabel, products, stoveFor } from "@/content/catalog";
+import { buttonClass } from "@/components/ui";
 
 /** Size and sleeps pairs as listed on the current site (to be reconciled to one figure per size). */
 export const sizes = [
@@ -104,10 +105,10 @@ export function SizeFinder() {
                 sleeps {match.sleeps} (as listed) · {match.w * match.l} sq ft · {stoveModel.name} stove
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link href={match.href} className="inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold hover:bg-blaze-deep hover:text-white">
+                <Link href={match.href} className={buttonClass()}>
                   See this size
                 </Link>
-                <Link href="/hunting/packages/" className="inline-flex min-h-12 items-center rounded-md border-2 border-pine px-5 font-semibold text-pine hover:bg-pine hover:text-bone">
+                <Link href="/hunting/packages/" className={buttonClass("secondary")}>
                   {match.pkg} package with stove
                 </Link>
               </div>

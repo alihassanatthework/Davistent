@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { stoveFor, stoveFits } from "@/content/catalog";
 import { sizes } from "@/components/home/SizeFinder";
+import { buttonClass } from "@/components/ui";
 
 export function StoveSizer() {
   const [size, setSize] = useState("14x15");
@@ -31,7 +32,7 @@ export function StoveSizer() {
         <p className="data opacity-80">
           {stove.weight} · {stove.dims}
         </p>
-        <Link href="/stoves/wood-burning-camp-stove/" className="mt-4 inline-flex min-h-12 items-center rounded-md bg-blaze text-ink px-5 font-semibold">
+        <Link href="/stoves/wood-burning-camp-stove/" className={`mt-4 ${buttonClass()}`}>
           Shop the {stove.name}
         </Link>
       </div>

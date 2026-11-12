@@ -1,19 +1,29 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-/* ---------- Button (primary · secondary · tertiary) ---------- */
+/* ---------- Button (CR-19): primary · secondary · tertiary, one shared style ---------- */
 type Variant = "primary" | "secondary" | "tertiary" | "inverse";
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-(--motion-fast) ease-out min-h-11 md:min-h-12 px-5 text-[15px] leading-none disabled:opacity-50 disabled:cursor-not-allowed";
+  "group nav-label inline-flex items-center justify-center gap-2 rounded-md px-6 min-h-12 transition-[color,background-color,border-color,transform] duration-(--motion-fast) ease-out active:translate-y-px active:duration-(--motion-instant) active:ease-linear disabled:opacity-40 disabled:cursor-not-allowed disabled:active:translate-y-0";
 const variants: Record<Variant, string> = {
+  /* Blaze fill, Charcoal label; hover Blaze Deep with a white label. One per viewport. */
   primary: "bg-blaze text-ink hover:bg-blaze-deep hover:text-white",
-  secondary: "border-2 border-pine text-pine hover:bg-pine hover:text-bone",
-  tertiary: "px-0 min-h-0 text-pine underline-offset-4 hover:underline",
-  inverse: "border-2 border-bone text-bone hover:bg-snow hover:text-pine",
+  /* 1.5 px Charcoal outline on light */
+  secondary: "border-[1.5px] border-ink text-ink hover:bg-ink hover:text-bone",
+  /* Capital text with an arrow */
+  tertiary: "px-0 min-h-11 text-current underline-offset-4 hover:underline",
+  /* 1.5 px Bone outline on dark */
+  inverse: "border-[1.5px] border-bone text-bone hover:bg-bone hover:text-ink",
 };
-/** Heights: 48 px default, 52 px in the hero, 56 px on the buy button (CR-19). */
+/** Heights: 48 px default, 52 px in the hero, 56 px on the buy button. */
 type Size = "default" | "hero" | "buy";
-const sizes: Record<Size, string> = { default: "", hero: "min-h-[52px] md:min-h-[52px]", buy: "min-h-14 md:min-h-14 w-full" };
+const sizes: Record<Size, string> = { default: "", hero: "min-h-[52px]", buy: "min-h-14 w-full" };
+
+/** Class list for elements that must stay plain anchors (tel:, mailto:, external). */
+export const buttonClass = (variant: Variant = "primary", size: Size = "default") => `${base} ${variants[variant]} ${sizes[size]}`;
+
+/** Arrow shifts 4 px on hover and focus. */
+const Arrow = () => <Icon name="arrow" className="size-4 transition-transform duration-(--motion-fast) ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1" />;
 
 export function ButtonLink({
   variant = "primary",
@@ -24,9 +34,9 @@ export function ButtonLink({
   ...rest
 }: ComponentProps<typeof Link> & { variant?: Variant; arrow?: boolean; size?: Size }) {
   return (
-    <Link className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...rest}>
+    <Link className={`${buttonClass(variant, size)} ${className}`} {...rest}>
       {children}
-      {(arrow || variant === "tertiary") && <Icon name="arrow" className="size-4" />}
+      {(arrow || variant === "tertiary") && <Arrow />}
     </Link>
   );
 }
@@ -40,7 +50,7 @@ export function Button({
   ...rest
 }: ComponentProps<"button"> & { variant?: Variant; loading?: boolean; size?: Size }) {
   return (
-    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} aria-busy={loading || undefined} {...rest}>
+    <button className={`${buttonClass(variant, size)} ${className}`} aria-busy={loading || undefined} {...rest}>
       {children}
       {loading && <span className="sr-only">Working…</span>}
     </button>

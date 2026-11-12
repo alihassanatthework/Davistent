@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/content/site";
 import { CartButton } from "./Cart";
-import { Icon } from "./ui";
+import { buttonClass, Icon } from "./ui";
 import { Search } from "./Search";
 import { Logo } from "./Logo";
 
@@ -257,10 +257,10 @@ export function Header({ accountUrl }: { accountUrl: string }) {
             </ul>
           </nav>
           <div className="grid grid-cols-2 gap-2 border-t border-line p-4">
-            <a href={`tel:${site.phone.tel}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md bg-blaze text-ink font-semibold">
+            <a href={`tel:${site.phone.tel}`} className={buttonClass()}>
               <Icon name="phone" className="size-4" /> Call
             </a>
-            <a href={`mailto:${site.email}`} className="flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-pine font-semibold text-pine">
+            <a href={`mailto:${site.email}`} className={buttonClass("secondary")}>
               <Icon name="mail" className="size-4" /> Email
             </a>
           </div>
