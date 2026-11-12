@@ -31,10 +31,11 @@ function Field({
   const id = useId();
   const err = state?.errors?.[name];
   const describedBy = [hint && `${id}-hint`, err && `${id}-err`].filter(Boolean).join(" ") || undefined;
-  const cls = `mt-1 w-full rounded-md border bg-snow px-3 text-[16px] ${err ? "border-error" : "border-line"} focus:border-pine`;
+  /* CR-20: 48 px, 2 px radius, 1 px Slate border; focus ring comes from the global 2 px Blaze outline */
+  const cls = `mt-1 w-full rounded-md border bg-snow px-3 text-[16px] transition-colors ${err ? "border-error" : "border-slate"} focus:border-ink`;
   return (
     <div>
-      <label htmlFor={id} className="font-semibold">
+      <label htmlFor={id} className="text-[13px] font-bold">
         {label}
         {required ? "" : <span className="font-normal text-stone"> (optional)</span>}
       </label>

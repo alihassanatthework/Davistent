@@ -133,11 +133,11 @@ export function TentBuilder() {
                 <div className="mt-3 flex flex-wrap items-end gap-3">
                   <label className="text-[14px]">
                     Width (ft)
-                    <input type="number" min={8} max={40} value={custom.w} onChange={(e) => setCustom((c) => ({ ...c, w: Number(e.target.value) }))} className="mt-1 block h-11 w-24 rounded-md border border-line px-2" />
+                    <input type="number" min={8} max={40} value={custom.w} onChange={(e) => setCustom((c) => ({ ...c, w: Number(e.target.value) }))} className="mt-1 block h-12 w-24 rounded-md border border-slate px-2" />
                   </label>
                   <label className="text-[14px]">
                     Length (ft)
-                    <input type="number" min={8} max={60} value={custom.l} onChange={(e) => setCustom((c) => ({ ...c, l: Number(e.target.value) }))} className="mt-1 block h-11 w-24 rounded-md border border-line px-2" />
+                    <input type="number" min={8} max={60} value={custom.l} onChange={(e) => setCustom((c) => ({ ...c, l: Number(e.target.value) }))} className="mt-1 block h-12 w-24 rounded-md border border-slate px-2" />
                   </label>
                 </div>
                 <p className="data mt-3" aria-live="polite">
@@ -154,7 +154,7 @@ export function TentBuilder() {
             <>
               <label className="mb-4 block">
                 <span className="mb-1 block font-semibold">Where will the tent ship?</span>
-                <select value={b.destination} onChange={(e) => set({ destination: e.target.value })} className="h-12 w-full max-w-xs rounded-md border border-line bg-snow px-3">
+                <select value={b.destination} onChange={(e) => set({ destination: e.target.value })} className="h-12 w-full max-w-xs rounded-md border border-slate bg-snow px-3">
                   {destinations.map((d) => (
                     <option key={d.id} value={d.id}>
                       {d.label}

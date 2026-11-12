@@ -14,11 +14,11 @@ export function SiteEstimator() {
     <div className="grid gap-6 rounded-md border border-line bg-snow p-5 md:grid-cols-3 md:items-end">
       <label className="block">
         <span className="font-semibold">Units</span>
-        <input type="number" min={1} max={100} value={units} onChange={(e) => setUnits(Math.max(1, Number(e.target.value)))} className="mt-1 h-12 w-full rounded-md border border-line px-3" />
+        <input type="number" min={1} max={100} value={units} onChange={(e) => setUnits(Math.max(1, Number(e.target.value)))} className="mt-1 h-12 w-full rounded-md border border-slate px-3" />
       </label>
       <label className="block">
         <span className="font-semibold">Model</span>
-        <select value={model} onChange={(e) => setModel(e.target.value)} className="mt-1 h-12 w-full rounded-md border border-line bg-snow px-3">
+        <select value={model} onChange={(e) => setModel(e.target.value)} className="mt-1 h-12 w-full rounded-md border border-slate bg-snow px-3">
           {models.map((x) => (
             <option key={x.id} value={x.id}>
               {x.name} ({x.sizeLabel})

@@ -42,7 +42,7 @@ export function GiftForm() {
         {when === "date" && (
           <label className="mt-2 block">
             <span className="text-[14px]">Delivery date</span>
-            <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} className="mt-1 block h-12 rounded-md border border-line px-3" />
+            <input type="date" required value={date} onChange={(e) => setDate(e.target.value)} className="mt-1 block h-12 rounded-md border border-slate px-3" />
           </label>
         )}
       </fieldset>

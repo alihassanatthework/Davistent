@@ -197,7 +197,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
             </button>
             <label className="flex items-center gap-2 text-[15px]">
               <span className="nav-label max-sm:sr-only">Sort</span>
-              <select value={sort} onChange={(e) => setParam("sort", e.target.value === "recommended" ? "" : e.target.value)} className="h-11 rounded-md border border-slate bg-snow px-3">
+              <select value={sort} onChange={(e) => setParam("sort", e.target.value === "recommended" ? "" : e.target.value)} className="h-12 rounded-md border border-slate bg-snow px-3">
                 {sorts.map((s) => (
                   <option key={s.id} value={s.id}>
                     {s.label}
