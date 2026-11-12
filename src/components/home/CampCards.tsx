@@ -10,8 +10,8 @@ const camps: { title: string; line: string; href: string; art: Illustration; ton
   { title: "Stoves", line: "Wood-burning stoves sized to your tent", href: "/stoves/", art: "stove", tone: "bg-charcoal text-bone" },
 ];
 
-/** Homepage section 2 and hero scene 8: four large cards, image scales 1.03 on hover. */
-export function CampCards({ compact }: { compact?: boolean }) {
+/** Homepage section 2: four large cards. */
+export function CampCards() {
   return (
     <ul className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-4">
       {camps.map((c) => {
@@ -22,7 +22,7 @@ export function CampCards({ compact }: { compact?: boolean }) {
               href={c.href}
               className={`group flex h-full flex-col overflow-hidden rounded-md ${c.tone} ${dark ? "on-dark" : ""} border border-line/40 transition-colors hover:border-ink`}
             >
-              <div className={`overflow-hidden ${compact ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+              <div className={`overflow-hidden aspect-[4/3]`}>
                 <TentIllustration kind={c.art} tone={dark ? "dark" : "light"} className="h-full w-full p-4 transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.03]" />
               </div>
               <div className="flex flex-1 flex-col p-4 md:p-5">

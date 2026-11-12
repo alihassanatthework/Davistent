@@ -1,8 +1,5 @@
 import Link from "next/link";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { RaisingCamp } from "@/components/hero/RaisingCamp";
-import type { Manifest } from "@/components/hero/draw";
+import { Hero } from "@/components/home/Hero";
 import { CampCards } from "@/components/home/CampCards";
 import { SizeFinder } from "@/components/home/SizeFinder";
 import { FeatureHotspots } from "@/components/home/FeatureHotspots";
@@ -21,17 +18,9 @@ import { getProducts } from "@/lib/commerce";
 
 export const revalidate = 600;
 
-async function heroManifest(): Promise<Manifest | null> {
-  try {
-    return JSON.parse(await readFile(path.join(process.cwd(), "public/hero/manifest.json"), "utf8"));
-  } catch {
-    return null;
-  }
-}
-
 /** Homepage: sixteen sections, each with one job, no repeats (ch. 9). */
 export default async function Home() {
-  const [manifest, live] = await Promise.all([heroManifest(), getProducts()]);
+  const live = await getProducts();
   const find = (id: string) => live.find((p) => p.id === id)!;
   const popular = [find("pkg-elk"), find("wall-14x15"), find("cozy-hideaway"), find("go-tent")];
   const specialty = byCategory("specialty");
@@ -39,8 +28,8 @@ export default async function Home() {
 
   return (
     <>
-      {/* 1 Hero: Raising Camp */}
-      <RaisingCamp manifest={manifest} />
+      {/* 1 Hero: one photograph, one statement, one action (CR-07) */}
+      <Hero />
 
       {/* 2 Shop by camp */}
       <Section id="shop-by-camp" labelledBy="h-camp">

@@ -286,6 +286,43 @@ h3 {
   transform: none;
 }
 
+/* Hero entrance (CR-07, plan §9): once on first paint, all at rest by 600 ms, never on scroll. */
+@keyframes hero-photo {
+  from {
+    opacity: 0;
+    transform: scale(var(--zoom));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--shift-md));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero__photo {
+  animation: hero-photo var(--motion-hero) var(--ease-out) both;
+}
+.hero__eyebrow {
+  animation: hero-rise 240ms var(--ease-out) 80ms both;
+}
+.hero__title {
+  animation: hero-rise 320ms var(--ease-out) 120ms both;
+}
+.hero__text {
+  animation: hero-rise 280ms var(--ease-out) 200ms both;
+}
+.hero__actions {
+  animation: hero-rise 240ms var(--ease-out) 280ms both;
+}
+
 /* Swipe rails: CSS scroll-snap, no carousel library */
 .rail {
   display: grid;

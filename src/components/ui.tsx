@@ -11,16 +11,20 @@ const variants: Record<Variant, string> = {
   tertiary: "px-0 min-h-0 text-pine underline-offset-4 hover:underline",
   inverse: "border-2 border-bone text-bone hover:bg-snow hover:text-pine",
 };
+/** Heights: 48 px default, 52 px in the hero, 56 px on the buy button (CR-19). */
+type Size = "default" | "hero" | "buy";
+const sizes: Record<Size, string> = { default: "", hero: "min-h-[52px] md:min-h-[52px]", buy: "min-h-14 md:min-h-14 w-full" };
 
 export function ButtonLink({
   variant = "primary",
   className = "",
   children,
   arrow,
+  size = "default",
   ...rest
-}: ComponentProps<typeof Link> & { variant?: Variant; arrow?: boolean }) {
+}: ComponentProps<typeof Link> & { variant?: Variant; arrow?: boolean; size?: Size }) {
   return (
-    <Link className={`${base} ${variants[variant]} ${className}`} {...rest}>
+    <Link className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...rest}>
       {children}
       {(arrow || variant === "tertiary") && <Icon name="arrow" className="size-4" />}
     </Link>
@@ -31,11 +35,12 @@ export function Button({
   variant = "primary",
   className = "",
   loading,
+  size = "default",
   children,
   ...rest
-}: ComponentProps<"button"> & { variant?: Variant; loading?: boolean }) {
+}: ComponentProps<"button"> & { variant?: Variant; loading?: boolean; size?: Size }) {
   return (
-    <button className={`${base} ${variants[variant]} ${className}`} aria-busy={loading || undefined} {...rest}>
+    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} aria-busy={loading || undefined} {...rest}>
       {children}
       {loading && <span className="sr-only">Working…</span>}
     </button>
