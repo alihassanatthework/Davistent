@@ -7,7 +7,7 @@ export function PackageTable({ products }: { products: Product[] }) {
       <table className="w-full min-w-[720px] text-left text-[15px]">
         <thead>
           <tr className="border-b border-line">
-            <th scope="col" className="sticky left-0 bg-snow p-3">
+            <th scope="col" className="sticky left-0 bg-ink p-3">
               Package
             </th>
             <th scope="col" className="p-3">Size</th>

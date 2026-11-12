@@ -318,7 +318,7 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
           <table className="w-full min-w-[560px] text-left text-[15px]">
             <thead>
               <tr>
-                <th scope="col" className="sticky left-0 bg-snow p-2" />
+                <th scope="col" className="sticky left-0 bg-ink p-2" />
                 {compared.map((p) => (
                   <th key={p.id} scope="col" className="p-2 align-top">
                     <Link href={p.href} className="font-semibold hover:underline">

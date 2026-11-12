@@ -132,7 +132,7 @@ function SizeTable({ current }: { current?: string }) {
     <div role="region" aria-label="All wall tent sizes" tabIndex={0} className="overflow-x-auto rounded-md border border-line bg-snow">
       <table className="w-full text-left text-[15px]">
         <caption className="sr-only">Wall tent sizes, sleeping capacity and price</caption>
-        <thead className="bg-ink text-bone">
+        <thead>
           <tr>
             <th scope="col" className="px-4 py-3 font-semibold">Size</th>
             <th scope="col" className="px-4 py-3 font-semibold">Sleeps (as listed)</th>
