@@ -44,7 +44,7 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
 
   return (
     <>
-      <div className="pt-[72px]">
+      <div className="pt-[var(--header-h)]">
         <div className="container-site py-6">
           <Breadcrumbs items={crumbs} />
         </div>

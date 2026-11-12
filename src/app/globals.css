@@ -63,7 +63,13 @@
   --z-dialog: 70;
   --z-toast: 80;
 
-  --header-h: 72px;
+  --header-h: 56px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 72px;
+  }
 }
 
 @theme inline {

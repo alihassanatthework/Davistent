@@ -57,10 +57,8 @@ const accents = {
 export type Accent = keyof typeof accents;
 
 /**
- * Category header (ch. 13): 60 vh header with a short scroll-linked scene
- * specific to the category, the H1 and one sentence. The scene uses a CSS
- * scroll-driven animation where supported and is static elsewhere, on mobile
- * and with reduced motion.
+ * Category header (ch. 13): H1 and one sentence over the category art. Static:
+ * no scroll-linked behaviour anywhere (CR-08).
  */
 export function PageHeader({
   title,
@@ -83,7 +81,7 @@ export function PageHeader({
 }) {
   const dark = accents[accent].includes("on-dark");
   return (
-    <header className={`${accents[accent]} relative overflow-hidden pt-[72px]`}>
+    <header className={`${accents[accent]} relative overflow-hidden pt-[var(--header-h)]`}>
       <div className={`container-site grid items-center gap-8 ${compact ? "py-10" : "min-h-[52vh] py-12 md:min-h-[60vh]"} lg:grid-cols-12`}>
         <div className="lg:col-span-7">
           <Breadcrumbs items={crumbs} />

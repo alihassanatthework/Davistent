@@ -11,7 +11,7 @@ import { Logo } from "./Logo";
 
 /**
  * Header (ch. 8): logo left; six primary items centre; search, account, cart and
- * phone right. Shrinks to 56 px on scroll down, returns on scroll up,
+ * phone right. Fixed height; hides on scroll down and returns on scroll up,
  * transparent over the homepage hero. Menus open on click or Enter, close on
  * Escape, and trap no focus (disclosure pattern).
  */
@@ -19,7 +19,6 @@ export function Header({ accountUrl }: { accountUrl: string }) {
   const path = usePathname();
   const isHome = path === "/";
   const [openIdx, setOpenIdx] = useState<number | null>(null);
-  const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [sheet, setSheet] = useState(false);
@@ -33,7 +32,6 @@ export function Header({ accountUrl }: { accountUrl: string }) {
     const onScroll = () => {
       const y = window.scrollY;
       setAtTop(y < 24);
-      setCompact(y > 80);
       setHidden(y > last && y > 240 && !document.activeElement?.closest("header"));
       last = y;
     };
@@ -78,7 +76,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
   }, [sheet]);
 
   const transparent = isHome && atTop && openIdx === null && !searchOpen;
-  const h = compact ? "h-14" : "h-[72px]";
+  const h = "h-14 lg:h-[72px]"; // fixed height: no shrink on scroll (CR-08), no layout shift (CR-12)
 
   return (
     <>
@@ -92,7 +90,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
       >
         <div className={`container-site flex items-center gap-4 ${h}`}>
           <Link href="/" className="shrink-0" aria-label="Davis Tent home">
-            <Logo className={compact ? "h-7" : "h-9"} />
+            <Logo className="h-8 lg:h-9" />
           </Link>
 
           <nav ref={navRef} aria-label="Primary" className="ml-6 hidden flex-1 lg:block">
