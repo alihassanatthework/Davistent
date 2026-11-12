@@ -11,16 +11,14 @@ import { Logo } from "./Logo";
 
 /**
  * Header (ch. 8): logo left; six primary items centre; search, account, cart and
- * phone right. Fixed height; hides on scroll down and returns on scroll up,
- * transparent over the homepage hero. Menus open on click or Enter, close on
+ * phone right. CR-12: solid Charcoal on every page, fixed height (56 px, 72 px
+ * from 1024 px), hides on scroll down and returns on scroll up in 200 ms. Menus open on click or Enter, close on
  * Escape, and trap no focus (disclosure pattern).
  */
 export function Header({ accountUrl }: { accountUrl: string }) {
   const path = usePathname();
-  const isHome = path === "/";
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [hidden, setHidden] = useState(false);
-  const [atTop, setAtTop] = useState(true);
   const [sheet, setSheet] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -31,7 +29,6 @@ export function Header({ accountUrl }: { accountUrl: string }) {
     let last = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
-      setAtTop(y < 24);
       setHidden(y > last && y > 240 && !document.activeElement?.closest("header"));
       last = y;
     };
@@ -75,7 +72,6 @@ export function Header({ accountUrl }: { accountUrl: string }) {
     }
   }, [sheet]);
 
-  const transparent = isHome && atTop && openIdx === null && !searchOpen;
   const h = "h-14 lg:h-[72px]"; // fixed height: no shrink on scroll (CR-08), no layout shift (CR-12)
 
   return (
@@ -86,7 +82,8 @@ export function Header({ accountUrl }: { accountUrl: string }) {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-transform duration-(--motion-base) ease-out ${
           hidden ? "-translate-y-full" : ""
-        } ${transparent ? "bg-transparent text-bone on-dark" : "border-b border-line bg-canvas/95 text-charcoal backdrop-blur"}`}
+        } border-b border-steel bg-ink text-bone`}
+        data-surface="dark"
       >
         <div className={`container-site flex items-center gap-4 ${h}`}>
           <Link href="/" className="shrink-0" aria-label="Davis Tent home">
@@ -108,9 +105,9 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                         e.stopPropagation();
                         setOpenIdx(open ? null : i);
                       }}
-                      className={`flex h-11 items-center gap-1 rounded-md px-3 text-[15px] font-semibold hover:bg-black/5 ${
-                        current ? "underline decoration-current decoration-2 underline-offset-8" : ""
-                      } ${item.primary ? "" : "font-medium"}`}
+                      className={`nav-label relative flex h-11 items-center gap-1 px-3 after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:origin-left after:bg-current after:transition-transform after:duration-(--motion-menu) after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100 ${
+                        current || open ? "after:scale-x-100" : "after:scale-x-0"
+                      }`}
                     >
                       {item.label}
                       <Icon name="chevron" className={`size-4 transition-transform duration-(--motion-fast) ${open ? "rotate-180" : ""}`} />
@@ -169,19 +166,19 @@ export function Header({ accountUrl }: { accountUrl: string }) {
               onClick={() => setSearchOpen((s) => !s)}
               aria-expanded={searchOpen}
               aria-controls="site-search"
-              className="grid size-11 place-items-center rounded-md hover:bg-black/5"
+              className="grid size-11 place-items-center rounded-md hover:bg-gunmetal"
             >
               <Icon name="search" />
               <span className="sr-only">Search</span>
             </button>
-            <a href={accountUrl} className="hidden size-11 place-items-center rounded-md hover:bg-black/5 md:grid">
+            <a href={accountUrl} className="hidden size-11 place-items-center rounded-md hover:bg-gunmetal md:grid">
               <Icon name="user" />
               <span className="sr-only">My account</span>
             </a>
             <CartButton />
             <a
               href={`tel:${site.phone.tel}`}
-              className="ml-2 hidden items-center gap-2 rounded-md px-3 py-2 text-[15px] font-semibold hover:bg-black/5 xl:flex"
+              className="ml-2 hidden items-center gap-2 rounded-md px-3 py-2 text-[15px] font-semibold text-tan hover:underline xl:flex"
             >
               <Icon name="phone" className="size-4" />
               <span className="data text-[15px]">{site.phone.display}</span>
@@ -190,7 +187,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
               ref={menuBtn}
               onClick={() => setSheet(true)}
               aria-haspopup="dialog"
-              className="grid size-11 place-items-center rounded-md hover:bg-black/5 lg:hidden"
+              className="grid size-11 place-items-center rounded-md hover:bg-gunmetal lg:hidden"
             >
               <Icon name="menu" />
               <span className="sr-only">Menu</span>

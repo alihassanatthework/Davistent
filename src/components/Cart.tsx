@@ -160,7 +160,7 @@ export function CartProvider({ children, checkoutUrl }: { children: React.ReactN
 export function CartButton() {
   const { count, open } = useCart();
   return (
-    <button onClick={open} className="relative grid size-11 place-items-center rounded-md hover:bg-black/5">
+    <button onClick={open} className="relative grid size-11 place-items-center rounded-md hover:bg-gunmetal">
       <Icon name="cart" />
       <span className="sr-only">Cart, {count} items</span>
       {count > 0 && (

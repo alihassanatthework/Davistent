@@ -44,6 +44,7 @@
   /* Motion (CR-11, plan §9). Nothing runs longer than 400 ms except the hero entrance. */
   --motion-instant: 80ms; /* button press */
   --motion-fast: 150ms; /* hover, focus, colour, small icon shift */
+  --motion-menu: 180ms; /* nav underline, mega menu open */
   --motion-base: 200ms; /* menus, accordions, dialogs, header hide/show */
   --motion-enter: 240ms; /* scroll-entry reveal, drawers */
   --motion-slow: 300ms; /* card image zoom */
@@ -253,6 +254,16 @@ h3 {
   line-height: 16px;
   font-weight: 600;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Button and navigation label (CR-02, CR-12): condensed 14 px capitals, +6% tracking */
+@utility nav-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
