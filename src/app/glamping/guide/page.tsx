@@ -57,7 +57,7 @@ export default function GlampGuide() {
         <Prose>
           <h2>Fabric and treatment</h2>
           <p>
-            {fact("cottonOnly")} Sunforger has been the leader in the fabric treatment industry for more than 50 years, and {fact("sunforgerButler").toLowerCase().replace("the sunforger", "the Sunforger")}
+            {fact("cottonOnly")} Sunforger has been the leader in the fabric treatment industry for more than 50 years. {fact("sunforgerButler")}
           </p>
           <h2>Condensation</h2>
           <p>Cotton breathes. {fact("condensation")}</p>
