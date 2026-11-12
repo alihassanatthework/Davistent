@@ -86,11 +86,11 @@ export function Header({ accountUrl }: { accountUrl: string }) {
         Skip to content
       </a>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,height] duration-300 ease-out ${
+        className={`fixed inset-x-0 top-0 z-50 transition-transform duration-(--motion-base) ease-out ${
           hidden ? "-translate-y-full" : ""
         } ${transparent ? "bg-transparent text-bone on-dark" : "border-b border-line bg-canvas/95 text-charcoal backdrop-blur"}`}
       >
-        <div className={`container-site flex items-center gap-4 ${h} transition-[height] duration-300`}>
+        <div className={`container-site flex items-center gap-4 ${h}`}>
           <Link href="/" className="shrink-0" aria-label="Davis Tent home">
             <Logo className={compact ? "h-7" : "h-9"} />
           </Link>
@@ -115,7 +115,7 @@ export function Header({ accountUrl }: { accountUrl: string }) {
                       } ${item.primary ? "" : "font-medium"}`}
                     >
                       {item.label}
-                      <Icon name="chevron" className={`size-4 transition-transform duration-150 ${open ? "rotate-180" : ""}`} />
+                      <Icon name="chevron" className={`size-4 transition-transform duration-(--motion-fast) ${open ? "rotate-180" : ""}`} />
                     </button>
                     <div
                       id={`mega-${i}`}

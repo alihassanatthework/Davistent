@@ -23,7 +23,7 @@ export function CampCards({ compact }: { compact?: boolean }) {
               className={`group flex h-full flex-col overflow-hidden rounded-md ${c.tone} ${dark ? "on-dark" : ""} border border-line/40 transition-colors hover:border-ink`}
             >
               <div className={`overflow-hidden ${compact ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
-                <TentIllustration kind={c.art} tone={dark ? "dark" : "light"} className="h-full w-full p-4 transition-transform duration-300 ease-out group-hover:scale-[1.03]" />
+                <TentIllustration kind={c.art} tone={dark ? "dark" : "light"} className="h-full w-full p-4 transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.03]" />
               </div>
               <div className="flex flex-1 flex-col p-4 md:p-5">
                 <span className="font-display text-[26px] font-semibold leading-8 md:text-[32px]">{c.title}</span>

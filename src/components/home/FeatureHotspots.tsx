@@ -24,7 +24,7 @@ export function FeatureHotspots({ dark }: { dark?: boolean }) {
               aria-controls="feature-card"
               onClick={() => setActive(active === f.id ? null : f.id)}
               style={{ left: `${f.hotspot.x}%`, top: `${f.hotspot.y}%` }}
-              className={`absolute grid size-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-sm border-2 text-[14px] font-bold transition-transform duration-150 hover:scale-110 ${
+              className={`absolute grid size-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-sm border-2 text-[14px] font-bold transition-transform duration-(--motion-fast) hover:scale-110 ${
                 active === f.id ? "border-bone bg-ember-deep text-snow" : "border-ember-deep bg-snow text-ember-deep"
               }`}
             >

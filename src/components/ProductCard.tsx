@@ -18,11 +18,11 @@ export function ProductCard({
 }) {
   const points = [p.sizeLabel, p.sleeps ? `sleeps ${p.sleeps}` : undefined].filter(Boolean) as string[];
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-snow transition-colors duration-150 hover:border-ink focus-within:border-ink">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-line bg-snow transition-colors duration-(--motion-fast) hover:border-ink focus-within:border-ink">
       <div className="relative aspect-[4/3] overflow-hidden bg-canvas">
         <TentIllustration
           kind={p.illustration}
-          className="h-full w-full p-4 transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+          className="h-full w-full p-4 transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.03]"
         />
         <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
           {p.status === "sale" && <Badge tone="ember">On sale</Badge>}

@@ -41,14 +41,21 @@
   --color-snow: var(--color-white);
   --color-leather: var(--color-saddle);
 
-  /* Motion */
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 600ms;
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --reveal-distance: 16px;
-  --stagger: 60ms;
+  /* Motion (CR-11, plan §9). Nothing runs longer than 400 ms except the hero entrance. */
+  --motion-instant: 80ms; /* button press */
+  --motion-fast: 150ms; /* hover, focus, colour, small icon shift */
+  --motion-base: 200ms; /* menus, accordions, dialogs, header hide/show */
+  --motion-enter: 240ms; /* scroll-entry reveal, drawers */
+  --motion-slow: 300ms; /* card image zoom */
+  --motion-reveal: 400ms; /* cinematic image reveal; ceiling for everything but the hero */
+  --motion-hero: 600ms; /* hero entrance only; hard limit 700 ms */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-linear: linear;
+  --shift-sm: 8px;
+  --shift-md: 12px;
+  --zoom: 1.04;
+  --stagger: 40ms; /* at most four items */
 
   /* Layers */
   --z-header: 50;
@@ -110,7 +117,9 @@
   --breakpoint-2xl: 1536px;
 
   --ease-out: var(--ease-out);
-  --ease-in-out: var(--ease-in-out);
+  --ease-in: var(--ease-in);
+  --default-transition-duration: var(--motion-fast);
+  --default-transition-timing-function: var(--ease-out);
 }
 
 /* ---------- Base ---------- */
@@ -258,14 +267,15 @@ h3 {
   white-space: nowrap;
 }
 
-/* Scroll reveal: 16 px rise, once per element (IntersectionObserver adds .is-in) */
+/* Scroll-entry reveal (plan §9): 8 px rise, 240 ms, 40 ms stagger capped at four items.
+   One shared IntersectionObserver adds .is-in once, at 15% visible. */
 .reveal {
   opacity: 0;
-  transform: translateY(var(--reveal-distance));
+  transform: translateY(var(--shift-sm));
   transition:
-    opacity var(--duration-slow) var(--ease-out),
-    transform var(--duration-slow) var(--ease-out);
-  transition-delay: calc(var(--i, 0) * var(--stagger));
+    opacity var(--motion-enter) var(--ease-out),
+    transform var(--motion-enter) var(--ease-out);
+  transition-delay: calc(min(var(--i, 0), 3) * var(--stagger));
 }
 .reveal.is-in {
   opacity: 1;
@@ -304,21 +314,20 @@ h3 {
   }
 }
 
-/* Motion respects reduced-motion at the token level */
+/* Reduced motion: everything is instant (plan §9 reference CSS) */
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --duration-fast: 0ms;
-    --duration-base: 0ms;
-    --duration-slow: 0ms;
-    --reveal-distance: 0px;
-    --stagger: 0ms;
-  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 

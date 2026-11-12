@@ -3,28 +3,41 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Icon } from "./ui";
 
-/** Section reveal: CSS transition triggered by IntersectionObserver, once per element. */
+/* One IntersectionObserver for every reveal on the page (CR-11): 15% visible, once, then unobserved. */
+let sharedObserver: IntersectionObserver | null = null;
+function revealObserver() {
+  if (!sharedObserver) {
+    sharedObserver = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            sharedObserver?.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.15 },
+    );
+  }
+  return sharedObserver;
+}
+
+/** Scroll-entry reveal: 8 px, 240 ms, stagger 40 ms capped at four items (CSS in globals). */
 export function Reveal({ children, className = "", index = 0, as: Tag = "div" }: { children: ReactNode; className?: string; index?: number; as?: "div" | "li" }) {
   const ref = useRef<HTMLElement>(null);
-  const [inView, setIn] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (!("IntersectionObserver" in window)) return setIn(true);
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setIn(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -10% 0px" },
-    );
+    if (!("IntersectionObserver" in window)) {
+      el.classList.add("is-in");
+      return;
+    }
+    const io = revealObserver();
     io.observe(el);
-    return () => io.disconnect();
+    return () => io.unobserve(el);
   }, []);
   return (
-    <Tag ref={ref as never} className={`reveal ${inView ? "is-in" : ""} ${className}`} style={{ "--i": index } as React.CSSProperties}>
+    <Tag ref={ref as never} className={`reveal ${className}`} style={{ "--i": index } as React.CSSProperties}>
       {children}
     </Tag>
   );
