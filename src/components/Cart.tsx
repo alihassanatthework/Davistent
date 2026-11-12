@@ -96,11 +96,11 @@ export function CartProvider({ children, checkoutUrl }: { children: React.ReactN
         style={{ zIndex: 60 }}
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-line p-4">
-            <h2 id="cart-title" className="text-[26px]">
+          <div data-surface="dark" className="flex items-center justify-between bg-ink px-4 py-3 text-bone">
+            <h2 id="cart-title" className="text-[22px]">
               Your cart
             </h2>
-            <button className="grid size-11 place-items-center rounded-md hover:bg-canvas" onClick={() => setOpen(false)}>
+            <button className="grid size-11 place-items-center rounded-md hover:bg-gunmetal" onClick={() => setOpen(false)}>
               <Icon name="close" />
               <span className="sr-only">Close cart</span>
             </button>
