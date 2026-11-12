@@ -21,7 +21,7 @@ export function Logo({ className = "h-9" }: { className?: string }) {
 export function MadeInUsaMark({ className = "h-12" }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 48" className={className} role="img" aria-label="Tents made in the USA, Denver, Colorado">
-      <rect x="1" y="1" width="118" height="46" rx="4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="1" y="1" width="118" height="46" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
       <text x="60" y="20" textAnchor="middle" fill="currentColor" fontSize="10" fontWeight="700" letterSpacing="2">
         MADE IN USA
       </text>

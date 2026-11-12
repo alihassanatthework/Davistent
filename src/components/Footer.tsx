@@ -7,11 +7,12 @@ import { SignupForm } from "./SignupForm";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="on-dark bg-pine pb-24 text-bone md:pb-0">
+    <footer data-surface="dark" className="bg-ink pb-24 text-bone md:pb-0">
       <div className="container-site grid gap-10 py-14 lg:grid-cols-12">
         <div className="lg:col-span-4">
+          <div aria-hidden className="mb-6 h-1 w-12 bg-blaze" />
           <Logo className="h-10" />
-          <p className="mt-3 text-[15px] opacity-80">{site.tagline}</p>
+          <p className="mt-3 text-[15px] text-ash">{site.tagline}</p>
           <ul className="mt-6 space-y-2 text-[15px]">
             <li>
               <a href={`tel:${site.phone.tel}`} className="inline-flex items-center gap-2 hover:underline">
@@ -30,12 +31,12 @@ export function Footer() {
               </span>
             </li>
           </ul>
-          <MadeInUsaMark className="mt-6 h-12 opacity-90" />
+          <MadeInUsaMark className="mt-6 h-12 text-bone" />
         </div>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:col-span-8">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
           {footerLinks.map((g) => (
             <details key={g.heading} className="group" open>
-              <summary className="eyebrow mb-3 cursor-pointer list-none opacity-80 md:pointer-events-none">{g.heading}</summary>
+              <summary className="eyebrow mb-3 cursor-pointer list-none text-tan sm:pointer-events-none">{g.heading}</summary>
               <ul className="space-y-1.5 text-[15px]">
                 {g.links.map((l) => (
                   <li key={l.href}>
@@ -49,11 +50,11 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className="border-t border-bone/15">
+      <div className="border-t border-steel">
         <div className="container-site grid gap-6 py-8 md:grid-cols-2 md:items-center">
           <div>
             <p className="font-semibold">Deals and new products</p>
-            <p className="mb-3 text-[15px] opacity-80">Sign up for our monthly specials and deals on accessories and new products.</p>
+            <p className="mb-3 text-[15px] text-ash">Sign up for our monthly specials and deals on accessories and new products.</p>
             <SignupForm tone="dark" />
           </div>
           <ul className="flex flex-wrap gap-4 md:justify-end">
@@ -67,8 +68,8 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-bone/15">
-        <div className="container-site flex flex-col gap-3 py-6 text-[13px] opacity-80 md:flex-row md:justify-between">
+      <div className="border-t border-steel">
+        <div className="container-site flex flex-col gap-3 py-6 text-[13px] text-ash md:flex-row md:justify-between">
           <p>
             © {year} {site.legalName}. Handcrafted in Denver, Colorado since 1955.
           </p>
