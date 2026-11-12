@@ -67,14 +67,14 @@ export function BuyBox({ product: p }: { product: Product }) {
               return (
                 <label
                   key={c.id}
-                  className={`flex min-h-12 cursor-pointer items-start gap-3 rounded-md border p-3 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-pine ${
-                    selected ? "border-pine bg-pine/5 ring-1 ring-pine" : "border-line bg-snow"
+                  className={`flex min-h-12 cursor-pointer items-start gap-3 rounded-md border p-3 transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blaze ${
+                    selected ? "border-ink bg-ink text-bone" : "border-slate bg-snow hover:border-ink"
                   }`}
                 >
-                  <input type="radio" name={`${id}-${g.id}`} className="mt-1 size-4 accent-ink" checked={selected} onChange={() => setPicks((s) => ({ ...s, [g.id]: c.id }))} />
+                  <input type="radio" name={`${id}-${g.id}`} className={`mt-1 size-4 ${selected ? "accent-bone" : "accent-ink"}`} checked={selected} onChange={() => setPicks((s) => ({ ...s, [g.id]: c.id }))} />
                   <span className="flex-1">
                     <span className="block text-[15px] font-semibold">{c.label}</span>
-                    {c.note && <span className="block text-[13px] text-stone">{c.note}</span>}
+                    {c.note && <span className={`block text-[13px] ${selected ? "text-ash" : "text-stone"}`}>{c.note}</span>}
                   </span>
                   {c.price !== 0 && <span className="data text-[13px]">+{formatPrice(c.price)}</span>}
                 </label>
@@ -89,7 +89,7 @@ export function BuyBox({ product: p }: { product: Product }) {
           <label htmlFor={`${id}-dest`} className="mb-2 block font-semibold">
             Shipping to
           </label>
-          <select id={`${id}-dest`} value={dest} onChange={(e) => setDest(e.target.value)} className="h-12 w-full rounded-md border border-line bg-snow px-3">
+          <select id={`${id}-dest`} value={dest} onChange={(e) => setDest(e.target.value)} className="h-12 w-full rounded-md border border-slate bg-snow px-3">
             {destinations.map((d) => (
               <option key={d.id} value={d.id}>
                 {d.label}

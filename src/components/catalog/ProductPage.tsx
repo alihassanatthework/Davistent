@@ -52,7 +52,7 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
           {/* gallery */}
           <div className="lg:col-span-7">
             <div className="rail !grid-cols-none !auto-cols-[100%] rounded-md" role="region" aria-label="Product images" tabIndex={0}>
-              <figure className="aspect-[4/3] rounded-md border border-line bg-canvas">
+              <figure className="aspect-[4/3] rounded-md border border-line bg-snow">
                 <TentIllustration kind={p.illustration} className="h-full w-full p-6" label={`${p.name} illustration`} />
               </figure>
               {p.size && isTent && (
@@ -72,7 +72,7 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
                 {p.status === "sale" && <Badge tone="ember">On sale</Badge>}
                 {p.stoveIncluded && <Badge tone="pine">Stove included</Badge>}
               </div>
-              <h1 className="mt-3 text-[32px] leading-[38px] md:text-[44px] md:leading-[50px]">{p.name}</h1>
+              <h1 className="mt-3 text-[30px] leading-8 md:text-[36px] md:leading-10">{p.name}</h1>
               {(p.sizeLabel || p.sleeps) && (
                 <p className="data mt-2 text-stone-deep">{[p.sizeLabel, p.sleeps && `sleeps ${p.sleeps}`, stove && isTent && `${stove.name} stove`].filter(Boolean).join("  ·  ")}</p>
               )}
@@ -94,8 +94,8 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
 
       {sections.length > 0 && (
         <Section tone="snow">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div className="max-lg:hidden space-y-10">
+          <div className="space-y-10">
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-10">
               {sections.map((s) => (
                 <div key={s.title}>
                   <h2 className="mb-4 text-[28px]">{s.title}</h2>
@@ -112,15 +112,19 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
                 <PoleToggle />
               </div>
             )}
-            {isTent && facts.origin.status === "verified" && (
-              <div className="rounded-md bg-canvas p-6">
-                <h2 className="text-[28px]">Where it’s made</h2>
-                <p className="mt-3">
-                  {fact("origin")}. {fact("sunforgerButler")}
-                </p>
-                <p className="mt-3 text-[15px] text-stone-deep">{fact("madeInUsa")}</p>
-              </div>
-            )}
+          </div>
+        </Section>
+      )}
+
+      {/* One Charcoal band for the origin statement, on the products where it already appears (CR-16) */}
+      {isTent && facts.origin.status === "verified" && (
+        <Section tone="charcoal" labelledBy="h-origin">
+          <div className="max-w-3xl">
+            <h2 id="h-origin">Where it’s made</h2>
+            <p className="mt-4 text-[17px] leading-[26px]">
+              {fact("origin")}. {fact("sunforgerButler")}
+            </p>
+            <p className="mt-3 text-[15px] text-ash">{fact("madeInUsa")}</p>
           </div>
         </Section>
       )}
