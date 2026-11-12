@@ -1,26 +1,262 @@
 @import "tailwindcss";
 
+/*
+ * Davis Tent design tokens (Roadmap ch. 7 and ch. 16).
+ * Every colour, space, radius, shadow and motion value lives here once.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colour */
+  --color-pine: #1f3a2e;
+  --color-charcoal: #1c1f1e;
+  --color-canvas: #f4eee2;
+  --color-army-duck: #c9b48a;
+  --color-ember: #d9601a;
+  --color-ember-deep: #c4530f;
+  --color-autumn-gold: #c8922b;
+  --color-stone: #6b6f6a;
+  --color-stone-deep: #5f635e;
+  --color-snow: #ffffff;
+  --color-surface-alt: #e3dccb;
+  --color-border: #cfc6b2;
+  --color-leather: #6b4423;
+  --color-success: #2e6b4a;
+  --color-warning: #b7791f;
+  --color-error: #b3261e;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --reveal-distance: 16px;
+  --stagger: 60ms;
+
+  /* Layers */
+  --z-header: 50;
+  --z-drawer: 60;
+  --z-dialog: 70;
+  --z-toast: 80;
+
+  --header-h: 72px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-pine: var(--color-pine);
+  --color-charcoal: var(--color-charcoal);
+  --color-canvas: var(--color-canvas);
+  --color-duck: var(--color-army-duck);
+  --color-ember: var(--color-ember);
+  --color-ember-deep: var(--color-ember-deep);
+  --color-gold: var(--color-autumn-gold);
+  --color-stone: var(--color-stone);
+  --color-stone-deep: var(--color-stone-deep);
+  --color-snow: var(--color-snow);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-line: var(--color-border);
+  --color-leather: var(--color-leather);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --shadow-1: 0 1px 2px rgba(28, 31, 30, 0.08);
+  --shadow-2: 0 8px 24px rgba(28, 31, 30, 0.14);
+
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------- Base ---------- */
+html {
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 0.95rem + 0.15vw, 17px);
+  line-height: 1.6;
+  font-feature-settings: "tnum" 0;
+}
+
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(36px, 1.6rem + 2.6vw, 56px);
+  line-height: 1.1;
+}
+h2 {
+  font-size: clamp(26px, 1.2rem + 1.3vw, 36px);
+  line-height: 1.17;
+}
+h3 {
+  font-size: clamp(19px, 1rem + 0.4vw, 22px);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+/* Visible 2 px focus ring with 2 px offset, never hidden by sticky UI */
+:focus-visible {
+  outline: 2px solid var(--color-pine);
+  outline-offset: 2px;
+}
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--color-snow);
+}
+
+::selection {
+  background: var(--color-army-duck);
+  color: var(--color-charcoal);
+}
+
+/* ---------- Utilities ---------- */
+@utility container-site {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (min-width: 768px) {
+    padding-inline: 24px;
+  }
+}
+
+@utility section-y {
+  padding-block: 56px;
+  @media (min-width: 1024px) {
+    padding-block: 96px;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@utility data {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility canvas-weave {
+  background-color: var(--color-canvas);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(28, 31, 30, 0.03) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(28, 31, 30, 0.03) 0 1px, transparent 1px 3px);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Scroll reveal: 16 px rise, once per element (IntersectionObserver adds .is-in) */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* Swipe rails: CSS scroll-snap, no carousel library */
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(78%, 1fr);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+.rail > * {
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .rail {
+    grid-auto-columns: minmax(40%, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .rail {
+    grid-auto-columns: minmax(23%, 1fr);
+  }
+}
+
+/* Motion respects reduced-motion at the token level */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --reveal-distance: 0px;
+    --stagger: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print: specs and prices only */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
 }
