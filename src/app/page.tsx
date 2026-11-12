@@ -5,7 +5,6 @@ import { SizeFinder } from "@/components/home/SizeFinder";
 import { FeatureHotspots } from "@/components/home/FeatureHotspots";
 import { ModularDiagram } from "@/components/home/ModularDiagram";
 import { ProductCard } from "@/components/ProductCard";
-import { TentIllustration } from "@/components/TentIllustration";
 import { Rail, Reveal } from "@/components/primitives";
 import { TalkToUs } from "@/components/layout";
 import { SignupForm } from "@/components/SignupForm";
@@ -66,10 +65,10 @@ export default async function Home() {
       </Section>
 
       {/* 5 The canvas */}
-      <Section tone="charcoal" labelledBy="h-canvas">
+      <Section tone="forest" labelledBy="h-canvas">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="eyebrow mb-3 opacity-80">The canvas</p>
+            <p className="eyebrow mb-3 text-(--surface-eyebrow)">The canvas</p>
             <h2 id="h-canvas">The fabric is the argument</h2>
             <p className="mt-4 text-[17px] leading-7 opacity-90">{fact("cottonOnly")}</p>
             <ul className="mt-8 space-y-6">
@@ -94,7 +93,7 @@ export default async function Home() {
       </Section>
 
       {/* 6 Standard features */}
-      <Section labelledBy="h-features">
+      <Section tone="snow" labelledBy="h-features">
         <SectionHead
           id="h-features"
           eyebrow="Standard features"
@@ -105,12 +104,12 @@ export default async function Home() {
       </Section>
 
       {/* 7 Modular + 8 Hot tents */}
-      <Section tone="snow" labelledBy="h-modular">
+      <Section labelledBy="h-modular">
         <SectionHead id="h-modular" eyebrow="Modular" title="Add on as your camp grows" intro={fact("modular")} />
         <ModularDiagram />
       </Section>
 
-      <Section tone="pine" labelledBy="h-hot">
+      <Section tone="charcoal" labelledBy="h-hot">
         <SectionHead
           id="h-hot"
           eyebrow="Hot tents and stoves"
@@ -119,9 +118,8 @@ export default async function Home() {
         />
         <ul className="grid gap-4 md:grid-cols-3">
           {stoveFits.map((s, i) => (
-            <Reveal as="li" key={s.name} index={i} className="rounded-md border border-bone/20 bg-bone/5 p-5">
-              <TentIllustration kind="stove" tone="dark" className="h-32 w-full" />
-              <h3 className="mt-3 font-display text-[26px]">{s.name}</h3>
+            <Reveal as="li" key={s.name} index={i} className="rounded-md border border-steel bg-gunmetal p-5">
+              <h3 className="font-display text-[26px]">{s.name}</h3>
               <p className="data mt-1 opacity-90">Fits {s.fits}</p>
               <p className="data opacity-75">
                 {s.weight} · {s.dims}
@@ -156,30 +154,31 @@ export default async function Home() {
       </Section>
 
       {/* 10 Glamping for business */}
-      <Section tone="alt" labelledBy="h-b2b">
+      <Section tone="olive" labelledBy="h-b2b">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <TentIllustration kind="glamp" className="w-full rounded-md bg-canvas p-6" label="Davis glamping tent on a deck with fly and awning" />
+          {/* Photo slot: glamping tent on a deck (CR-22, needed from client). Flat placeholder. */}
+          <div aria-hidden className="aspect-[4/3] bg-ink" />
           <div>
-            <p className="eyebrow mb-3 text-stone-deep">Glamping for business</p>
+            <p className="eyebrow mb-3 text-(--surface-eyebrow)">Glamping for business</p>
             <h2 id="h-b2b">One or a dozen tents, for your property</h2>
             <ul className="mt-6 space-y-3">
               <li className="flex gap-3">
-                <Icon name="check" className="mt-1 size-5 text-success" />
+                <Icon name="check" className="mt-1 size-5 shrink-0 text-tan" />
                 Three standard sizes: 14' × 15', 16' × 20' and 16' × 25', or custom.
               </li>
               <li className="flex gap-3">
-                <Icon name="check" className="mt-1 size-5 text-success" />
+                <Icon name="check" className="mt-1 size-5 shrink-0 text-tan" />
                 Properties including {caseStudies.map((c) => c.name).join(", ")}.
               </li>
               <li className="flex gap-3">
-                <Icon name="check" className="mt-1 size-5 text-success" />
+                <Icon name="check" className="mt-1 size-5 shrink-0 text-tan" />
                 Logistics work for national brands including Samsung, Coachella and Land Rover.
               </li>
             </ul>
-            <p className="mt-4 text-[14px] text-stone-deep">{fact("noFurniture")}</p>
+            <p className="mt-4 text-[14px]">{fact("noFurniture")}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <ButtonLink href="/glamping/for-business/resorts/">Plan a project</ButtonLink>
-              <ButtonLink href="/glamping/" variant="secondary">
+              <ButtonLink href="/glamping/" variant="inverse">
                 See glamping tents
               </ButtonLink>
             </div>
@@ -188,7 +187,7 @@ export default async function Home() {
       </Section>
 
       {/* 11 Made in Denver */}
-      <Section tone="snow" labelledBy="h-denver">
+      <Section tone="gunmetal" labelledBy="h-denver">
         <SectionHead id="h-denver" eyebrow="Made in Denver since 1955" title="A family shop, still sewing" intro={fact("familyOwned")} />
         <ol className="grid gap-4 md:grid-cols-4">
           {[
@@ -197,22 +196,22 @@ export default async function Home() {
             { t: "Strength testing", d: fact("strengthTesting") },
             { t: "The showroom", d: fact("showroom") },
           ].map((m, i) => (
-            <Reveal as="li" key={m.t} index={i} className="rounded-md border border-line p-5">
-              <p className="font-display text-[26px] text-pine">{m.t}</p>
+            <Reveal as="li" key={m.t} index={i} className="rounded-md border border-steel p-5">
+              <p className="font-display text-[26px] text-tan">{m.t}</p>
               <p className="mt-2 text-[15px] leading-6">{m.d}</p>
             </Reveal>
           ))}
         </ol>
         <div className="mt-8 flex flex-wrap gap-3">
           <ButtonLink href="/contact/#visit">Visit the shop</ButtonLink>
-          <ButtonLink href="/about/" variant="secondary">
+          <ButtonLink href="/about/" variant="inverse">
             Our story
           </ButtonLink>
         </div>
       </Section>
 
       {/* 12 Reviews + 13 Conservation */}
-      <Section labelledBy="h-reviews">
+      <Section tone="snow" labelledBy="h-reviews">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <p className="eyebrow mb-3 text-stone-deep">Reviews</p>
@@ -246,7 +245,7 @@ export default async function Home() {
       </Section>
 
       {/* 14 Learn + 15 Deals */}
-      <Section tone="snow" labelledBy="h-learn">
+      <Section labelledBy="h-learn">
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <SectionHead id="h-learn" eyebrow="Learn before you buy" title="Guides from the people who sew the tents" />
@@ -276,7 +275,7 @@ export default async function Home() {
             </ul>
           </div>
           <div className="rounded-md bg-pine p-6 text-bone on-dark">
-            <p className="eyebrow mb-3 opacity-80">Deals and signup</p>
+            <p className="eyebrow mb-3 text-tan">Deals and signup</p>
             <h2 className="text-[28px]">Monthly specials</h2>
             <p className="mb-4 mt-2 text-[15px] opacity-90">Sign up for our monthly specials and deals on accessories and new products.</p>
             <SignupForm tone="dark" />

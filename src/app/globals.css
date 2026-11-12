@@ -198,8 +198,12 @@ h3 {
  * legacy .on-dark class); text, muted text, borders and inline links switch here,
  * so components never set per-element colours for dark grounds.
  */
+:root {
+  --surface-eyebrow: var(--color-slate);
+}
 [data-surface="dark"],
 .on-dark {
+  --surface-eyebrow: var(--color-tan);
   --surface-text: var(--color-bone);
   --surface-muted: var(--color-ash);
   --surface-border: var(--color-border-dark);
@@ -207,12 +211,14 @@ h3 {
   color: var(--surface-text);
 }
 [data-surface="accent"] {
+  --surface-eyebrow: var(--color-ink);
   --surface-text: var(--color-ink);
   --surface-link: var(--color-ink);
   --focus-ring: var(--color-ink);
   color: var(--surface-text);
 }
 [data-surface="light"] {
+  --surface-eyebrow: var(--color-slate);
   --surface-text: var(--color-ink);
   --surface-muted: var(--color-slate);
   --surface-border: var(--color-border);
@@ -235,9 +241,9 @@ h3 {
 }
 
 @utility section-y {
-  padding-block: 56px;
+  padding-block: 48px; /* CR-03: tighter bands */
   @media (min-width: 1024px) {
-    padding-block: 96px;
+    padding-block: 80px;
   }
 }
 

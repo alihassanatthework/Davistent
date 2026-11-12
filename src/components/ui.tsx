@@ -147,7 +147,7 @@ export function Section({
   labelledBy,
 }: {
   id?: string;
-  tone?: "canvas" | "pine" | "charcoal" | "snow" | "alt" | "ember";
+  tone?: "canvas" | "pine" | "charcoal" | "forest" | "gunmetal" | "olive" | "snow" | "alt" | "ember";
   className?: string;
   children: ReactNode;
   labelledBy?: string;
@@ -156,6 +156,9 @@ export function Section({
     canvas: "bg-canvas text-charcoal",
     pine: "bg-pine text-bone on-dark",
     charcoal: "bg-charcoal text-bone on-dark",
+    forest: "bg-forest text-bone on-dark",
+    gunmetal: "bg-gunmetal text-bone on-dark",
+    olive: "bg-olive text-bone on-dark",
     snow: "bg-snow text-charcoal",
     alt: "bg-surface-alt text-charcoal",
     ember: "bg-blaze text-ink",
@@ -185,7 +188,7 @@ export function SectionHead({
   return (
     <div className="mb-8 flex flex-col gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
       <div className="max-w-2xl">
-        {eyebrow && <p className="eyebrow mb-3 opacity-80">{eyebrow}</p>}
+        {eyebrow && <p className="eyebrow mb-3 text-(--surface-eyebrow)">{eyebrow}</p>}
         <H id={id}>{title}</H>
         {intro && <div className="mt-4 text-[17px] leading-[27px] opacity-90">{intro}</div>}
       </div>
