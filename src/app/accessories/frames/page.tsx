@@ -25,6 +25,7 @@ export default async function FramesPage() {
           { label: "Frames and poles", href: "/accessories/frames/" },
         ]}
         accent="frames"
+        scene="frame"
       />
       <CategoryChips links={outfitChips} current="/accessories/frames/" />
       <Section tone="snow" labelledBy="h-choose">

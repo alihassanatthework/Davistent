@@ -29,6 +29,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           { label: c.name, href: `/glamping/projects/${c.slug}/` },
         ]}
         accent="glamp"
+        scene="glamp"
         compact
       />
       <Section tone="snow">

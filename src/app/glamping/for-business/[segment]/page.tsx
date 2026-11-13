@@ -33,6 +33,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ segme
           { label: "For business", href: `/glamping/for-business/${key}/` },
         ]}
         accent="glamp"
+        scene="glamp"
       >
         <nav aria-label="Business segments" className="flex flex-wrap gap-2">
           {(Object.keys(businessSegments) as Segment[]).map((k) => (

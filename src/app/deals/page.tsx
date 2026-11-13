@@ -12,7 +12,7 @@ export default async function DealsPage() {
   const list = (await getProducts()).filter((p) => p.category === "deal" || p.status === "sale");
   return (
     <>
-      <PageHeader title="Deals and Steals" intro="Sale items, clearance items and factory seconds." crumbs={[{ label: "Outfit", href: "/gear/" }, { label: "Deals", href: "/deals/" }]} accent="deals" />
+      <PageHeader title="Deals and Steals" intro="Sale items, clearance items and factory seconds." crumbs={[{ label: "Outfit", href: "/gear/" }, { label: "Deals", href: "/deals/" }]} accent="deals" scene="tag" />
       <CategoryChips links={outfitChips} current="/deals/" />
       <Section>
         <div className="mb-6">

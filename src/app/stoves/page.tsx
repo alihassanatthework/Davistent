@@ -21,6 +21,7 @@ export default async function StovesPage() {
         intro={"10-gauge steel top and door, 12-gauge cold-rolled steel body. Every stove needs a 5.5\" or larger stove jack."}
         crumbs={[{ label: "Stoves", href: "/stoves/" }]}
         accent="stoves"
+        scene="stove"
       />
       <Section tone="snow" id="sizing" labelledBy="h-size">
         <SectionHead id="h-size" eyebrow="Stove sizing tool" title="Which stove fits my tent?" />

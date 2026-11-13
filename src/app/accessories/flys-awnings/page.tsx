@@ -27,6 +27,7 @@ export default function FlysPage() {
           { label: "Flys and awnings", href: "/accessories/flys-awnings/" },
         ]}
         accent="flys"
+        scene="glamp"
       />
       <CategoryChips links={outfitChips} current="/accessories/flys-awnings/" />
       <Section labelledBy="h-mat">

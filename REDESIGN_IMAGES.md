@@ -2,7 +2,7 @@
 
 **Status:** the project has no photographs. `public/` is empty, and the plan's rule against stock images means none were sourced.
 
-**Update:** at the owner's request the earlier line drawings are back in the homepage hero, the four camp tiles, the canvas band, the standard-features block and the glamping band, as stand-ins until photographs arrive. Category headers and the hot-tents band stay flat.
+**Update:** at the owner's request the earlier line drawings are back in the homepage hero, the four camp tiles, the canvas band, the standard-features block and the glamping band, as stand-ins until photographs arrive. The category page headers show them too (desktop only, via the `scene` prop on `PageHeader`). Only the hot-tents band stays without drawings.
 
 Every other slot that needs a photograph shows a flat Charcoal or Gunmetal placeholder. Where an image component exists, it is ready to take the file once Davis Tent supplies it.
 

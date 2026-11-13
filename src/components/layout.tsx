@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { buttonClass, Icon, JsonLd } from "./ui";
+import { TentIllustration } from "./TentIllustration";
+import type { Illustration } from "@/content/catalog";
 
 export type Crumb = { label: string; href: string };
 
@@ -74,6 +76,7 @@ export function PageHeader({
   intro,
   crumbs,
   accent = "plain",
+  scene,
   image,
   eyebrow,
   children,
@@ -83,6 +86,8 @@ export function PageHeader({
   intro?: ReactNode;
   crumbs: Crumb[];
   accent?: Accent;
+  /** Line drawing shown on desktop until a photograph is supplied */
+  scene?: Illustration;
   image?: HeaderImage;
   eyebrow?: string;
   children?: ReactNode;
@@ -97,14 +102,19 @@ export function PageHeader({
           <div aria-hidden className="absolute inset-0 bg-linear-to-r from-ink/75 to-transparent" />
         </>
       )}
-      <div className={`container-site relative flex flex-col justify-center ${compact ? "py-8" : "min-h-[220px] py-8 lg:min-h-[320px]"}`}>
-        <div className="max-w-3xl">
+      <div className={`container-site relative grid items-center gap-8 lg:grid-cols-12 ${compact ? "py-8" : "min-h-[220px] py-8 lg:min-h-[320px]"}`}>
+        <div className="max-w-3xl lg:col-span-7">
           <Breadcrumbs items={crumbs} />
           {eyebrow && <p className="eyebrow mt-5 text-(--surface-eyebrow)">{eyebrow}</p>}
           <h1 className={eyebrow ? "mt-2" : "mt-5"}>{title}</h1>
           {intro && <div className="mt-3 max-w-2xl text-[17px] leading-[26px] opacity-90">{intro}</div>}
           {children && <div className="mt-5">{children}</div>}
         </div>
+        {scene && !image && (
+          <div className="hidden lg:col-span-5 lg:block" aria-hidden>
+            <TentIllustration kind={scene} tone="dark" className="mx-auto h-[240px] w-full max-w-sm" />
+          </div>
+        )}
       </div>
     </header>
   );

@@ -7,7 +7,7 @@ export const metadata = meta("Pack Stoves", "Lightweight pack stoves for spike c
 export default function PackStoves() {
   return (
     <>
-      <PageHeader title="Pack Stoves" crumbs={[{ label: "Stoves", href: "/stoves/" }, { label: "Pack stoves", href: "/stoves/pack/" }]} accent="stoves" compact />
+      <PageHeader title="Pack Stoves" crumbs={[{ label: "Stoves", href: "/stoves/" }, { label: "Pack stoves", href: "/stoves/pack/" }]} accent="stoves" scene="stove" compact />
       <Section>
         <Pending>The pack stove range (including the Ellis collapsible stove, 35 lb) migrates from /product-category/pack-stoves/ once the store export is available.</Pending>
       </Section>

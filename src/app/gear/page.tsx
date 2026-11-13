@@ -23,7 +23,7 @@ export default async function GearPage() {
   const list = (await getProducts()).filter((p) => ["packing", "sleep", "carry"].includes(p.category));
   return (
     <>
-      <PageHeader title="Camping & Packing Gear" intro="Tested and proven for decades in the field." crumbs={[{ label: "Outfit", href: "/gear/" }]} accent="packing" />
+      <PageHeader title="Camping & Packing Gear" intro="Tested and proven for decades in the field." crumbs={[{ label: "Outfit", href: "/gear/" }]} accent="packing" scene="gear" />
       <CategoryChips links={outfitChips} current="/gear/" />
       <Section tone="snow" labelledBy="h-subs">
         <SectionHead id="h-subs" title="Three collections" />

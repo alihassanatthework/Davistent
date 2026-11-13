@@ -26,6 +26,7 @@ export default async function SpecialtyPage() {
           { label: "Specialty", href: "/tents/specialty/" },
         ]}
         accent="specialty"
+        scene="spike"
       />
       <CategoryChips links={tentChips} current="/tents/specialty/" />
       <Section>

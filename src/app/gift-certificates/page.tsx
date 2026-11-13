@@ -8,7 +8,7 @@ export const metadata = meta("Gift Certificates", "Davis Tent online gift certif
 export default function GiftPage() {
   return (
     <>
-      <PageHeader title="Gift Certificates" intro="Assigned as store credit. Delivered now or on a date you choose." crumbs={[{ label: "Gift certificates", href: "/gift-certificates/" }]} accent="plain" compact />
+      <PageHeader title="Gift Certificates" intro="Assigned as store credit. Delivered now or on a date you choose." crumbs={[{ label: "Gift certificates", href: "/gift-certificates/" }]} accent="plain" scene="tag" compact />
       <Section tone="snow">
         <div className="grid gap-10 lg:grid-cols-2">
           <GiftForm />
