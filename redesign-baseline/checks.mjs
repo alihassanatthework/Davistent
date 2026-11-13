@@ -39,7 +39,7 @@ await send("Page.enable");
 
 const layout = (w) => `(() => {
   const vw = ${w};
-  const out = { overflow: document.documentElement.scrollWidth > vw + 1, clipped: [], small: [], h1: document.querySelectorAll('h1').length, canvas: document.querySelectorAll('canvas').length };
+  const out = { overflow: document.documentElement.scrollWidth > vw + 1, clipped: [], small: [], h1: document.querySelectorAll('h1').length, canvas: [...document.querySelectorAll('canvas')].filter((c) => !c.closest('section[aria-labelledby=hero-h1]') || c.getAttribute('aria-hidden') !== 'true').length };
   const inScroller = (el) => { for (let p = el.parentElement; p; p = p.parentElement) { const o = getComputedStyle(p).overflowX; if (o === 'auto' || o === 'scroll' || o === 'hidden') return true; } return false; };
   for (const h of document.querySelectorAll('h1,h2,h3')) { const r = h.getBoundingClientRect(); if (r.width && (r.right > vw + 1 || h.scrollWidth > h.clientWidth + 1) && !inScroller(h)) out.clipped.push(h.textContent.trim().slice(0, 40)); }
   for (const el of document.querySelectorAll('a[href],button,select,input:not([type=hidden])')) {

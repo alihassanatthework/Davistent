@@ -43,3 +43,14 @@ Every other slot that needs a photograph shows a flat Charcoal or Gunmetal place
 - The only gradient is the photo scrim, and it renders only when a photograph is present.
 - Every new photograph needs descriptive alt text. Purely decorative ones get empty alt text.
 - Product photographs on Olive grounds are avoided. The plan's usage rule says photographs sit on Charcoal or white, while CR-25 puts glamping bands on Olive. The homepage glamping slot is a Charcoal frame inside the Olive band. **Open question for the client.**
+
+## Hero background: animated campsite (owner request, deviation from the plan)
+
+The homepage hero now has a live night-campsite scene behind the headline and buttons (`components/home/campfire/`). It is drawn on a canvas from code: no video, GIF or image file. This goes against CR-07, CR-08, CR-09 and CR-11 of the plan (static hero, no loops, no parallax); it was requested explicitly, and it can be removed by reverting `Hero.tsx` to its previous version.
+
+- **Scene:** starry sky with a Milky Way band and shooting stars, parallax mountains, swaying pines, a tent with a glowing door, a campfire (flames, embers, smoke), six people lit by the fire, haze, grass and a vignette. People are lit silhouettes, not photorealistic.
+- **Motion:** continuous and never resets: sums of slow sine waves plus particles that respawn, so there is no loop point.
+- **Readability:** a dark scrim sits between the scene and the text (bottom-up below 1024 px, left-to-right above). Measured against the brightest moments of the scene, the eyebrow is at least 6.8:1 and the headline at least 10.9:1.
+- **Performance:** static layers are pre-rendered; particles are pooled sprites. The loop pauses when the hero is off screen or the tab is hidden. If frames run long it lowers its resolution, then freezes to a still frame. About 50 fps on desktop with software rendering (no GPU), 60 fps on mobile.
+- **Fallbacks:** reduced motion, Save-Data and low-memory or two-core devices get one still frame of the same scene.
+- **Checks:** `redesign-baseline/hero-scene-check.mjs`.

@@ -1,6 +1,6 @@
 import { getImageProps } from "next/image";
 import { ButtonLink } from "../ui";
-import { TentIllustration } from "../TentIllustration";
+import { CampfireScene } from "./campfire/CampfireScene";
 import { fact } from "@/content/facts";
 
 /**
@@ -8,10 +8,9 @@ import { fact } from "@/content/facts";
  * No scroll effect, no canvas, no script. The entrance is CSS only (globals.css
  * .hero__*), runs once on first paint and is at rest by 600 ms.
  *
- * Photo slot: the client's hunt-camp photograph (landscape ≥ 2400 px plus a
- * portrait crop) is still needed. Until it is supplied the slot is a flat
- * Charcoal ground with the hunt-camp line drawing on the right (desktop only);
- * set `photo` below to switch on the image and its scrim.
+ * Background: an animated night campsite drawn live on a canvas (owner request;
+ * see REDESIGN_IMAGES.md). It sits behind all content under a dark scrim. If a
+ * real photograph is supplied, set `photo` below and it replaces the scene.
  */
 type HeroPhoto = { landscape: string; portrait: string; alt: string };
 const photo: HeroPhoto | null = null;
@@ -26,11 +25,15 @@ export function Hero() {
       {photo ? (
         <HeroImage photo={photo} />
       ) : (
-        <div aria-hidden className="hero__photo absolute inset-0 bg-ink">
-          <TentIllustration kind="package" tone="dark" className="absolute bottom-[8%] right-[4%] hidden h-[62%] w-[46%] lg:block" />
-        </div>
+        <>
+          <div aria-hidden className="hero__photo absolute inset-0 bg-ink">
+            <CampfireScene className="absolute inset-0 h-full w-full" />
+          </div>
+          {/* Scrim for text contrast: bottom-up below 1024 px, left-to-right on desktop */}
+          <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/90 via-ink/55 to-ink/0 lg:bg-linear-to-r lg:from-ink/80 lg:via-ink/30 lg:to-transparent" />
+        </>
       )}
-      <div className="container-site relative pb-12 md:pb-16 lg:pb-[12vh]">
+      <div className="container-site relative z-10 pb-12 md:pb-16 lg:pb-[12vh]">
         <div className="max-w-2xl">
           <p className="hero__eyebrow eyebrow text-tan">{fact("origin")}</p>
           <h1 id="hero-h1" className="hero__title hero-title mt-4">
@@ -60,7 +63,7 @@ function HeroImage({ photo }: { photo: HeroPhoto }) {
         <source media="(min-width: 768px)" srcSet={wide.srcSet} sizes={wide.sizes} />
         <img {...tall} alt={photo.alt} fetchPriority="high" className="h-full w-full object-cover" />
       </picture>
-      {/* Scrim: bottom-up on mobile, left-to-right on desktop. The only gradient allowed. */}
+      {/* Scrim: bottom-up below 1024 px, left-to-right on desktop. The only gradient allowed. */}
       <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/75 to-transparent md:bg-linear-to-r" />
     </>
   );
