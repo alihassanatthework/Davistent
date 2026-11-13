@@ -125,7 +125,8 @@ export default async function Home() {
         <ul className="grid gap-4 md:grid-cols-3">
           {stoveFits.map((s, i) => (
             <Reveal as="li" key={s.name} index={i} className="rounded-md border border-steel bg-gunmetal p-5">
-              <h3 className="font-display text-[26px]">{s.name}</h3>
+              <TentIllustration kind="stove" tone="dark" className="h-32 w-full" />
+              <h3 className="mt-3 font-display text-[26px]">{s.name}</h3>
               <p className="data mt-1 opacity-90">Fits {s.fits}</p>
               <p className="data opacity-75">
                 {s.weight} · {s.dims}

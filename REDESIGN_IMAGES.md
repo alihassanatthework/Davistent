@@ -2,7 +2,7 @@
 
 **Status:** the project has no photographs. `public/` is empty, and the plan's rule against stock images means none were sourced.
 
-**Update:** at the owner's request the earlier line drawings are back in the homepage hero, the four camp tiles, the canvas band, the standard-features block and the glamping band, as stand-ins until photographs arrive. The category page headers show them too (desktop only, via the `scene` prop on `PageHeader`). Only the hot-tents band stays without drawings.
+**Update:** at the owner's request the earlier line drawings are back in the homepage hero, the four camp tiles, the canvas band, the standard-features block and the glamping band, as stand-ins until photographs arrive. The category page headers show them too (desktop only, via the `scene` prop on `PageHeader`). The hot-tents band has its three stove drawings back as well.
 
 Every other slot that needs a photograph shows a flat Charcoal or Gunmetal placeholder. Where an image component exists, it is ready to take the file once Davis Tent supplies it.
 
@@ -18,7 +18,7 @@ Every other slot that needs a photograph shows a flat Charcoal or Gunmetal place
 | Homepage hero | `components/home/Hero.tsx` (`photo` constant) | Procedural canvas animation | Flat Charcoal | **Needed** | Real Davis wall tent in hunting country at dusk or dawn, snow or frost, stove pipe smoking, lit from inside. Landscape ≥ 2400 px plus a portrait crop. No posing. |
 | Canvas band (home 5) | `app/page.tsx`, section `h-canvas` | CSS weave and droplet stand-in | Flat Gunmetal | **Needed** | Macro of Sunforger-treated army duck, ideally with water beading |
 | Standard features (home 6, tent pages) | `components/home/FeatureHotspots.tsx` | Wall-tent drawing with hotspots | Flat Charcoal | **Needed** | One pitched wall tent, three-quarter view, showing the stove jack and door |
-| Hot tents and stoves (home 8) | `app/page.tsx`, section `h-hot` | 3 × stove drawing | **Removed** (data cards only) | **Needed** | Steel stove in use inside a tent: fire, pipe, steel plate |
+| Hot tents and stoves (home 8) | `app/page.tsx`, section `h-hot` | 3 × stove drawing | Stove drawings kept as stand-ins | **Needed** | Steel stove in use inside a tent: fire, pipe, steel plate |
 | Glamping for business (home 10) | `app/page.tsx`, section `h-b2b` | Glamping drawing | Flat Charcoal | **Needed** | Glamping tent on a deck, exterior first |
 | Made in Denver (home 11) | `app/page.tsx`, section `h-denver` | No image | No image | **Needed** | Shop floor: hands, machines, canvas rolls (people working, not posing) |
 | Category headers (tents, specialty, hunting, packages, accessories, frames, flys and awnings, gear, gear subpages, stoves, build, glamping and three glamping subpages, deals, gift certificates, support and contact) | `components/layout.tsx PageHeader` (`image` prop) | Decorative drawing on a coloured ground | Flat Charcoal band | **Needed**, one per category | Category-specific: hunt camp; tent interior; frames and poles; fly over a tent; packing gear on canvas; stove close-up; glamping exterior |
