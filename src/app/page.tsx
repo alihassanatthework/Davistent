@@ -23,7 +23,7 @@ export const revalidate = 600;
 export default async function Home() {
   const live = await getProducts();
   const find = (id: string) => live.find((p) => p.id === id)!;
-  const popular = [find("pkg-elk"), find("wall-14x15"), find("cozy-hideaway"), find("go-tent")];
+  const popular = [find("pkg-elk"), find("wall-12x15"), find("wall-14x15"), find("wall-16x20")];
   const specialty = byCategory("specialty");
   const stove = bySlug("stove", "wood-burning-camp-stove")!;
 

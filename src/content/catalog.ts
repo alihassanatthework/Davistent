@@ -171,6 +171,9 @@ const packages: Product[] = [
   pkg("bison", "Bison Camp Package", 16, 25, "8", 8, [3369, 3771], [3698, 4130], "/product/bison-camp-tent-package/", "Peak"),
 ];
 packages[2].popular = true;
+/* The Elk package is a 14' × 15' wall tent with a stove; the stove-pipe photograph shows that tent. */
+const elkPackage = packages.find((p) => p.id === "pkg-elk");
+if (elkPackage) elkPackage.image = "/products/Canvas-Wall-Tent-Davis-Tent-3.3.jpg";
 packages[2].summary += " Save at least $220 on the Elk package.";
 
 /* ---------------- Specialty tents ---------------- */
