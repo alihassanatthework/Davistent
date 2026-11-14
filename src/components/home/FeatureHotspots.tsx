@@ -1,5 +1,4 @@
 import { standardFeatures } from "@/content/features";
-import { TentIllustration } from "../TentIllustration";
 
 /**
  * Standard features (homepage section 6, tent pages). CR-05: a static numbered
@@ -13,7 +12,13 @@ export function FeatureHotspots({ dark }: { dark?: boolean }) {
   return (
     <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
       <div className={`rounded-md lg:col-span-5 ${dark ? "bg-gunmetal" : "bg-canvas"}`}>
-        <TentIllustration kind="wall" tone={dark ? "dark" : "light"} className="w-full p-4" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/products/Canvas-Wall-Tent-Davis-Tent-2.jpg"
+          alt="Davis canvas wall tent with window, ladder ridge and stove jack"
+          loading="lazy"
+          className="aspect-[4/3] w-full rounded-md object-cover"
+        />
       </div>
       <ol className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:col-span-7">
         {standardFeatures.map((f, i) => (

@@ -9,7 +9,7 @@ import type { Illustration } from "@/content/catalog";
  * close-up). Until then each tile shows its line drawing on a Charcoal ground.
  */
 const camps: { title: string; line: string; href: string; art: Illustration; photo?: { src: string; alt: string } }[] = [
-  { title: "Hunt", line: "Wall tents and hot-tent packages", href: "/hunting/", art: "package" },
+  { title: "Hunt", line: "Wall tents and hot-tent packages", href: "/hunting/", art: "package", photo: { src: "/products/Canvas-Wall-Tent-Davis-Tent-3.3.jpg", alt: "Hunters at a Davis canvas wall tent in the snow" } },
   { title: "Glamp", line: "Luxury glamping tents", href: "/glamping/", art: "glamp" },
   { title: "Outfit", line: "Packing gear, sleep systems, accessories", href: "/gear/", art: "gear" },
   { title: "Stoves", line: "Wood-burning stoves sized to your tent", href: "/stoves/", art: "stove" },
