@@ -42,6 +42,8 @@ export type Product = {
   sleepsMax?: number;
   summary: string;
   illustration: Illustration;
+  /** Real photograph in /public/products, when we have one. */
+  image?: string;
   uses?: ("solo" | "spike" | "cook" | "wash" | "storage" | "family" | "hunt" | "glamp")[];
   stoveIncluded?: boolean;
   specs?: Spec[];
@@ -96,6 +98,9 @@ const wallTents: Product[] = wallSizes.map(([w, l, sleeps, max, min, maxP]) => (
   status: "lead-time",
 }));
 wallTents[2].popular = true;
+/* Photographs supplied by Davis Tent, in the order of the live all-tents page. */
+const wallPhotos = ["Canvas-Wall-Tent-Davis-Tent-1", "Canvas-Wall-Tent-Davis-Tent-1-1", "Canvas-Wall-Tent-Davis-Tent-2", "Canvas-Wall-Tent-Davis-Tent-3.3", "Canvas-Wall-Tent-Davis-Tent-4", "Canvas-Wall-Tent-Davis-Tent-5.3"];
+wallTents.forEach((t, i) => { t.image = `/products/${wallPhotos[i]}.jpg`; });
 
 /* ---------------- Hunt camp packages with stove ---------------- */
 const packageIncluded = [

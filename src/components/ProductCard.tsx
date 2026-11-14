@@ -22,10 +22,20 @@ export function ProductCard({
   return (
     <article className="group relative flex h-full flex-col rounded-md border border-line bg-snow transition-colors duration-(--motion-fast) ease-out hover:border-ink has-[:focus-visible]:border-ink has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blaze">
       <div className="relative aspect-[4/3] overflow-hidden rounded-t-sm bg-canvas">
-        <TentIllustration
-          kind={p.illustration}
-          className="h-full w-full p-4 transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.04] group-has-[:focus-visible]:scale-[1.04]"
-        />
+        {p.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={p.image}
+            alt={p.name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.04] group-has-[:focus-visible]:scale-[1.04]"
+          />
+        ) : (
+          <TentIllustration
+            kind={p.illustration}
+            className="h-full w-full p-4 transition-transform duration-(--motion-slow) ease-out group-hover:scale-[1.04] group-has-[:focus-visible]:scale-[1.04]"
+          />
+        )}
         <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
           {p.status === "sale" && <Badge tone="ember">On sale</Badge>}
           {p.status === "waitlist" && <Badge tone="stone">Waitlist</Badge>}

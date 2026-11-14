@@ -361,7 +361,12 @@ export function CategoryGrid({ products, filters, compareEnabled = true }: { pro
         {quick && (
           <div className="grid gap-6 p-4 md:grid-cols-2 md:p-6">
             <div className="aspect-[4/3] rounded-md bg-canvas">
-              <TentIllustration kind={quick.illustration} className="h-full w-full p-4" />
+              {quick.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={quick.image} alt={quick.name} className="h-full w-full rounded-md object-cover" />
+              ) : (
+                <TentIllustration kind={quick.illustration} className="h-full w-full p-4" />
+              )}
             </div>
             <div>
               <div className="flex items-start justify-between gap-2">

@@ -53,7 +53,12 @@ export function ProductPage({ product: p, crumbs }: { product: Product; crumbs: 
           <div className="lg:col-span-7">
             <div className="rail !grid-cols-none !auto-cols-[100%] rounded-md" role="region" aria-label="Product images" tabIndex={0}>
               <figure className="aspect-[4/3] rounded-md border border-line bg-snow">
-                <TentIllustration kind={p.illustration} className="h-full w-full p-6" label={`${p.name} illustration`} />
+                {p.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={p.image} alt={p.name} className="h-full w-full rounded-md object-cover" />
+                ) : (
+                  <TentIllustration kind={p.illustration} className="h-full w-full p-6" label={`${p.name} illustration`} />
+                )}
               </figure>
               {p.size && isTent && (
                 <figure className="grid aspect-[4/3] place-items-center rounded-md border border-line bg-snow p-6">

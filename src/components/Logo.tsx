@@ -1,19 +1,18 @@
 /**
- * Wordmark placeholder. The existing Davis Tent® logo stays as it is (ch. 7);
- * drop the supplied SVG in here once the client provides the master file.
+ * The real Davis Tent® logo (public/brand). The supplied file is black on a
+ * transparent background, so on the dark header and footer it is inverted to
+ * white; pass tone="dark" to keep it black on a light surface.
  */
-export function Logo({ className = "h-9" }: { className?: string }) {
+export function Logo({ className = "h-9", tone = "light" }: { className?: string; tone?: "light" | "dark" }) {
   return (
-    <svg viewBox="0 0 174 40" className={className} role="img" aria-label="Davis Tent">
-      <path d="M4 32 L20 8 L36 32 Z" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
-      <path d="M17 32 L20 22 L23 32" fill="none" stroke="#D9601A" strokeWidth="2.5" strokeLinejoin="round" />
-      <text x="44" y="27" fill="currentColor" fontFamily="var(--font-barlow), 'Arial Narrow', sans-serif" fontWeight="700" fontSize="25" letterSpacing="1.5">
-        DAVIS TENT
-      </text>
-      <text x="164" y="13" fill="currentColor" fontSize="8" fontFamily="sans-serif">
-        ®
-      </text>
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/brand/DT_Logo_2_H_Color_black.png"
+      width={630}
+      height={150}
+      alt="Davis Tent"
+      className={`w-auto ${tone === "light" ? "invert" : ""} ${className}`}
+    />
   );
 }
 
